@@ -1,7 +1,7 @@
 import streamlit as st
 import json
 import requests
-import "github.com/maraujop/requests-oauth2"
+import requests_oauth2
 # st.write(st.secrets)
 
 code = st.secrets["code"]
