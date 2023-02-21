@@ -1,4 +1,5 @@
 import streamlit as st
+import json
 import requests
 # st.write(st.secrets)
 
@@ -10,4 +11,4 @@ redirect_uri = "https://jacobsummit-sme-hub-streamlit-app-z2fgzo.streamlit.app/"
 
 response = requests.post(f"https://accounts.zoho.com/oauth/v2/token?code={code}&client_id={client_id}&client_secret={client_secret}&redirect_uri={redirect_uri}&grant_type=authorization_code")
 
-st.write(response.json)
+st.write(response.json())
