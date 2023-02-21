@@ -1,7 +1,7 @@
 import streamlit as st
 import json
 import requests
-import requests_oauth2
+# import requests_oauth2
 # st.write(st.secrets)
 
 code = st.secrets["code"]
@@ -15,4 +15,5 @@ token_refresh = requests.post(f"https://accounts.zoho.com/oauth/v2/token?refresh
 access_token = token_refresh.json()["access_token"]
 
 # st.write(access_token)
-# requests.post(url=f"https://analytics.zoho.com/api/spencer@summitventurestudio.com/2388301000001369040/2388301000003333001", auth=)
+dataTest = requests.post(url=f"https://analyticsapi.zoho.com/api/spencer@summitventurestudio.com/2388301000001369040/2388301000003333001")
+st.write(dataTest.json())
