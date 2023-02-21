@@ -2,9 +2,9 @@ import streamlit as st
 import requests
 st.write(st.secrets)
 
-this_code = st.secrets[code]
-client_id = st.secrets[client_id]
-client_secret = st.secrets[client_secret]
+code = st.secrets["code"]
+client_id = st.secrets["client_id"]
+client_secret = st.secrets["client_secret"]
 redirect_uri = "https://jacobsummit-sme-hub-streamlit-app-z2fgzo.streamlit.app/"
 
 
