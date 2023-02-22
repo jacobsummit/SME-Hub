@@ -163,6 +163,8 @@ t.set_table_styles(
 
 tmph = tempfile.NamedTemporaryFile(delete=False)
 
-HTML(t.to_html(tmph.name, escape=False, index=False))
+
+
+# HTML(t.to_html(tmph.name, escape=False, index=False))
 
 st.markdown(tmph, unsafe_allow_html=True)
