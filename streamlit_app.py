@@ -1,10 +1,12 @@
+from __future__ import with_statement
+from ReportClient import ReportClient
+import sys
+
 import streamlit as st
 import json
 import requests
 import oauthlib
-from __future__ import with_statement
-from ReportClient import ReportClient
-import sys
+
 
 code = st.secrets["code"]
 client_id = st.secrets["client_id"]
