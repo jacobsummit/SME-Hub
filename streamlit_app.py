@@ -15,5 +15,6 @@ token_refresh = requests.post(f"https://accounts.zoho.com/oauth/v2/token?refresh
 access_token = token_refresh.json()["access_token"]
 
 # st.write(access_token)
-dataTest = requests.post(f"https://analyticsapi.zoho.com/api/spencer@summitventurestudio.com/'Zoho CRM + Projects Analytics'/'Pipeline Report for Work with Us Page Darla SVS'")
+dataTest = requests.get(f"https://analyticsapi.zoho.com/api/jacob@summitventurestudio.com")
+# dataTest = requests.post(f"https://analyticsapi.zoho.com/api/spencer@summitventurestudio.com/'Zoho CRM + Projects Analytics'/'Pipeline Report for Work with Us Page Darla SVS'")
 st.write(dataTest.status_code)
