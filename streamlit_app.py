@@ -1,11 +1,7 @@
 
 import streamlit as st
-import json
-import requests
-import importlib
-# zaconnector = importlib.import_module("zoho_analytics_connector")
-# from AnalyticsClient import AnalyticsClient
 from requests_oauthlib import OAuth2Session
+from AnalyticsClient import AnalyticsClient
 
 code = st.secrets["code"]
 client_id = st.secrets["client_id"]
@@ -22,4 +18,4 @@ dataTest = requests.post(f"https://analyticsapi.zoho.com/restapi/v2/workspaces/2
 # dataTest = requests.post(f"https://analyticsapi.zoho.com/api/spencer@summitventurestudio.com/'Zoho CRM + Projects Analytics'/'Pipeline Report for Work with Us Page Darla SVS'")
 st.write(dataTest.status_code)
 
-
+# oauth = OAuth2Session(client_id=client_id, redirect_uri=redirect_uri, scope="ZohoReports.data.READ")
