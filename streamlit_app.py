@@ -3,6 +3,7 @@ import streamlit as st
 import json
 import requests
 import importlib
+zaconnector = importlib.import_module("zoho-analytics-connector")
 
 code = st.secrets["code"]
 client_id = st.secrets["client_id"]
