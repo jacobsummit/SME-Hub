@@ -5,6 +5,7 @@ import requests
 import importlib
 # zaconnector = importlib.import_module("zoho_analytics_connector")
 # from AnalyticsClient import AnalyticsClient
+from requests_oauthlib import OAuth2Session
 
 code = st.secrets["code"]
 client_id = st.secrets["client_id"]
