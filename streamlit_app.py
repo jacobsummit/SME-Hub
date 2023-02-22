@@ -2,7 +2,7 @@
 import streamlit as st
 import json
 import requests
-import ReportClient
+import importlib
 
 code = st.secrets["code"]
 client_id = st.secrets["client_id"]
