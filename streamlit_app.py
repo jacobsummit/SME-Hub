@@ -29,6 +29,6 @@ access_token = token_refresh.json()["access_token"]
 ac = AnalyticsClient(client_id, client_secret, refresh_token)
 
 bulk = ac.get_bulk_instance(org_id, workspace_id)
-result = bulk.initiate_bulk_export(view_id, "csv","./test.csv")
+result = bulk.initiate_bulk_export(view_id, "csv","test.csv")
 # df = pd.DataFrame(result)
 st.write(result)
