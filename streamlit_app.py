@@ -47,7 +47,7 @@ st.dataframe(df)
 newCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email", "Project Name",
            "Summary", "Industry", "TRL (1-9)", "1", "2", "3", "4", "5", "6", "Questions We Need Answered"]
 
-styleCols = newCols[9:-1]
+styleCols = newCols[10:-1]
 
 # df = df[keepCols]
 df.columns = newCols
