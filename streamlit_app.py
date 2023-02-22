@@ -1,11 +1,8 @@
-from __future__ import with_statement
-from ReportClient import ReportClient
-import sys
 
 import streamlit as st
 import json
 import requests
-import oauthlib
+import zoho-analytics-connector
 
 
 code = st.secrets["code"]
@@ -24,26 +21,3 @@ dataTest = requests.get(f"https://analyticsapi.zoho.com/api/jacob@summitventures
 # st.write(requests.get('https://github.com').status_code)
 
 
-# client = oauthlib.oauth1.Client(client_id, client_secret=client_secret)
-
-
-
-# class Sample:
-
-#     LOGINEMAILID="Email Address"
-#     CLIENTID="************"
-#     CLIENTSECRET="************"
-#     REFRESHTOKEN="************"
-#     DATABASENAME="Employee"
-#     TABLENAME="Employee"
-#     rc = None
-#     rc = ReportClient(REFRESHTOKEN, CLIENTID, CLIENTSECRET)
-
-#     def exportdata(self,rc):
-#         uri = rc.getURI(self.LOGINEMAILID,self.DATABASENAME,self.TABLENAME)
-#         fileobj = open("/home/sample.csv","rw+")
-#         rc.exportData(uri,"CSV",fileobj)
-#         fileobj.close()
-
-# obj = Sample()
-# obj.exportdata(obj.rc)
