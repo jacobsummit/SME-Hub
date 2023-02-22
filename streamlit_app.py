@@ -37,9 +37,9 @@ bulk = ac.get_bulk_instance(org_id, workspace_id)
 # sqlresult = ac.initate_bulk_export_using_sql()
 result = bulk.export_data(view_id, "csv", tmpf.name)
 df = pd.read_csv(tmpf, names=["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email", "Project Name", "Summary", "Industry", "TRL (1-9)", "Questions We Need Answered", "1", "2", "3", "4", "5", "6"], header=0, dtype={"Project ID":object})
-df = df.fillna(0)
+# df = df.fillna(0)
 for col in df.columns.values[-6:]:
-    df[col] = df[col].fillna(0) 
+    df[col] = df[col].replace("None",0) 
     df[col] = round(df[col].str.rstrip('%').astype('float') / 100, 2)
 
 
