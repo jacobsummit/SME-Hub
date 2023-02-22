@@ -2,8 +2,7 @@
 import streamlit as st
 import json
 import requests
-import zoho-analytics-connector
-
+from ReportClient import ReportClient
 
 code = st.secrets["code"]
 client_id = st.secrets["client_id"]
