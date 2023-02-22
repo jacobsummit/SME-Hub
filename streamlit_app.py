@@ -5,6 +5,7 @@ import numpy as np
 import json
 import requests
 import tempfile
+import io
 from AnalyticsClient import AnalyticsClient
 from requests_oauthlib import OAuth2Session
 
@@ -31,5 +32,12 @@ bulk = ac.get_bulk_instance(org_id, workspace_id)
 result = bulk.export_data(view_id, "csv", tmpf.name)
 # result = bulk.initiate_bulk_export(view_id, "csv","test.csv")
 df = pd.read_csv(tmpf, names=["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email", "Project Name", "Summary", "Industry", "TRL (1-9)", "Questions We Need Answered", "1", "2", "3", "4", "5", "6"], header=0, dtype={"1. Eval & Screening":np.int32})
-st.write(df.info)
+
+buffer = io.StringIO()
+df.info(buf=buffer)
+s = buffer.getvalue()
+
+st.text(s)
+
+st.write(df.info())
 st.dataframe(df)
