@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 import json
 import requests
+import tempfile
 from AnalyticsClient import AnalyticsClient
 from requests_oauthlib import OAuth2Session
 
@@ -28,8 +29,10 @@ access_token = token_refresh.json()["access_token"]
 
 ac = AnalyticsClient(client_id, client_secret, refresh_token)
 
+tmpf = tempfile.NamedTemporaryFile(delete=False)
+
 bulk = ac.get_bulk_instance(org_id, workspace_id)
-result = bulk.export_data(view_id, "csv", "test.csv")
+result = bulk.export_data(view_id, "csv", tmpf.name)
 # result = bulk.initiate_bulk_export(view_id, "csv","test.csv")
 # df = pd.DataFrame(result)
-st.write(result)
+st.write(tmpf.readline())
