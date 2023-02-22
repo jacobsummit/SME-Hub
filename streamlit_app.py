@@ -167,4 +167,4 @@ tmph = tempfile.NamedTemporaryFile(delete=False)
 
 HTML(t.to_html(tmph.name, escape=False, index=False))
 
-st.markdown(tmph.name, unsafe_allow_html=True)
+st.markdown(str(tmph), unsafe_allow_html=True)
