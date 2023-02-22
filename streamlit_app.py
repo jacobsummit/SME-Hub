@@ -42,14 +42,12 @@ for col in df.columns.values[-6:]:
 # st.text(s)
 
 # dfs = df["Project ]
-
-st.write(df.info())
 st.dataframe(df)
 
 newCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email", "Project Name",
-           "Summary", "Industry", "1", "2", "3", "4", "5", "6", "Questions We Need Answered"]
+           "Summary", "Industry", "TRL (1-9)", "1", "2", "3", "4", "5", "6", "Questions We Need Answered"]
 
-styleCols = newCols[8:-1]
+styleCols = newCols[9:-1]
 
 # df = df[keepCols]
 df.columns = newCols
