@@ -2,7 +2,7 @@ import streamlit as st
 import json
 import requests
 import requests-oauthlib
-import pycurl
+# import pycurl
 # import requests_oauth2
 # st.write(st.secrets)
 
