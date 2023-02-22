@@ -1,10 +1,10 @@
 import streamlit as st
 import json
 import requests
-# import requests-oauthlib
-# import pycurl
-# import requests_oauth2
-# st.write(st.secrets)
+import oauthlib
+from __future__ import with_statement
+from ReportClient import ReportClient
+import sys
 
 code = st.secrets["code"]
 client_id = st.secrets["client_id"]
@@ -19,4 +19,29 @@ access_token = token_refresh.json()["access_token"]
 # st.write(access_token)
 dataTest = requests.get(f"https://analyticsapi.zoho.com/api/jacob@summitventurestudio.com")
 # dataTest = requests.post(f"https://analyticsapi.zoho.com/api/spencer@summitventurestudio.com/'Zoho CRM + Projects Analytics'/'Pipeline Report for Work with Us Page Darla SVS'")
-st.write(requests.get('https://github.com').status_code)
+# st.write(requests.get('https://github.com').status_code)
+
+
+# client = oauthlib.oauth1.Client(client_id, client_secret=client_secret)
+
+
+
+# class Sample:
+
+#     LOGINEMAILID="Email Address"
+#     CLIENTID="************"
+#     CLIENTSECRET="************"
+#     REFRESHTOKEN="************"
+#     DATABASENAME="Employee"
+#     TABLENAME="Employee"
+#     rc = None
+#     rc = ReportClient(REFRESHTOKEN, CLIENTID, CLIENTSECRET)
+
+#     def exportdata(self,rc):
+#         uri = rc.getURI(self.LOGINEMAILID,self.DATABASENAME,self.TABLENAME)
+#         fileobj = open("/home/sample.csv","rw+")
+#         rc.exportData(uri,"CSV",fileobj)
+#         fileobj.close()
+
+# obj = Sample()
+# obj.exportdata(obj.rc)
