@@ -8,6 +8,9 @@ from requests_oauthlib import OAuth2Session
 code = st.secrets["code"]
 client_id = st.secrets["client_id"]
 client_secret = st.secrets["client_secret"]
+org_id = st.secrets["org_id"]
+workspace_id = "2388301000001369040"
+view_id = "2388301000003333001"
 redirect_uri = "https://jacobsummit-sme-hub-streamlit-app-z2fgzo.streamlit.app/"
 refresh_token = st.secrets["refresh-token"]
 
@@ -22,3 +25,8 @@ st.write(dataTest.status_code)
 
 # oauth = OAuth2Session(client_id=client_id, redirect_uri=redirect_uri, scope="ZohoReports.data.READ")
 
+ac = AnalyticsClient(client_id, client_secret, refresh_token)
+
+bulk = ac.get_bulk_instance(org_id, workspace_id)
+result = bulk.initiate_bulk_export(view_id, "csv")
+st.write(result)
