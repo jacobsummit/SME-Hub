@@ -51,4 +51,4 @@ for col in df.columns.values[-6:]:
 # dfs = df["Project ]
 st.dataframe(df)
 
-st.write(df.iloc[-1,-1])
+st.write(type(df.iloc[-1,-1]))
