@@ -16,4 +16,4 @@ access_token = token_refresh.json()["access_token"]
 
 # st.write(access_token)
 dataTest = requests.post(f"https://analyticsapi.zoho.com/api/spencer@summitventurestudio.com/2388301000001369040/2388301000003333001")
-st.write(dataTest.json())
+st.write(dataTest.status_code())
