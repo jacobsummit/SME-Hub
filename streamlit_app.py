@@ -1,5 +1,6 @@
 
 import streamlit as st
+import pandas as pd
 import json
 import requests
 from AnalyticsClient import AnalyticsClient
@@ -28,5 +29,5 @@ st.write(dataTest.status_code)
 ac = AnalyticsClient(client_id, client_secret, refresh_token)
 
 bulk = ac.get_bulk_instance(org_id, workspace_id)
-result = bulk.initiate_bulk_export(view_id, "csv")
+result = bulk.initiate_bulk_export(view_id, "json")
 st.write(result)
