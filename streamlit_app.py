@@ -105,7 +105,7 @@ df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace(
 # df["Interested? Click Below"] = df.apply(button_func, axis=1)
 
 custom_css = {
-    ".ag-header-cell-text":{"color":"#444"}
+    ".ag-header-cell-text":{"color":"#fff"}
 }
 
 
