@@ -11,9 +11,11 @@ import requests
 import tempfile
 import io
 from IPython.display import HTML
-
 from AnalyticsClient import AnalyticsClient
 from requests_oauthlib import OAuth2Session
+
+st.set_page_config(layout='wide', page_icon="mountain", page_title="SME Hub")
+
 
 code = st.secrets["code"]
 client_id = st.secrets["client_id"]
