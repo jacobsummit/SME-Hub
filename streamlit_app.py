@@ -17,7 +17,12 @@ from requests_oauthlib import OAuth2Session
 st.set_page_config(layout='wide', page_icon="mountain", page_title="SME Hub")
 
 def completion_color(val):
-    color = 'green' if val else 'yellow'
+    if val == 1:
+        color = 'green'
+    elif val > 1:
+        color = 'yellow'
+    
+    color = 'green' if val == 1 elif val > 0 'yellow'
     return f'background-color: {color}'
 
 
@@ -58,4 +63,4 @@ for col in df.columns.values[-6:]:
 # st.text(s)
 
 # dfs = df["Project ]
-st.dataframe(df.style.applymap(completion_color, subset=["1","2"]))
+st.dataframe(df.style.applymap(completion_color, subset=["1","2","3","4","5","6"]))
