@@ -128,7 +128,7 @@ function(params){
         }
     }
 }
-""")
+""", allow_unsafe_jscode=True)
 
 gb = GridOptionsBuilder.from_dataframe(df)
 gb.configure_default_column(sizeColumnsToFit=True)
