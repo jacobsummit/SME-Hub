@@ -104,7 +104,7 @@ df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace(
 df["Interested? Click Below"] = df.apply(button_func, axis=1)
 
 df.loc[:, styleCols] = ''
-df = df.fillna('')
+df = df.fillna('') 
 
 
 t = df.style.apply(highlight_cells, axis=None, hundList=hundList, notZList=notZList)
