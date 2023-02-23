@@ -61,26 +61,30 @@ tmpf = tempfile.NamedTemporaryFile(delete=False)
 bulk = ac.get_bulk_instance(org_id, workspace_id)
 # sqlresult = ac.initate_bulk_export_using_sql()
 result = bulk.export_data(view_id, "csv", tmpf.name)
-df = pd.read_csv(tmpf, names=["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email", "Project Name", "Summary", "Industry", "Questions We Need Answered", "1", "2", "3", "4", "5", "6"], header=0, dtype={"Project ID":object})
+df = pd.read_csv(tmpf,  header=0)
 # df = df.fillna(0)
 
+for col in df.columns[10:].tolist():
+    df[col] = df[col].str.replace("%", "")
+    df[col] = df[col].astype("float")
+
+keepCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email", "Project Name",
+            "Summary", "Industry", "1. Eval & Screening", "2. Technical Analysis", "3. Market Analysis",
+            "4. Technical Validation", "5. Market Validation", "6. Final Review and Decision",
+            "Questions We Need Answered"]
 newCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email", "Project Name",
            "Summary", "Industry", "1", "2", "3", "4", "5", "6", "Questions We Need Answered"]
 
 styleCols = newCols[8:-1]
 
-
+df = df[keepCols]
 df.columns = newCols
 
 hundList = [(df[col][df[col] == 100].index[i], df.columns.get_loc(col)) for col in styleCols for i in range(len(df[col][df[col] == 100].index))]
-# notZList = [(df[col][df[col] > 0].index[i], df.columns.get_loc(col)) for col in styleCols for i in range(len(df[col][df[col] > 0].index))]
+notZList = [(df[col][df[col] > 0].index[i], df.columns.get_loc(col)) for col in styleCols for i in range(len(df[col][df[col] > 0].index))]
 
 df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?<br>", regex=False)
 
-for col in df.columns.values[-6:]:   
-    df[col] = round(df[col].str.rstrip('%').astype('float') / 100, 2)
-    df[col] = df[col].fillna(0)
-    
 
 
 buffer = io.StringIO()
