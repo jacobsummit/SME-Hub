@@ -76,5 +76,5 @@ for col in df.columns.values[-6:]:
 # st.text(s)
 
 # dfs = df["Project ]
-st.dataframe(df.style.applymap(completion_color, subset=["1","2","3","4","5","6"]))
-st.dataframe(df.style.applymap(text_color, subset=["1","2","3","4","5","6"]))
+st.dataframe(df.style.applymap(completion_color, subset=["1","2","3","4","5","6"]).style.applymap(text_color, subset=["1","2","3","4","5","6"]))
+st.dataframe(df)
