@@ -108,7 +108,8 @@ custom_css = {
     ".ag-header-cell-text":{"color":"#fff","font-size":"15px !important"},
     ".ag-header":{"background":"linear-gradient(90deg, rgba(218,120,34,1) 0%, rgba(163,31,36,1) 100%);"},
     ".ag-cell-wrap-text":{"word-break":"break-word"},
-    ".ag-root-wrapper":{"border-radius":"1em","box-shadow":  "0 0 20px rgba(0, 0, 0, 0.15)"}
+    ".ag-root-wrapper":{"border-radius":"1em"},
+    ".ag-grid-container":{"box-shadow":  "0 0 20px rgba(0, 0, 0, 0.15)"}
 }
 
 
