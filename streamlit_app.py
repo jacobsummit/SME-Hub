@@ -111,14 +111,14 @@ cellstyle_jscode = JsCode("""
 function(params){
     if (params.value == '100') {
         return {
-            'color': 'black', 
+            'color': 'green', 
             'backgroundColor': 'green',
             'display':'block',
         }
     }
     else if (params.value > '0') {
         return{
-            'color': 'black',
+            'color': 'gold',
             'backgroundColor': 'gold',
         }
     }
