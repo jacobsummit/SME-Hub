@@ -92,7 +92,13 @@ df.info(buf=buffer)
 s = buffer.getvalue()
 st.text(s)
 
+hide_dataframe_row_index = """
+            <style>
+            .row_heading.level0 {display:none}
+            .blank {display:none}
+            </style>
+            """
 
-# st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
+st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
 # st.dataframe(df.style.applymap(completion_color, subset=["1","2","3","4","5","6"]).applymap(text_color, subset=["1","2","3","4","5","6"]))
 st.table(df)
