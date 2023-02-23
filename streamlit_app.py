@@ -113,6 +113,7 @@ function(params){
         return {
             'color': 'black', 
             'backgroundColor': 'orange',
+            'display':'none',
         }
     }
     if (params.value < '0') {
