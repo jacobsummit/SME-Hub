@@ -118,7 +118,7 @@ gb = GridOptionsBuilder.from_dataframe(df)
 # gb.configure_default_column(maxWidth=200)
 gb.configure_columns(["Summary","Project Name","Questions We Need Answered"],wrapText = True,autoHeight = True)
 gb.configure_columns(["1", "2", "3", "4", "5", "6"],width=50, resizable=False)
-gb.configure_columns(["Project ID"],hide=True)
+gb.configure_columns(["Project ID","Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email"],hide=True)
 go = gb.build()
 
 
