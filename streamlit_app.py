@@ -122,8 +122,8 @@ outHtml = t.to_html(escape=False, index=False)
 # s = buffer.getvalue()
 # st.text(s)
 
-# with open('style.css') as f:
-#     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html = True)
+with open('style.css') as f:
+    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html = True)
 
 # with open('myfunc.txt') as func:
 #     st.markdown(f"<script>{func.read()}</script>", unsafe_allow_html = True)
