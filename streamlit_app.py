@@ -109,5 +109,5 @@ gb.configure_columns("Summary",wrapText = True)
 gb.configure_columns("Summary",autoHeight = True)
 
 
-AgGrid(df, height=500)
+AgGrid(gb, height=500)
 # st.dataframe(df)
