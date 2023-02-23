@@ -104,4 +104,4 @@ df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace(
 df["Interested? Click Below"] = df.apply(button_func, axis=1)
 
 
-st.dataFrame(df)
+st.dataframe(df)
