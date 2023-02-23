@@ -103,31 +103,5 @@ notZList = [(df[col][df[col] > 0].index[i], df.columns.get_loc(col)) for col in 
 df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?<br>", regex=False)
 df["Interested? Click Below"] = df.apply(button_func, axis=1)
 
-df.loc[:, styleCols] = ''
-df = df.fillna('') 
 
-
-t = df.style.apply(highlight_cells, axis=None, hundList=hundList, notZList=notZList)
-t.hide(axis='index')
-t.hide(["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email"], axis=1)
-
-# t.set_properties(**{'font-family': 'arial', 'padding': '1rem', 'border-collapse':'collapse','border-width':'0px'} , overwrite=True)
-
-outHtml = t.to_html(escape=False, index=False)
-
-# buffer = io.StringIO()
-# df.info(buf=buffer)
-# s = buffer.getvalue()
-# st.text(s)
-
-with open('style.css') as f:
-    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html = True)
-
-with open('myfunc.txt') as func:
-    st.markdown(f"<script>{func.read()}</script>", unsafe_allow_html = True)
-    
-# with open('body.txt') as body:
-#     st.markdown(f"<body>{body.read()}</body>", unsafe_allow_html = True)
-
-st.markdown(outHtml, unsafe_allow_html=True)
-# st.table(df)
+st.dataFrame(df)
