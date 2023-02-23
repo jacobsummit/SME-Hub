@@ -113,5 +113,5 @@ gb.configure_columns(["Project ID","Project Owner", "Project Owner Email", "SVS 
 go = gb.build()
 
 
-AgGrid(df, height=800, gridOptions=go, fit_columns_on_grid_load=True, theme="streamlit")
+AgGrid(df, height=1000, gridOptions=go, theme="streamlit")
 # st.dataframe(df)
