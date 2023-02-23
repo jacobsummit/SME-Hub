@@ -105,7 +105,7 @@ df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace(
 # df["Interested? Click Below"] = df.apply(button_func, axis=1)
 
 custom_css = {
-    ".ag-header-cell-text":{"color":"#fff","font-size":"80px"},
+    ".ag-header-cell-text":{"color":"#fff","font-size":"15px !important"},
     ".ag-header":{"background":"linear-gradient(90deg, rgba(218,120,34,1) 0%, rgba(163,31,36,1) 100%);"},
 }
 
