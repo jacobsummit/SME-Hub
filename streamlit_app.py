@@ -85,4 +85,4 @@ hide_dataframe_row_index = """
 
 
 st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
-st.dataframe(df.style.applymap(completion_color, subset=["1","2","3","4","5","6"]).applymap(text_color, subset=["1","2","3","4","5","6"]))
+st.table(df.style.applymap(completion_color, subset=["1","2","3","4","5","6"]).applymap(text_color, subset=["1","2","3","4","5","6"]))
