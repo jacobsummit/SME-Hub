@@ -73,7 +73,7 @@ styleCols = newCols[8:-1]
 df.columns = newCols
 
 hundList = [(df[col][df[col] == 100].index[i], df.columns.get_loc(col)) for col in styleCols for i in range(len(df[col][df[col] == 100].index))]
-notZList = [(df[col][df[col] > 0].index[i], df.columns.get_loc(col)) for col in styleCols for i in range(len(df[col][df[col] > 0].index))]
+# notZList = [(df[col][df[col] > 0].index[i], df.columns.get_loc(col)) for col in styleCols for i in range(len(df[col][df[col] > 0].index))]
 
 df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?<br>", regex=False)
 
@@ -83,10 +83,10 @@ for col in df.columns.values[-6:]:
     
 
 
-# buffer = io.StringIO()
-# df.info(buf=buffer)
-# s = buffer.getvalue()
-# st.text(s)
+buffer = io.StringIO()
+df.info(buf=buffer)
+s = buffer.getvalue()
+st.text(s)
 
 
 # st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
