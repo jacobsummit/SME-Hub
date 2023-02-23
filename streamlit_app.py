@@ -17,7 +17,7 @@ from requests_oauthlib import OAuth2Session
 st.set_page_config(layout='wide', page_icon="mountain", page_title="SME Hub")
 
 def completion_color(val):
-    color = 'green' if val == 1 else 'yellow'
+    color = 'green' if val else 'yellow'
     return f'background-color: {color}'
 
 
