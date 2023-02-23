@@ -7,6 +7,8 @@ table {
   box-shadow:  0 0 20px rgba(0, 0, 0, 0.15);
   margin: 25px 10px;
   overflow: clip;
+  font-family: arial;
+  padding: 1rem
 }
 
 
