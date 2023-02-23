@@ -181,7 +181,7 @@ t.set_table_styles(
     ], overwrite=True
 )
 
-outHtml = t.to_html(escape=False, index=False)
+outHtml = df.to_html(escape=False, index=False)
 
 # buffer = io.StringIO()
 # df.info(buf=buffer)
