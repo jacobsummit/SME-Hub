@@ -126,8 +126,8 @@ with open('style.css') as f:
 with open('myfunc.txt') as func:
     st.markdown(f"<script>{func.read()}</script>", unsafe_allow_html = True)
     
-with open('body.txt') as body:
-    st.markdown(f"<body>{body.read()}</body>", unsafe_allow_html = True)
+# with open('body.txt') as body:
+#     st.markdown(f"<body>{body.read()}</body>", unsafe_allow_html = True)
 
 st.markdown(outHtml, unsafe_allow_html=True)
 # st.table(df)
