@@ -12,7 +12,8 @@ import tempfile
 import io
 from IPython.display import HTML
 from AnalyticsClient import AnalyticsClient
-from requests_oauthlib import OAuth2Session
+from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
+
 
 st.set_page_config(layout='wide', page_icon="mountain", page_title="SME Hub")
 
@@ -62,8 +63,36 @@ tmpf = tempfile.NamedTemporaryFile(delete=False)
 bulk = ac.get_bulk_instance(org_id, workspace_id)
 # sqlresult = ac.initate_bulk_export_using_sql()
 result = bulk.export_data(view_id, "csv", tmpf.name)
-df = pd.read_csv(tmpf, names=["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email", "Project Name", "Summary", "Industry", "TRL (1-9)", "Questions We Need Answered", "1", "2", "3", "4", "5", "6"], header=0, dtype={"Project ID":object})
+data = pd.read_csv(tmpf, names=["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email", "Project Name", "Summary", "Industry", "TRL (1-9)", "Questions We Need Answered", "1", "2", "3", "4", "5", "6"], header=0, dtype={"Project ID":object})
 # df = df.fillna(0)
+
+
+gb = GridOptionsBuilder.from_dataframe(data)
+gb.configure_pagination(paginationAutoPageSize=True) #Add pagination
+gb.configure_side_bar() #Add a sidebar
+gb.configure_selection('multiple', use_checkbox=True, groupSelectsChildren="Group checkbox select children") #Enable multi-row selection
+gridOptions = gb.build()
+
+grid_response = AgGrid(
+    data,
+    gridOptions=gridOptions,
+    data_return_mode='AS_INPUT', 
+    update_mode='MODEL_CHANGED', 
+    fit_columns_on_grid_load=False,
+    theme='blue', #Add theme color to the table
+    enable_enterprise_modules=True,
+    height=350, 
+    width='100%',
+    reload_data=True
+)
+
+data = grid_response['data']
+selected = grid_response['selected_rows'] 
+df = pd.DataFrame(selected) #Pass the selected rows to a new dataframe df
+
+
+
+
 for col in df.columns.values[-6:]:   
     df[col] = round(df[col].str.rstrip('%').astype('float') / 100, 2)
     df[col] = df[col].fillna(0)
@@ -75,14 +104,6 @@ for col in df.columns.values[-6:]:
 # s = buffer.getvalue()
 # st.text(s)
 
-hide_dataframe_row_index = """
-            <style>
-            .row_heading.level1 {display:none}
-            .blank {display:none}
-            </style>
-            """
-
-
 
 st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
-st.table(df.style.applymap(completion_color, subset=["1","2","3","4","5","6"]).applymap(text_color, subset=["1","2","3","4","5","6"]))
+st.dataframe(df.style.applymap(completion_color, subset=["1","2","3","4","5","6"]).applymap(text_color, subset=["1","2","3","4","5","6"]))
