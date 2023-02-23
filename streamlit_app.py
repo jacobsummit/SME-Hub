@@ -16,6 +16,12 @@ from requests_oauthlib import OAuth2Session
 
 st.set_page_config(layout='wide', page_icon="mountain", page_title="SME Hub")
 
+def completion_color(val):
+    color = 'green' if val == 1 else 'yellow'
+    return f'background-color: {color}'
+
+
+
 
 code = st.secrets["code"]
 client_id = st.secrets["client_id"]
@@ -43,6 +49,7 @@ df = pd.read_csv(tmpf, names=["Project ID", "Project Owner", "Project Owner Emai
 for col in df.columns.values[-6:]:   
     df[col] = round(df[col].str.rstrip('%').astype('float') / 100, 2)
     df[col] = df[col].fillna(0)
+    df[col].style.applymap(completion_color)
 
 
 # buffer = io.StringIO()
@@ -52,5 +59,3 @@ for col in df.columns.values[-6:]:
 
 # dfs = df["Project ]
 st.dataframe(df)
-
-st.write(df.iloc[-1,-1])
