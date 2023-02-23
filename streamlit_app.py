@@ -116,7 +116,8 @@ t.hide(axis='index')
 t.hide(["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email"], axis=1)
 
 t.set_properties(
-    **{'font-family': 'arial', 'padding': '1rem', 'border-radius': 'collapse'}
+    **{'font-family': 'arial', 'padding': '1rem', 'border-radius': 'collapse'} 
+    
 )
 t.set_table_styles(
     [
