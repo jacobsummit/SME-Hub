@@ -58,4 +58,4 @@ for col in df.columns.values[-6:]:
 # st.text(s)
 
 # dfs = df["Project ]
-st.dataframe(df.style.applymap(completion_color, subset=["1"]))
+st.dataframe(df.style.applymap(completion_color, subset=["1","2"]))
