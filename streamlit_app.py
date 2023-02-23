@@ -19,10 +19,10 @@ st.set_page_config(layout='wide', page_icon="mountain", page_title="SME Hub")
 def completion_color(val):
     if val == 1:
         color = 'green'
-    elif val > 1:
+    elif val > 0:
         color = 'yellow'
     
-    color = 'green' if val == 1 elif val > 0 'yellow'
+    # color = 'green' if val == 1 elif val > 0 'yellow'
     return f'background-color: {color}'
 
 
