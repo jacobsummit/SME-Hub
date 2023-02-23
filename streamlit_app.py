@@ -77,7 +77,7 @@ for col in df.columns.values[-6:]:
 
 hide_dataframe_row_index = """
             <style>
-            .row_heading.level0 {display:none}
+            .row_heading.level1 {display:none}
             .blank {display:none}
             </style>
             """
