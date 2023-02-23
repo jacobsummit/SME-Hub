@@ -123,8 +123,8 @@ outHtml = t.to_html(escape=False, index=False)
 with open('style.css') as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html = True)
 
-# with open('myfunc.txt') as func:
-#     st.markdown(f"<script>{func.read()}</script>", unsafe_allow_html = True)
+with open('myfunc.txt') as func:
+    st.components.v1.html(f"<script>{func.read()}</script>")
     
 # with open('body.txt') as body:
 #     st.markdown(f"<body>{body.read()}</body>", unsafe_allow_html = True)
