@@ -95,7 +95,7 @@ newCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.
 styleCols = newCols[8:-1]
 
 df = df[keepCols]
-df.columns = newCols 
+df.columns = newCols
 
 hundList = [(df[col][df[col] == 100].index[i], df.columns.get_loc(col)) for col in styleCols for i in range(len(df[col][df[col] == 100].index))]
 notZList = [(df[col][df[col] > 0].index[i], df.columns.get_loc(col)) for col in styleCols for i in range(len(df[col][df[col] > 0].index))]
@@ -112,7 +112,7 @@ t.hide(axis='index')
 t.hide(["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email"], axis=1)
 
 t.set_properties(
-    **{'font-family': 'arial', 'padding': '1rem', 'border-radius': 'collapse','border-collapse':'collapse'} , overwrite=True
+    **{'font-family': 'arial', 'padding': '1rem', 'border-radius': 'collapse'} , overwrite=True
 )
 
 outHtml = t.to_html(escape=False, index=False)
@@ -122,8 +122,8 @@ outHtml = t.to_html(escape=False, index=False)
 # s = buffer.getvalue()
 # st.text(s)
 
-with open('style.css') as f:
-    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html = True)
+# with open('style.css') as f:
+#     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html = True)
 
 # with open('myfunc.txt') as func:
 #     st.markdown(f"<script>{func.read()}</script>", unsafe_allow_html = True)
