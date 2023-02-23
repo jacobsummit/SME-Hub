@@ -104,5 +104,10 @@ notZList = [(df[col][df[col] > 0].index[i], df.columns.get_loc(col)) for col in 
 df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?<br>", regex=False)
 # df["Interested? Click Below"] = df.apply(button_func, axis=1)
 
-AgGrid(df, height=500, fit_columns_on_grid_load=True)
+gb = GridOptionsBuilder.from_dataframe(df)
+gb.configure_columns("Summary",wrapText = True)
+gb.configure_columns("Summary",autoHeight = True)
+
+
+AgGrid(df, height=500)
 # st.dataframe(df)
