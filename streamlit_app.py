@@ -147,11 +147,6 @@ t.set_table_styles(
                 ('cursor', 'pointer')]
         },
         {
-            'selector': 'body',
-            'props': [
-                ('margin-top', '200px')]
-        },
-        {
             'selector': 'tr',
             'props': [('border-bottom', 'thin solid lightgray')]
         },
