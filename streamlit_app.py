@@ -194,8 +194,8 @@ outHtml = df.to_html(escape=False, index=False)
 #             .blank {display:none}
 #             </style>
 #             """
-with open(‘style.css’)as f:
-    st.markdown(f”<style>{f.read()}</style>”, unsafe_allow_html = True)
+with open('style.css') as f:
+    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html = True)
 
 st.markdown(outHtml, unsafe_allow_html=True)
 # st.dataframe(df.style.applymap(completion_color, subset=["1","2","3","4","5","6"]).applymap(text_color, subset=["1","2","3","4","5","6"]))
