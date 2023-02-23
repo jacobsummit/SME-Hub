@@ -149,7 +149,7 @@ t.set_table_styles(
         {
             'selector': 'body',
             'props': [
-                ('margin-top', '60px')]
+                ('margin-top', '200px')]
         },
         {
             'selector': 'tr',
