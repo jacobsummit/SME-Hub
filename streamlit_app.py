@@ -95,7 +95,7 @@ newCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.
 styleCols = newCols[8:-1]
 
 df = df[keepCols]
-df.columns = newCols
+df.columns = newCols 
 
 hundList = [(df[col][df[col] == 100].index[i], df.columns.get_loc(col)) for col in styleCols for i in range(len(df[col][df[col] == 100].index))]
 notZList = [(df[col][df[col] > 0].index[i], df.columns.get_loc(col)) for col in styleCols for i in range(len(df[col][df[col] > 0].index))]
