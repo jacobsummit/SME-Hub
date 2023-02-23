@@ -101,7 +101,7 @@ df.columns = newCols
 hundList = [(df[col][df[col] == 100].index[i], df.columns.get_loc(col)) for col in styleCols for i in range(len(df[col][df[col] == 100].index))]
 notZList = [(df[col][df[col] > 0].index[i], df.columns.get_loc(col)) for col in styleCols for i in range(len(df[col][df[col] > 0].index))]
 
-df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?'<br/>'", regex=False)
+df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?\n", regex=True)
 # df["Interested? Click Below"] = df.apply(button_func, axis=1)
 
 gb = GridOptionsBuilder.from_dataframe(df)
