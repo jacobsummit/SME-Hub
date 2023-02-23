@@ -109,23 +109,24 @@ df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace(
 
 cellstyle_jscode = JsCode("""
 function(params){
-    if (params.value == '0') {
+    if (params.value == '1') {
         return {
-            'color': 'black', 
+            'color': 'orange', 
             'backgroundColor': 'orange',
-            'display':'none',
+            'display':'block',
         }
     }
-    if (params.value < '0') {
+    else if (params.value > '0') {
         return{
-            'color': 'white',
+            'color': 'yellow',
             'backgroundColor': 'red',
         }
     }
-    if (params.value > '0') {
+    if (params.value == '0') {
         return{
-            'color': 'white',
-            'backgroundColor': 'green',
+            # 'color': 'white',
+            # 'backgroundColor': 'green',
+            'display':'none',
         }
     }
 }
