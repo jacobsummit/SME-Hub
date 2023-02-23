@@ -84,6 +84,7 @@ df = pd.read_csv(tmpf)
 for col in df.columns[9:].tolist():
     df[col] = df[col].str.replace("%", "")
     df[col] = df[col].astype("float")
+    df[col] = df[col].fillna(0)
 
 keepCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email", "Project Name",
             "Summary", "Industry", "1. Eval & Screening", "2. Technical Analysis", "3. Market Analysis",
@@ -101,7 +102,7 @@ hundList = [(df[col][df[col] == 100].index[i], df.columns.get_loc(col)) for col 
 notZList = [(df[col][df[col] > 0].index[i], df.columns.get_loc(col)) for col in styleCols for i in range(len(df[col][df[col] > 0].index))]
 
 df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?<br>", regex=False)
-df["Interested? Click Below"] = df.apply(button_func, axis=1)
+# df["Interested? Click Below"] = df.apply(button_func, axis=1)
 
 
 st.dataframe(df)
