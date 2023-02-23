@@ -105,7 +105,7 @@ df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace(
 # df["Interested? Click Below"] = df.apply(button_func, axis=1)
 
 gb = GridOptionsBuilder.from_dataframe(df)
-gb.configure_default_column(max_column_width=1)
+gb.configure_default_column(maxWidth=1)
 gb.configure_columns(["Summary","Project Name"],wrapText = True)
 gb.configure_columns("Summary",autoHeight = True)
 go = gb.build()
