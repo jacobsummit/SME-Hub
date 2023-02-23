@@ -49,8 +49,7 @@ df = pd.read_csv(tmpf, names=["Project ID", "Project Owner", "Project Owner Emai
 for col in df.columns.values[-6:]:   
     df[col] = round(df[col].str.rstrip('%').astype('float') / 100, 2)
     df[col] = df[col].fillna(0)
-
-df.style.applymap(completion_color, subset=['1'])
+    df.style.applymap(completion_color, subset=[col])
 
 
 # buffer = io.StringIO()
