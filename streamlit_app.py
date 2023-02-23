@@ -128,9 +128,9 @@ function(params){
         }
     }
 }
-""", allow_unsafe_jscode=True)
+""")
 
-gb = GridOptionsBuilder.from_dataframe(df)
+gb = GridOptionsBuilder.from_dataframe(df, )
 gb.configure_default_column(sizeColumnsToFit=True)
 gb.configure_columns(["Summary","Project Name","Questions We Need Answered"],wrapText = True,autoHeight = True, flex=1)
 gb.configure_columns(["1", "2", "3", "4", "5", "6"],width=50, resizable=False, cellStyle=cellstyle_jscode)
@@ -138,5 +138,5 @@ gb.configure_columns(["Project ID","Project Owner", "Project Owner Email", "SVS 
 go = gb.build()
 
 
-AgGrid(df, height=1000, gridOptions=go, theme="streamlit")
+AgGrid(df, height=1000, gridOptions=go, theme="streamlit",allow_unsafe_jscode=True)
 # st.dataframe(df)
