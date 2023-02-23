@@ -39,6 +39,23 @@ def text_color(val):
     # color = 'green' if val == 1 elif val > 0 'yellow'
     return f'color: {tcolor}'
 
+def highlight_cells(x, hundList, notZList):
+    df = x.copy()
+    # set default color
+    df.iloc[:, :] = ''
+
+    # set particular cell colors
+    for val in notZList:
+        df.iloc[val] = 'background-color: gold'
+    for val in hundList:
+        df.iloc[val] = 'background-color: green'
+    return df
+
+def button_func(row):
+    val = f'''<button onclick="window.open('https://smehub.zohocreatorportal.com/#Form:Interest_Form?Project_ID={str(row['Project ID'])}&Project_Name={row['Project Name']}&Project_Owner={row['Project Owner']}&Project_Owner_Email={row["Project Owner Email"]}&AM_Name={row["SVS acct. mgr."]}&AM_Email={row["AM Email"]}')">Help Us <span class="glyphicon glyphicon-new-window"></span></button>'''
+    return val
+
+
 
 code = st.secrets["code"]
 client_id = st.secrets["client_id"]
@@ -84,31 +101,10 @@ hundList = [(df[col][df[col] == 100].index[i], df.columns.get_loc(col)) for col 
 notZList = [(df[col][df[col] > 0].index[i], df.columns.get_loc(col)) for col in styleCols for i in range(len(df[col][df[col] > 0].index))]
 
 df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?<br>", regex=False)
-
-def button_func(row):
-    val = f'''<button onclick="window.open('https://smehub.zohocreatorportal.com/#Form:Interest_Form?Project_ID={str(row['Project ID'])}&Project_Name={row['Project Name']}&Project_Owner={row['Project Owner']}&Project_Owner_Email={row["Project Owner Email"]}&AM_Name={row["SVS acct. mgr."]}&AM_Email={row["AM Email"]}')">Help Us <span class="glyphicon glyphicon-new-window"></span></button>'''
-    return val
-
 df["Interested? Click Below"] = df.apply(button_func, axis=1)
 
 df.loc[:, styleCols] = ''
 df = df.fillna('')
-
-
-def highlight_cells(x, hundList, notZList):
-    df = x.copy()
-    # set default color
-    df.iloc[:, :] = ''
-    # df.iloc[:,:] = 'background-color: green'
-
-    # set particular cell colors
-
-    for val in notZList:
-        df.iloc[val] = 'background-color: gold'
-    for val in hundList:
-        df.iloc[val] = 'background-color: green'
-
-    return df
 
 
 t = df.style.apply(highlight_cells, axis=None, hundList=hundList, notZList=notZList)
@@ -126,15 +122,11 @@ outHtml = t.to_html(escape=False, index=False)
 # s = buffer.getvalue()
 # st.text(s)
 
-# hide_dataframe_row_index = """
-#             <style>
-#             .row_heading.level0 {display:none}
-#             .blank {display:none}
-#             </style>
-#             """
 with open('style.css') as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html = True)
 
+with open('myfunc.txt') as func:
+    st.markdown(f"<script>{func.read()}</script>", unsafe_allow_html = True)
+
 st.markdown(outHtml, unsafe_allow_html=True)
-# st.dataframe(df.style.applymap(completion_color, subset=["1","2","3","4","5","6"]).applymap(text_color, subset=["1","2","3","4","5","6"]))
 # st.table(df)
