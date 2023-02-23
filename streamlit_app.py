@@ -116,73 +116,10 @@ t.hide(axis='index')
 t.hide(["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email"], axis=1)
 
 t.set_properties(
-    **{'font-family': 'arial', 'padding': '1rem', 'border-radius': 'collapse'} 
-    
-)
-t.set_table_styles(
-    [
-        {
-            'selector': '',
-            'props': [('width', '100%'), ('border-radius', '1em'), ('font-size', '10pt'),
-                      ('border-collapse', 'collapse'), ('position', 'relative'),
-                      ('box-shadow', ' 0 0 20px rgba(0, 0, 0, 0.15)'), ('margin', '25px 10px'), ('overflow', 'clip')]
-        },
-        {
-            'selector': 'th',
-            'props': [
-                ('font-size', '12pt'),
-                ('color', 'white'),
-                ('font-family', 'arial'),
-                ('position', 'sticky'),
-                ('top', '40px'),
-                ('padding', '12px'),
-                ('background', 'linear-gradient(90deg, rgba(218,120,34,1) 0%, rgba(163,31,36,1) 100%);'),
-                ('background-attachment', 'fixed'),
-                ('z-index', '900')
-
-            ]
-        },
-        {
-            'selector': 'th.pointer',
-            'props': [
-                ('cursor', 'pointer')]
-        },
-        {
-            'selector': 'tr',
-            'props': [('border-bottom', 'thin solid lightgray')]
-        },
-        {
-            'selector': 'tr:nth-child(odd)',
-            'props': [('background-color', 'white')]
-        },
-        {
-            'selector': 'tr:nth-child(even)',
-            'props': [('background-color', 'f3f3f3')]
-        },
-        {
-            'selector': 'tr:hover',
-            'props': [('background-color', 'lightgray')]
-        },
-        {
-            'selector': 'button',
-            'props': [('background-color', '#002060'),
-                      ('color', 'white'),
-                      ('border-radius', '.5em'),
-                      ('border', 'none'),
-                      ('padding', '5px'),
-                      ]
-        },
-        {
-            'selector': 'button:hover',
-            'props': [('background-color', 'lightblue')
-
-                      ]
-        }
-
-    ], overwrite=True
+    **{'font-family': 'arial', 'padding': '1rem', 'border-radius': 'collapse'} , overwrite=True
 )
 
-outHtml = df.to_html(escape=False, index=False)
+outHtml = t.to_html(escape=False, index=False)
 
 # buffer = io.StringIO()
 # df.info(buf=buffer)
