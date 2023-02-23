@@ -107,7 +107,8 @@ df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace(
 gb = GridOptionsBuilder.from_dataframe(df)
 gb.configure_columns("Summary",wrapText = True)
 gb.configure_columns("Summary",autoHeight = True)
+go = gb.build()
 
 
-AgGrid(gb, height=500)
+AgGrid(df, height=500, gridOptions=go)
 # st.dataframe(df)
