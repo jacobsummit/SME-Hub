@@ -3,7 +3,7 @@ table {
   width: 100%;
   border-radius: 1em;
   font-size: 10pt;
-  border: 0px;
+  border: 0px solid;
   position: relative;
   box-shadow:  0 0 20px rgba(0, 0, 0, 0.15);
   margin: 25px 10px;
