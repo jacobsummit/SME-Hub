@@ -106,7 +106,7 @@ df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace(
 
 custom_css = {
     ".ag-header-cell-text":{"color":"#fff","font-size":"15px !important"},
-    ".ag-header":{"background":"linear-gradient(90deg, rgba(218,120,34,1) 0%, rgba(163,31,36,1) 100%);"},
+    ".ag-header":{"background":"linear-gradient(90deg, rgba(218,120,34,1) 0%, rgba(163,31,36,1) 100%);","border-radius":"1em"},
     ".ag-cell-wrap-text":{"word-break":"break-word"}
 }
 
@@ -140,7 +140,7 @@ function(params){
 gb = GridOptionsBuilder.from_dataframe(df, )
 gb.configure_default_column(sizeColumnsToFit=True)
 gb.configure_columns(["Summary","Project Name","Questions We Need Answered"],wrapText = True,autoHeight = True, flex=1)
-gb.configure_columns(["1", "2", "3", "4", "5", "6"],width=60, resizable=False,wrapText = True,autoHeight = True, cellStyle=cellstyle_jscode)
+gb.configure_columns(["1", "2", "3", "4", "5", "6"],width=60, resizable=False, cellStyle=cellstyle_jscode)
 gb.configure_columns(["Project ID","Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email"],hide=True)
 go = gb.build()
 
