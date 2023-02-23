@@ -67,7 +67,7 @@ df = pd.read_csv(tmpf, names=["Project ID", "Project Owner", "Project Owner Emai
 newCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email", "Project Name",
            "Summary", "Industry", "1", "2", "3", "4", "5", "6", "Questions We Need Answered"]
 
-styleCols = newCols[9:-1]
+styleCols = newCols[8:-1]
 st.write(styleCols)
 
 for col in df.columns.values[-6:]:   
