@@ -40,8 +40,6 @@ def text_color(val):
     return f'color: {tcolor}'
 
 
-
-
 code = st.secrets["code"]
 client_id = st.secrets["client_id"]
 client_secret = st.secrets["client_secret"]
@@ -63,10 +61,13 @@ tmpf = tempfile.NamedTemporaryFile(delete=False)
 bulk = ac.get_bulk_instance(org_id, workspace_id)
 # sqlresult = ac.initate_bulk_export_using_sql()
 result = bulk.export_data(view_id, "csv", tmpf.name)
-df = pd.read_csv(tmpf, names=["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email", "Project Name", "Summary", "Industry", "TRL (1-9)", "Questions We Need Answered", "1", "2", "3", "4", "5", "6"], header=0, dtype={"Project ID":object})
+df = pd.read_csv(tmpf, names=["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email", "Project Name", "Summary", "Industry", "Questions We Need Answered", "1", "2", "3", "4", "5", "6"], header=0, dtype={"Project ID":object})
 # df = df.fillna(0)
 
+newCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email", "Project Name",
+           "Summary", "Industry", "1", "2", "3", "4", "5", "6", "Questions We Need Answered"]
 
+styleCols = newCols[9:-1]
 
 
 for col in df.columns.values[-6:]:   
