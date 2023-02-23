@@ -12,7 +12,7 @@ import tempfile
 import io
 from IPython.display import HTML
 from AnalyticsClient import AnalyticsClient
-from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
+from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
 
 
 st.set_page_config(layout='wide', page_icon="mountain", page_title="SME Hub")
@@ -104,15 +104,6 @@ notZList = [(df[col][df[col] > 0].index[i], df.columns.get_loc(col)) for col in 
 df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?\n", regex=True)
 # df["Interested? Click Below"] = df.apply(button_func, axis=1)
 
-st.markdown("""
-<style>
-{
-    text-overflow: clip;
-    overflow: visible;
-    white-space: normal;
-}
-</style>""", unsafe_allow_html=True)
-
 
 gb = GridOptionsBuilder.from_dataframe(df)
 gb.configure_default_column(sizeColumnsToFit=True)
@@ -122,5 +113,5 @@ gb.configure_columns(["Project ID","Project Owner", "Project Owner Email", "SVS 
 go = gb.build()
 
 
-AgGrid(df, height=500, gridOptions=go)
+AgGrid(df, height=800, gridOptions=go, fit_columns_on_grid_load=True, theme="streamlit")
 # st.dataframe(df)
