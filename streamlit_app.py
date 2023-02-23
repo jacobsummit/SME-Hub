@@ -108,7 +108,7 @@ custom_css = {
     ".ag-header-cell-text":{"color":"#fff","font-size":"15px !important"},
     ".ag-header":{"background":"linear-gradient(90deg, rgba(218,120,34,1) 0%, rgba(163,31,36,1) 100%);"},
     ".ag-cell-wrap-text":{"word-break":"break-word"},
-    ".ag":{"border-radius":"1em"}
+    ".ag-table":{"border-radius":"1em"}
 }
 
 
