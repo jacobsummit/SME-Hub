@@ -12,6 +12,7 @@ table {
 
 th {
   border-collapse: collapse;
+  border: 0px;
   font-size: 12pt;
   color: white;
   font-family: arial;
