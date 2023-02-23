@@ -25,7 +25,7 @@ def completion_color(val):
         tcolor = 'yellow'
     else: 
         color = 'white'
-        tcolor = 'black'
+        tcolor = 'grey'
     
     # color = 'green' if val == 1 elif val > 0 'yellow'
     return f'background-color: {color}, color: {tcolor}'
