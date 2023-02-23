@@ -181,7 +181,7 @@ t.set_table_styles(
     ], overwrite=False
 )
 
-outHtml = HTML(t.to_html(r"app/widget.html", escape=False, index=False))
+outHtml = t.to_html(escape=False, index=False)
 
 # buffer = io.StringIO()
 # df.info(buf=buffer)
