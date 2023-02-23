@@ -106,7 +106,7 @@ df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace(
 
 gb = GridOptionsBuilder.from_dataframe(df)
 gb.configure_default_column(max_column_width=1)
-gb.configure_columns("Summary",wrapText = True)
+gb.configure_columns(["Summary","Project Name"],wrapText = True)
 gb.configure_columns("Summary",autoHeight = True)
 go = gb.build()
 
