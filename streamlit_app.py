@@ -61,7 +61,7 @@ tmpf = tempfile.NamedTemporaryFile(delete=False)
 bulk = ac.get_bulk_instance(org_id, workspace_id)
 # sqlresult = ac.initate_bulk_export_using_sql()
 result = bulk.export_data(view_id, "csv", tmpf.name)
-df = pd.read_csv(tmpf,  header=0)
+df = pd.read_csv(tmpf)
 # df = df.fillna(0)
 
 for col in df.columns[10:].tolist():
