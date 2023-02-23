@@ -104,6 +104,16 @@ notZList = [(df[col][df[col] > 0].index[i], df.columns.get_loc(col)) for col in 
 df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?\n", regex=True)
 # df["Interested? Click Below"] = df.apply(button_func, axis=1)
 
+st.markdown("""
+<style>
+{
+    text-overflow: clip;
+    overflow: visible;
+    white-space: normal;
+}
+</style>""", unsafe_allow_html=True)
+
+
 gb = GridOptionsBuilder.from_dataframe(df)
 gb.configure_default_column(maxWidth=200)
 gb.configure_columns(["Summary","Project Name","Questions We Need Answered"],wrapText = True,autoHeight = True)
