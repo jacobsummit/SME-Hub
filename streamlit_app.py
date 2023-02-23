@@ -106,7 +106,7 @@ df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace(
 
 custom_css = {
     ".ag-header-cell-text":{"color":"#fff"},
-    ".header_one":{"background-color":"#fff"},
+    ".ag-header":{"background-color":"#fff"},
 }
 
 
