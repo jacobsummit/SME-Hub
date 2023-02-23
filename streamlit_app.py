@@ -81,7 +81,7 @@ grid_response = AgGrid(
     fit_columns_on_grid_load=False,
     theme='alpine', #Add theme color to the table
     enable_enterprise_modules=True,
-    height=350, 
+    height=650, 
     width='100%',
     reload_data=True
 )
