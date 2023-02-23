@@ -116,7 +116,7 @@ function(params){
             'display':'block',
         }
     }
-     if (params.value > '0') {
+    else if (params.value > '0') {
         return{
             'color': 'yellow',
             'backgroundColor': 'red',
@@ -124,9 +124,8 @@ function(params){
     }
     if (params.value == '0') {
         return{
-            # 'color': 'white',
-            # 'backgroundColor': 'green',
-            'display':'none',
+            'color': 'white',
+            'backgroundColor': 'green',
         }
     }
 }
