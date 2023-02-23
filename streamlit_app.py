@@ -133,7 +133,7 @@ t.set_table_styles(
                 ('color', 'white'),
                 ('font-family', 'arial'),
                 ('position', 'sticky'),
-                ('top', '0'),
+                ('top', '10'),
                 ('padding', '12px'),
                 ('background', 'linear-gradient(90deg, rgba(218,120,34,1) 0%, rgba(163,31,36,1) 100%);'),
                 ('background-attachment', 'fixed'),
