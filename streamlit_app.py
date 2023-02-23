@@ -104,6 +104,9 @@ notZList = [(df[col][df[col] > 0].index[i], df.columns.get_loc(col)) for col in 
 df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?\n", regex=True)
 # df["Interested? Click Below"] = df.apply(button_func, axis=1)
 
+custom_css = {
+    ".ag-header-cell-text":{"color":"#444"}
+}
 
 
 
@@ -140,5 +143,5 @@ gb.configure_columns(["Project ID","Project Owner", "Project Owner Email", "SVS 
 go = gb.build()
 
 
-AgGrid(df, height=1000, gridOptions=go, theme="streamlit",allow_unsafe_jscode=True)
+AgGrid(df, height=1000, gridOptions=go, theme="streamlit",allow_unsafe_jscode=True, custom_css=custom_css)
 # st.dataframe(df)
