@@ -112,7 +112,7 @@ t.hide(axis='index')
 t.hide(["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email"], axis=1)
 
 t.set_properties(
-    **{'font-family': 'arial', 'padding': '1rem', 'border-radius': 'collapse'} , overwrite=True
+    **{'font-family': 'arial', 'padding': '1rem', 'border-radius': 'collapse', 'border-collapse':'collapse', 'border':'0px'} , overwrite=True
 )
 
 outHtml = t.to_html(escape=False, index=False)
