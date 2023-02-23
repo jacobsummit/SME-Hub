@@ -126,6 +126,7 @@ function(params){
         return{
             'color': 'white',
             'backgroundColor': 'green',
+            'display':'none'
         }
     }
 }
