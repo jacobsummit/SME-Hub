@@ -19,16 +19,24 @@ st.set_page_config(layout='wide', page_icon="mountain", page_title="SME Hub")
 def completion_color(val):
     if val == 1:
         color = 'green'
-        tcolor = 'green'
     elif val > 0:
         color = 'yellow'
-        tcolor = 'yellow'
     else: 
         color = 'white'
+    
+    # color = 'green' if val == 1 elif val > 0 'yellow'
+    return f'background-color: {color}'
+
+def text_color(val):
+    if val == 1:
+        tcolor = 'green'
+    elif val > 0:
+        tcolor = 'yellow'
+    else: 
         tcolor = 'white'
     
     # color = 'green' if val == 1 elif val > 0 'yellow'
-    return f'background-color: {color}, font-color: {tcolor}'
+    return f'color: {tcolor}'
 
 
 
@@ -68,4 +76,5 @@ for col in df.columns.values[-6:]:
 # st.text(s)
 
 # dfs = df["Project ]
+st.dataframe(df.style.applymap(completion_color, subset=["1","2","3","4","5","6"]))
 st.dataframe(df.style.applymap(completion_color, subset=["1","2","3","4","5","6"]))
