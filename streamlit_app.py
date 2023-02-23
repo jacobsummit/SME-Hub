@@ -68,7 +68,7 @@ newCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.
            "Summary", "Industry", "1", "2", "3", "4", "5", "6", "Questions We Need Answered"]
 
 styleCols = newCols[9:-1]
-
+st.write(styleCols)
 
 for col in df.columns.values[-6:]:   
     df[col] = round(df[col].str.rstrip('%').astype('float') / 100, 2)
