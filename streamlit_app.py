@@ -64,7 +64,7 @@ result = bulk.export_data(view_id, "csv", tmpf.name)
 df = pd.read_csv(tmpf)
 # df = df.fillna(0)
 
-for col in df.columns[10:].tolist():
+for col in df.columns[9:].tolist():
     df[col] = df[col].str.replace("%", "")
     df[col] = df[col].astype("float")
 
