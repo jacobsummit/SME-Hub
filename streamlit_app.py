@@ -24,6 +24,8 @@ show_pages(
         Page("pages/test.py", "page")
     ]
 )
+st.markdown('<a href="/next_page" target="_self">Next page</a>', unsafe_allow_html=True)
+
 
 def button_func(row):
     val = f'''<button onclick="window.open('https://smehub.zohocreatorportal.com/#Form:Interest_Form?Project_ID={str(row['Project ID'])}&Project_Name={row['Project Name']}&Project_Owner={row['Project Owner']}&Project_Owner_Email={row["Project Owner Email"]}&AM_Name={row["SVS acct. mgr."]}&AM_Email={row["AM Email"]}')">Help Us <span class="glyphicon glyphicon-new-window"></span></button>'''
