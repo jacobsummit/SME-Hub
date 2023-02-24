@@ -14,7 +14,6 @@ from st_pages import Page, show_pages, add_page_title
 from IPython.display import HTML
 from AnalyticsClient import AnalyticsClient
 from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
-from streamlit_extras.switch_page_button import switch_page
 
 
 
@@ -26,7 +25,7 @@ show_pages(
         Page("pages/test.py", "page")
     ]
 )
-switch_page("test")
+st.markdown('<button><a href="/test" target="_self">Next page</a></button>', unsafe_allow_html=True)
 
 
 def button_func(row):
