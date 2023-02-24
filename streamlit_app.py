@@ -105,11 +105,11 @@ ind_df = df[df['Industry'].isin(industry_choice)]
 st.sidebar.write("Projects in Chosen Industry Area(s):",str(len(ind_df)))
 
 gb = GridOptionsBuilder.from_dataframe(df)
-gb.sideBar({'toolPanels': []})
+# gb.sideBar({'toolPanels': []})
 gb.configure_default_column(sizeColumnsToFit=True, enablePivot=False, enableValue=True, enableRowGroup=True)
 gb.configure_selection(selection_mode="multiple", use_checkbox=True)
 gb.configure_column("Project Name")
-gb.configure_side_bar(columns_panel=False)
+gb.configure_side_bar({'toolPanels': []})
 
 gb.configure_columns(["Summary","Project Name","Questions We Need Answered","Industry"],wrapText = True,autoHeight = True, flex=1)
 gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=50, resizable=False, cellStyle=cellstyle_jscode,wrapText = True)
