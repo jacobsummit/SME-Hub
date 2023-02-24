@@ -20,8 +20,20 @@ st.set_page_config(layout='wide', page_icon="mountain", page_title="SME Hub")
 
 
 def button_func(row):
-    val = f'''<button onclick="window.open('https://smehub.zohocreatorportal.com/#Form:Interest_Form?Project_ID={str(row['Project ID'])}&Project_Name={row['Project Name']}&Project_Owner={row['Project Owner']}&Project_Owner_Email={row["Project Owner Email"]}&AM_Name={row["SVS acct. mgr."]}&AM_Email={row["AM Email"]}')">Help Us <span class="glyphicon glyphicon-new-window"></span></button>'''
+    val = st.button("test")
     return val
+
+@st.cache_data
+def load_data():
+    tmpf = tempfile.NamedTemporaryFile(delete=False)
+    bulk = ac.get_bulk_instance(org_id, workspace_id)
+    result = bulk.export_data(view_id, "csv", tmpf.name)
+    df = pd.read_csv(tmpf)
+    return df
+
+def send_row(row):
+    st.session_state['interest'] = row
+    switch_page("test")
 
 
 
@@ -35,29 +47,20 @@ redirect_uri = "https://jacobsummit-sme-hub-streamlit-app-z2fgzo.streamlit.app/"
 refresh_token = st.secrets["refresh-token"]
 
 token_refresh = requests.post(f"https://accounts.zoho.com/oauth/v2/token?refresh_token={refresh_token}&client_id={client_id}&client_secret={client_secret}&redirect_uri={redirect_uri}&grant_type=refresh_token")
-# response = requests.post(f"https://accounts.zoho.com/oauth/v2/token?code={code}&client_id={client_id}&client_secret={client_secret}&redirect_uri={redirect_uri}&grant_type=authorization_code")
 access_token = token_refresh.json()["access_token"]
 
 
 ac = AnalyticsClient(client_id, client_secret, refresh_token)
-# sqlresult = ac.initate_bulk_export_using_sql()
 
 
-@st.cache_data
-def load_data():
-    tmpf = tempfile.NamedTemporaryFile(delete=False)
-    bulk = ac.get_bulk_instance(org_id, workspace_id)
-    result = bulk.export_data(view_id, "csv", tmpf.name)
-    df = pd.read_csv(tmpf)
-    return df
-# df = df.fillna(0)
+
 
 df = load_data()
 
 
-if st.button("test button"):
-    st.session_state['interest'] = df.iloc[1,:]
-    switch_page("test")
+# if st.button("test button"):
+#     st.session_state['interest'] = df.iloc[1,:]
+#     switch_page("test")
 
 for col in df.columns[9:].tolist():
     df[col] = df[col].str.replace("%", "")
@@ -80,7 +83,7 @@ df.columns = newCols
 # notZList = [(df[col][df[col] > 0].index[i], df.columns.get_loc(col)) for col in styleCols for i in range(len(df[col][df[col] > 0].index))]
 
 df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?\n", regex=True)
-# df["Interested? Click Below"] = df.apply(button_func, axis=1)
+df["Interested? Click Below"] = df.apply(button_func, axis=1)
 
 
 
