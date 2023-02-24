@@ -26,6 +26,18 @@ def button_func(row):
 
 @st.cache_data
 def load_data():
+    tmpf = tempfile.NamedTemporaryFile(delete=False)
+    bulk = access_aip().get_bulk_instance(org_id, workspace_id)
+    result = bulk.export_data(view_id, "csv", tmpf.name)
+    df = pd.read_csv(tmpf)
+    return df
+
+def send_row(row):
+    st.session_state['interest'] = row
+    switch_page("test")
+
+@st.cache_data
+def access_api():
     code = st.secrets["code"]
     client_id = st.secrets["client_id"]
     client_secret = st.secrets["client_secret"]
@@ -38,19 +50,7 @@ def load_data():
     st.write(token_refresh.json())
     access_token = token_refresh.json()["access_token"]
     ac = AnalyticsClient(client_id, client_secret, refresh_token)
-    tmpf = tempfile.NamedTemporaryFile(delete=False)
-    bulk = ac.get_bulk_instance(org_id, workspace_id)
-    result = bulk.export_data(view_id, "csv", tmpf.name)
-    df = pd.read_csv(tmpf)
-    return df
-
-def send_row(row):
-    st.session_state['interest'] = row
-    switch_page("test")
-
-
-
-
+    return ac
 
 
 
