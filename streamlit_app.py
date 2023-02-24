@@ -16,16 +16,7 @@ from AnalyticsClient import AnalyticsClient
 from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
 from streamlit_extras.switch_page_button import switch_page
 
-
-
 st.set_page_config(layout='wide', page_icon="mountain", page_title="SME Hub")
-add_page_title("Home")
-
-st.markdown('<button><a href="/test" target="_self">Next page</a></button>', unsafe_allow_html=True)
-if st.button("test button"):
-    st.session_state['interest'] = df.iloc[1,:]
-    switch_page("test")
-
 
 
 def button_func(row):
@@ -62,6 +53,11 @@ def load_data():
 # df = df.fillna(0)
 
 df = load_data()
+
+
+if st.button("test button"):
+    st.session_state['interest'] = df.iloc[1,:]
+    switch_page("test")
 
 for col in df.columns[9:].tolist():
     df[col] = df[col].str.replace("%", "")
