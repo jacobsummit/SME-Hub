@@ -179,7 +179,7 @@ ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",allow_unsafe_jscod
 int_data = pd.DataFrame(ag['data'])
 int_data = int_data[int_data["Interested?"]=="True"]
 
-st.write(int_data.columns)
+st.sidebar.write(int_data.columns)
 
 for i in range(len(int_data)):
     st.write(int_data.iloc[i,11])
