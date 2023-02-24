@@ -166,7 +166,7 @@ response = AgGrid(
 # ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",fit_columns_on_grid_load=False,allow_unsafe_jscode=True, enable_enterprise_modules=True,custom_css=custom_css,header_checkbox_selection_filtered_only=True,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED,
     # data_return_mode=DataReturnMode.FILTERED_AND_SORTED)
 
-int_data = pd.DataFrame(ag['data'])
+# int_data = pd.DataFrame(ag['data'])
 # ind_df = int_data[int_data["Interested?"]=="True"]
 
 # st.sidebar.write(ind_df.columns)
