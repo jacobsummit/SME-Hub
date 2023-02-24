@@ -27,7 +27,7 @@ def button_func(row):
 @st.cache_data
 def load_data():
     tmpf = tempfile.NamedTemporaryFile(delete=False)
-    bulk = access_aip().get_bulk_instance(org_id, workspace_id)
+    bulk = access_api().get_bulk_instance(org_id, workspace_id)
     result = bulk.export_data(view_id, "csv", tmpf.name)
     df = pd.read_csv(tmpf)
     return df
