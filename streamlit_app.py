@@ -10,7 +10,7 @@ import json
 import requests
 import tempfile
 import io
-from st_pages import page, show_pages, add_page_title
+from st_pages import show_pages, add_page_title
 from IPython.display import HTML
 from AnalyticsClient import AnalyticsClient
 from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
