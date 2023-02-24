@@ -174,5 +174,7 @@ gb.configure_column('Interested?', editable=True, cellRenderer=checkbox_renderer
 go = gb.build()
 
 
-AgGrid(df, height=500, gridOptions=go, theme="streamlit",allow_unsafe_jscode=True, custom_css=custom_css)
-st.dataframe(df[df["Interested?"]==True])
+ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",allow_unsafe_jscode=True, custom_css=custom_css)
+
+int_data = ag['data']
+st.dataframe(int_data[int_data["Interested?"]==True])
