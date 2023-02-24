@@ -21,7 +21,7 @@ add_page_title("Home")
 show_pages(
     [
         Page("streamlit_app.py","Home"),
-        Page("pages/test.py", "Second")
+        Page("pages/test.py", "page")
     ]
 )
 
