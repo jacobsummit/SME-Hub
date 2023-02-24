@@ -163,7 +163,7 @@ cellRenderer_addButton = JsCode('''
 
 
 df = df[df['Industry'].isin(industry_choice)]
-st.sidebar.write("test")
+st.sidebar.write("Projects in Chosen Industry Area(s):",len(df))
 
 gb = GridOptionsBuilder.from_dataframe(df)
 gb.configure_default_column(sizeColumnsToFit=True)
