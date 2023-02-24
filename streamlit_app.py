@@ -110,7 +110,7 @@ function(params){
         return {
             'color': 'green', 
             'backgroundColor': 'green',
-            'borderColor':' 'black',
+            'borderColor':' 'green',
             'display':'block',
         }
     }
