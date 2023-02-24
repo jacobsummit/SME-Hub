@@ -131,8 +131,8 @@ df = df[df['Industry'].isin(industry_choice)]
 gb = GridOptionsBuilder.from_dataframe(df)
 gb.configure_default_column(sizeColumnsToFit=True)
 gb.configure_columns(["Summary","Project Name","Questions We Need Answered"],wrapText = True, flex=1)
-gb.configure_columns(["1", "2", "3", "4", "5", "6"],width=50, autoHeight=True, resizable=False, cellStyle=cellstyle_jscode)
-gb.configure_columns(["Project ID","Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email"],hide=True)
+gb.configure_columns(["1", "2", "3", "4", "5", "6"],width=50, resizable=False, cellStyle=cellstyle_jscode)
+gb.configure_columns(["Project ID","Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email"], autoHeight=True,hide=True)
 go = gb.build()
 
 
