@@ -42,7 +42,7 @@ ac = AnalyticsClient(client_id, client_secret, refresh_token)
 
 
 @st.cache_data
-def load_data(file):
+def load_data():
     tmpf = tempfile.NamedTemporaryFile(delete=False)
     bulk = ac.get_bulk_instance(org_id, workspace_id)
     result = bulk.export_data(view_id, "csv", tmpf.name)
