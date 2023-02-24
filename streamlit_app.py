@@ -48,6 +48,7 @@ redirect_uri = "https://jacobsummit-sme-hub-streamlit-app-z2fgzo.streamlit.app/"
 refresh_token = st.secrets["refresh-token"]
 
 token_refresh = requests.post(f"https://accounts.zoho.com/oauth/v2/token?refresh_token={refresh_token}&client_id={client_id}&client_secret={client_secret}&redirect_uri={redirect_uri}&grant_type=refresh_token")
+st.write(token_refresh)
 access_token = token_refresh.json()["access_token"]
 
 
@@ -172,7 +173,6 @@ gb.configure_columns(["Project ID","Project Owner", "Project Owner Email", "SVS 
 gb.configure_column('Interested?', editable=True, cellRenderer=checkbox_renderer)
 
 go = gb.build()
-
 
 ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",allow_unsafe_jscode=True, custom_css=custom_css)
 
