@@ -139,19 +139,19 @@ class CheckboxRenderer{
 ind_df = df[df['Industry'].isin(industry_choice)]
 st.sidebar.write("Projects in Chosen Industry Area(s):",str(len(ind_df)))
 
-gb = GridOptionsBuilder.from_dataframe(ind_df)
+gb = GridOptionsBuilder.from_dataframe(df)
 gb.configure_default_column(sizeColumnsToFit=True, enablePivot=False, enableValue=True, enableRowGroup=True)
 gb.configure_selection(selection_mode="multiple", use_checkbox=True)
 gb.configure_side_bar()
 
-# gb.configure_columns(["Summary","Project Name","Questions We Need Answered","Industry"],wrapText = True,autoHeight = True, flex=1)
-# gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=50, resizable=False, cellStyle=cellstyle_jscode,wrapText = True)
+gb.configure_columns(["Summary","Project Name","Questions We Need Answered","Industry"],wrapText = True,autoHeight = True, flex=1)
+gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=50, resizable=False, cellStyle=cellstyle_jscode,wrapText = True)
 gb.configure_columns(["Project ID","Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email"],hide=True)
 # gb.configure_column('Interested?', editable=True, cellRenderer=checkbox_renderer, maxWidth=90)
 
 go = gb.build()
 
-ag = AgGrid(ind_df, height=500, gridOptions=go, theme="streamlit",fit_columns_on_grid_load=False,allow_unsafe_jscode=True, enable_enterprise_modules=True,custom_css=custom_css,header_checkbox_selection_filtered_only=True,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED,
+ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",fit_columns_on_grid_load=False,allow_unsafe_jscode=True, enable_enterprise_modules=True,custom_css=custom_css,header_checkbox_selection_filtered_only=True,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED,
     data_return_mode=DataReturnMode.FILTERED_AND_SORTED)
 
 int_data = pd.DataFrame(ag['data'])
