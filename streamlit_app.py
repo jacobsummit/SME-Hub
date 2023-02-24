@@ -108,7 +108,8 @@ gb = GridOptionsBuilder.from_dataframe(df)
 gb.sideBar = {'toolPanels': []}
 gb.configure_default_column(sizeColumnsToFit=True, enablePivot=False, enableValue=True, enableRowGroup=True, suppressColumnsToolPanel=True)
 gb.configure_selection(selection_mode="multiple", use_checkbox=True)
-gb.configure_column("Project Name")
+
+gb.configure_column("1", headerTooltip="Initial Analysis")
 # gb.suppressColumnsToolPanel(True)
 # gb.configure_side_bar({'toolPanels': []})
 
