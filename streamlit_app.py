@@ -109,6 +109,7 @@ gb.sideBar = {'toolPanels': []}
 gb.configure_default_column(sizeColumnsToFit=True, enablePivot=False, enableValue=True, enableRowGroup=True)
 gb.configure_selection(selection_mode="multiple", use_checkbox=True)
 gb.configure_column("Project Name")
+gb.suppressColumnsToolPanel(True)
 # gb.configure_side_bar({'toolPanels': []})
 
 gb.configure_columns(["Summary","Project Name","Questions We Need Answered","Industry"],wrapText = True,autoHeight = True, flex=1)
