@@ -139,17 +139,14 @@ cellRenderer_addButton = JsCode('''
             <span>
                 <style>
                 .btn_add {
-                    background-color: #71DC87;
-                    border: 2px solid black;
-                    color: #D05732;
-                    text-align: center;
-                    display: inline-block;
-                    font-size: 12px;
-                    font-weight: bold;
-                    height: 2em;
-                    width: 10em;
-                    border-radius: 12px;
-                    padding: 0px;
+                    background-color: #002060;
+                        color: white;
+                        border-radius: .5em;
+                        border: none;
+                        padding: 5px;
+                }
+                button:hover {
+                    background-color: lightblue;
                 }
                 </style>
                 <button id='click-button' 
