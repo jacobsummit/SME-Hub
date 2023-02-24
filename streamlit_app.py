@@ -140,15 +140,18 @@ ind_df = df[df['Industry'].isin(industry_choice)]
 st.sidebar.write("Projects in Chosen Industry Area(s):",str(len(ind_df)))
 
 gb = GridOptionsBuilder.from_dataframe(ind_df)
-gb.configure_default_column(sizeColumnsToFit=True)
+gb.configure_default_column(sizeColumnsToFit=True,enablePivot=True, enableValue=True, enableRowGroup=True)
+gb.configure_selection(selection_mode="multiple", use_checkbox=True)
+gb.configure_side_bar()
+
 gb.configure_columns(["Summary","Project Name","Questions We Need Answered","Industry"],wrapText = True,autoHeight = True, flex=1)
 gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=50, resizable=False, cellStyle=cellstyle_jscode,wrapText = True)
 gb.configure_columns(["Project ID","Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email"],hide=True)
-gb.configure_column('Interested?', editable=True, cellRenderer=checkbox_renderer, maxWidth=90)
+# gb.configure_column('Interested?', editable=True, cellRenderer=checkbox_renderer, maxWidth=90)
 
 go = gb.build()
 
-ag = AgGrid(ind_df, height=500, gridOptions=go, theme="streamlit",allow_unsafe_jscode=True, custom_css=custom_css)
+ag = AgGrid(ind_df, height=500, gridOptions=go, theme="streamlit",allow_unsafe_jscode=True, custom_css=custom_css,header_checkbox_selection_filtered_only=True,use_checkbox=True)
 
 int_data = pd.DataFrame(ag['data'])
 ind_df = int_data[int_data["Interested?"]=="True"]
