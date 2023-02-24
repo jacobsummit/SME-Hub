@@ -84,7 +84,7 @@ df.columns = newCols
 # notZList = [(df[col][df[col] > 0].index[i], df.columns.get_loc(col)) for col in styleCols for i in range(len(df[col][df[col] > 0].index))]
 
 df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?\n", regex=True)
-# df["Interested? Click Below"] = df.apply(button_func, axis=1)
+df["Interested? Click Below"] = ""
 
 
 
@@ -130,36 +130,35 @@ function(params){
 """)
 
 
-cellRenderer_addButton = JsCode('''
-    class BtnCellRenderer {
-        init(params) {
-            this.params = params;
-            this.eGui = document.createElement('div');
-            this.eGui.innerHTML = `
-            <span>
-                <style>
-                .btn_add {
-                    background-color: #002060;
-                        color: white;
-                        border-radius: .5em;
-                        border: none;
-                        padding: 5px;
-                }
-                button:hover {
-                    background-color: lightblue;
-                }
-                </style>
-                <button id='click-button' 
-                    class="btn_add" 
-                    >Help Us</button>
-            </span>
-        `;
-        }
-        getGui() {
-            return this.eGui;
-        }
-    };
-    ''')
+checkbox_renderer = JsCode("""
+class CheckboxRenderer{
+
+    init(params) {
+        this.params = params;
+
+        this.eGui = document.createElement('input');
+        this.eGui.type = 'checkbox';
+        this.eGui.checked = params.value;
+
+        this.checkedHandler = this.checkedHandler.bind(this);
+        this.eGui.addEventListener('click', this.checkedHandler);
+    }
+
+    checkedHandler(e) {
+        let checked = e.target.checked;
+        let colId = this.params.column.colId;
+        this.params.node.setDataValue(colId, checked);
+    }
+
+    getGui(params) {
+        return this.eGui;
+    }
+
+    destroy(params) {
+    this.eGui.removeEventListener('click', this.checkedHandler);
+    }
+}//end class
+""")
 
 
 df = df[df['Industry'].isin(industry_choice)]
@@ -170,7 +169,7 @@ gb.configure_default_column(sizeColumnsToFit=True)
 gb.configure_columns(["Summary","Project Name","Questions We Need Answered","Industry"],wrapText = True,autoHeight = True, flex=1)
 gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=50, resizable=False, cellStyle=cellstyle_jscode,wrapText = True)
 gb.configure_columns(["Project ID","Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email"],hide=True)
-gb.configure_column("apple", cellRenderer=cellRenderer_addButton, maxWidth=80)
+# gb.configure_columns("apple", cellRenderer=cellRenderer_addButton, maxWidth=80)
 
 go = gb.build()
 
