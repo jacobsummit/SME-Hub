@@ -25,9 +25,25 @@ def button_func(row):
     return val
 
 @st.cache_data
+def access_api():
+    code = st.secrets["code"]
+    client_id = st.secrets["client_id"]
+    client_secret = st.secrets["client_secret"]
+    
+    redirect_uri = "https://jacobsummit-sme-hub-streamlit-app-z2fgzo.streamlit.app/"
+    refresh_token = st.secrets["refresh-token"]
+    token_refresh = requests.post(f"https://accounts.zoho.com/oauth/v2/token?refresh_token={refresh_token}&client_id={client_id}&client_secret={client_secret}&redirect_uri={redirect_uri}&grant_type=refresh_token")
+    st.write(token_refresh.json())
+    access_token = token_refresh.json()["access_token"]
+    ac = AnalyticsClient(client_id, client_secret, refresh_token)
+    return ac
+
+@st.cache_data
 def load_data():
+    workspace_id = "2388301000001369040"
+    view_id = "2388301000003333001"
     tmpf = tempfile.NamedTemporaryFile(delete=False)
-    bulk = access_api().get_bulk_instance(org_id, workspace_id)
+    bulk = access_api().get_bulk_instance(st.secrets["org_id"], workspace_id)
     result = bulk.export_data(view_id, "csv", tmpf.name)
     df = pd.read_csv(tmpf)
     return df
@@ -36,21 +52,7 @@ def send_row(row):
     st.session_state['interest'] = row
     switch_page("test")
 
-@st.cache_data
-def access_api():
-    code = st.secrets["code"]
-    client_id = st.secrets["client_id"]
-    client_secret = st.secrets["client_secret"]
-    org_id = st.secrets["org_id"]
-    workspace_id = "2388301000001369040"
-    view_id = "2388301000003333001"
-    redirect_uri = "https://jacobsummit-sme-hub-streamlit-app-z2fgzo.streamlit.app/"
-    refresh_token = st.secrets["refresh-token"]
-    token_refresh = requests.post(f"https://accounts.zoho.com/oauth/v2/token?refresh_token={refresh_token}&client_id={client_id}&client_secret={client_secret}&redirect_uri={redirect_uri}&grant_type=refresh_token")
-    st.write(token_refresh.json())
-    access_token = token_refresh.json()["access_token"]
-    ac = AnalyticsClient(client_id, client_secret, refresh_token)
-    return ac
+
 
 
 
