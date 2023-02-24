@@ -167,6 +167,7 @@ if v:
     st.write('## Selected Projects:')
     v = pd.DataFrame(v)
     for i in range(len(v)):
+        st.write(f"### {v.iloc[i,7]}")
         st.write(v.iloc[i,8])
     
 # int_data = pd.DataFrame(ag['data'])
