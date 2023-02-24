@@ -65,7 +65,7 @@ df = df[keepCols]
 df.columns = newCols 
 
 df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?\n", regex=True)
-df["Interested?"] = ""
+# df["Interested?"] = ""
 
 industries = list(df['Industry'].unique())
 industry_choice = st.sidebar.multiselect('Choose Industries:',industries, default=industries)
@@ -140,7 +140,7 @@ ind_df = df[df['Industry'].isin(industry_choice)]
 st.sidebar.write("Projects in Chosen Industry Area(s):",str(len(ind_df)))
 
 gb = GridOptionsBuilder.from_dataframe(ind_df)
-gb.configure_default_column(sizeColumnsToFit=True,enablePivot=True, enableValue=True, enableRowGroup=True)
+gb.configure_default_column(sizeColumnsToFit=True, enableValue=True, enableRowGroup=True)
 gb.configure_selection(selection_mode="multiple", use_checkbox=True)
 gb.configure_side_bar()
 
@@ -151,7 +151,8 @@ gb.configure_columns(["Project ID","Project Owner", "Project Owner Email", "SVS 
 
 go = gb.build()
 
-ag = AgGrid(ind_df, height=500, gridOptions=go, theme="streamlit",allow_unsafe_jscode=True, custom_css=custom_css,header_checkbox_selection_filtered_only=True,use_checkbox=True)
+ag = AgGrid(ind_df, height=500, gridOptions=go, theme="streamlit",allow_unsafe_jscode=True, custom_css=custom_css,header_checkbox_selection_filtered_only=True,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED,
+    data_return_mode=DataReturnMode.FILTERED_AND_SORTED,)
 
 int_data = pd.DataFrame(ag['data'])
 ind_df = int_data[int_data["Interested?"]=="True"]
