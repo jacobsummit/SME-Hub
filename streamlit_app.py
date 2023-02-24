@@ -151,9 +151,9 @@ go = gb.build()
 ag = AgGrid(ind_df, height=500, gridOptions=go, theme="streamlit",allow_unsafe_jscode=True, custom_css=custom_css)
 
 int_data = pd.DataFrame(ag['data'])
-int_data = int_data[int_data["Interested?"]=="True"]
+ind_df = int_data[int_data["Interested?"]=="True"]
 
-st.sidebar.write(int_data.columns)
+st.sidebar.write(ind_df.columns)
 
-for i in range(len(int_data)):
+for i in range(len(ind_df)):
     st.write(int_data.iloc[i,11])
