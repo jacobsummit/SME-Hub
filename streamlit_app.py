@@ -110,7 +110,6 @@ function(params){
         return {
             'color': 'green', 
             'backgroundColor': 'green',
-            'border':' 'green',
             'display':'block',
         }
     }
@@ -131,9 +130,39 @@ function(params){
 """)
 
 
-cell_renderer =  JsCode("""
-function(params) {return `<a href="/test" target="_blank">Next page</a>`}
-""")
+cellRenderer_addButton = JsCode('''
+    class BtnCellRenderer {
+        init(params) {
+            this.params = params;
+            this.eGui = document.createElement('div');
+            this.eGui.innerHTML = `
+            <span>
+                <style>
+                .btn_add {
+                    background-color: #71DC87;
+                    border: 2px solid black;
+                    color: #D05732;
+                    text-align: center;
+                    display: inline-block;
+                    font-size: 12px;
+                    font-weight: bold;
+                    height: 2em;
+                    width: 10em;
+                    border-radius: 12px;
+                    padding: 0px;
+                }
+                </style>
+                <button id='click-button' 
+                    class="btn_add" 
+                    >&#x2193; Add</button>
+            </span>
+        `;
+        }
+        getGui() {
+            return this.eGui;
+        }
+    };
+    ''')
 
 
 df = df[df['Industry'].isin(industry_choice)]
@@ -143,7 +172,7 @@ gb.configure_default_column(sizeColumnsToFit=True)
 gb.configure_columns(["Summary","Project Name","Questions We Need Answered"],wrapText = True,autoHeight = True, flex=1)
 gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=60, resizable=False, cellStyle=cellstyle_jscode,wrapText = True)
 gb.configure_columns(["Project ID","Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email"],hide=True)
-gb.configure_column("apple", cellRenderer=cell_renderer)
+gb.configure_column("apple", cellRenderer=cellRenderer_addButton)
 
 go = gb.build()
 
