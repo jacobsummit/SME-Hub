@@ -29,7 +29,7 @@ def button_func(row):
     val = f'''<button onclick="window.open('https://smehub.zohocreatorportal.com/#Form:Interest_Form?Project_ID={str(row['Project ID'])}&Project_Name={row['Project Name']}&Project_Owner={row['Project Owner']}&Project_Owner_Email={row["Project Owner Email"]}&AM_Name={row["SVS acct. mgr."]}&AM_Email={row["AM Email"]}')">Help Us <span class="glyphicon glyphicon-new-window"></span></button>'''
     return val
 
-switch_page("test")
+st.button("test", on_click=switch_page("test"))
 
 code = st.secrets["code"]
 client_id = st.secrets["client_id"]
