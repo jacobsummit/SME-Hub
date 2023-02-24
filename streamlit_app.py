@@ -20,8 +20,8 @@ st.set_page_config(layout='wide', page_icon="mountain", page_title="SME Hub")
 
 
 def button_func(row):
-    # val = st.button("test", key=row[index])
-    val = row[0]
+    val = st.button("test", key=row[0])
+    # val = row[0]
     return val
 
 @st.cache_data
