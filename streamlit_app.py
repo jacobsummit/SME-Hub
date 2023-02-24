@@ -48,13 +48,15 @@ keepCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr
             "Summary", "Industry", "1. Eval & Screening", "2. Technical Analysis", "3. Market Analysis",
             "4. Technical Validation", "5. Market Validation", "6. Final Review and Decision",
             "Questions We Need Answered"]
-newCols = [ "Project Name",
-           "Summary", "Industry", "1", "2", "3", "4", "5", "6", "Questions We Need Answered","Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email"]
-
-# styleCols = newCols[8:-1]
+newCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email", "Project Name",
+           "Summary", "Industry", "1", "2", "3", "4", "5", "6", "Questions We Need Answered"]
 
 df = df[keepCols]
 df.columns = newCols 
+
+cols = df.columns.tolist()
+cols = cols[5:]+cols[:5]
+df = df[cols]
 
 df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?\n", regex=True)
 # df["Interested?"] = ""
