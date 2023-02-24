@@ -48,8 +48,8 @@ keepCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr
             "Summary", "Industry", "1. Eval & Screening", "2. Technical Analysis", "3. Market Analysis",
             "4. Technical Validation", "5. Market Validation", "6. Final Review and Decision",
             "Questions We Need Answered"]
-newCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email", "Project Name",
-           "Summary", "Industry", "1", "2", "3", "4", "5", "6", "Questions We Need Answered"]
+newCols = [ "Project Name",
+           "Summary", "Industry", "1", "2", "3", "4", "5", "6", "Questions We Need Answered","Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email"]
 
 # styleCols = newCols[8:-1]
 
@@ -133,8 +133,8 @@ st.sidebar.write("Projects in Chosen Industry Area(s):",str(len(ind_df)))
 
 gb = GridOptionsBuilder.from_dataframe(df)
 gb.configure_default_column(sizeColumnsToFit=True, enablePivot=False, enableValue=True, enableRowGroup=True)
-gb.configure_selection(selection_mode="multiple")
-gb.configure_column("Project Name", use_checkbox=True)
+gb.configure_selection(selection_mode="multiple", use_checkbox=True)
+gb.configure_column("Project Name")
 gb.configure_side_bar()
 
 # gb.configure_columns(["Summary","Project Name","Questions We Need Answered","Industry"],wrapText = True,autoHeight = True, flex=1)
