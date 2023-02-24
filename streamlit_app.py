@@ -164,14 +164,14 @@ ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",fit_columns_on_gri
 
 v = ag['selected_rows']
 if v:
-    st.write('Selected rows')
+    st.write('## Selected Projects:')
     v = pd.DataFrame(v)
-    outV = v.iloc[:,8]
-    st.dataframe(outV)
+    for i in range(len(v)):
+        st.write(v.iloc[i,8])
+    
 # int_data = pd.DataFrame(ag['data'])
 # ind_df = int_data[int_data["Interested?"]=="True"]
 
 # st.sidebar.write(ind_df.columns)
 
-# for i in range(len(ind_df)):
-#     st.write(int_data.iloc[i,11])
+# 
