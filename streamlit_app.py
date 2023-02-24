@@ -131,7 +131,7 @@ function(params){
 
 
 cell_renderer =  JsCode("""
-function(params) {return `<a href="/test" target="_self">Next page</a>`}
+function(params) {return `<a href="/test" target="_blank">Next page</a>`}
 """)
 
 
