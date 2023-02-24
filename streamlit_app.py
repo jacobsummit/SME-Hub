@@ -19,21 +19,15 @@ from streamlit_extras.switch_page_button import switch_page
 st.set_page_config(layout='wide', page_icon="mountain", page_title="SME Hub")
 
 
-def button_func(row):
-    val = st.markdown('<a href="/test" target="_self">Next page</a>', unsafe_allow_html=True)
-    # val = row[0]
-    return val
-
 @st.cache_data(ttl=3600)
 def access_api():
     code = st.secrets["code"]
     client_id = st.secrets["client_id"]
     client_secret = st.secrets["client_secret"]
-    
     redirect_uri = "https://jacobsummit-sme-hub-streamlit-app-z2fgzo.streamlit.app/"
     refresh_token = st.secrets["refresh-token"]
     token_refresh = requests.post(f"https://accounts.zoho.com/oauth/v2/token?refresh_token={refresh_token}&client_id={client_id}&client_secret={client_secret}&redirect_uri={redirect_uri}&grant_type=refresh_token")
-    st.write(token_refresh.json())
+    # st.write(token_refresh.json())
     access_token = token_refresh.json()["access_token"]
     ac = AnalyticsClient(client_id, client_secret, refresh_token)
     return ac
@@ -48,21 +42,10 @@ def load_data():
     df = pd.read_csv(tmpf)
     return df
 
-def send_row(row):
-    st.session_state['interest'] = row
-    switch_page("test")
-
-
-
 
 
 
 df = load_data()
-
-
-# if st.button("test button"):
-#     st.session_state['interest'] = df.iloc[1,:]
-#     switch_page("test")
 
 for col in df.columns[9:].tolist():
     df[col] = df[col].str.replace("%", "")
@@ -81,17 +64,10 @@ newCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.
 df = df[keepCols]
 df.columns = newCols 
 
-# hundList = [(df[col][df[col] == 100].index[i], df.columns.get_loc(col)) for col in styleCols for i in range(len(df[col][df[col] == 100].index))]
-# notZList = [(df[col][df[col] > 0].index[i], df.columns.get_loc(col)) for col in styleCols for i in range(len(df[col][df[col] > 0].index))]
-
 df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?\n", regex=True)
 df["Interested?"] = ""
 
-
-
 industries = list(df['Industry'].unique())
-
-
 industry_choice = st.sidebar.multiselect('Choose Industries:',industries, default=industries)
 
 
@@ -102,8 +78,6 @@ custom_css = {
     ".ag-root-wrapper":{"border-radius":"1em"},
     ".ag-grid-container":{"box-shadow":  "0 0 20px rgba(0, 0, 0, 0.15)"}
 }
-
-
 
 cellstyle_jscode = JsCode("""
 function(params){
