@@ -61,9 +61,6 @@ df = df[cols]
 df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?\n", regex=True)
 # df["Interested?"] = ""
 
-industries = list(df['Industry'].unique())
-industry_choice = st.sidebar.multiselect('Choose Industries:',industries, default=industries)
-
 
 custom_css = {
     ".ag-header-cell-text":{"color":"#fff","font-size":"15px !important"},
@@ -101,8 +98,7 @@ function(params){
 
 
 
-ind_df = df[df['Industry'].isin(industry_choice)]
-st.sidebar.write("Projects in Chosen Industry Area(s):",str(len(ind_df)))
+
 
 gb = GridOptionsBuilder.from_dataframe(df)
 gb.sideBar = {'toolPanels': []}
