@@ -24,7 +24,7 @@ show_pages(
         Page("pages/test.py", "page")
     ]
 )
-st.markdown('<a href="/next_page" target="_self">Next page</a>', unsafe_allow_html=True)
+st.markdown('<a href="/test" target="_self">Next page</a>', unsafe_allow_html=True)
 
 
 def button_func(row):
