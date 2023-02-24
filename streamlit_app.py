@@ -99,35 +99,6 @@ function(params){
 """)
 
 
-checkbox_renderer = JsCode("""
-class CheckboxRenderer{
-
-    init(params) {
-        this.params = params;
-
-        this.eGui = document.createElement('input');
-        this.eGui.type = 'checkbox';
-        this.eGui.checked = params.value;
-
-        this.checkedHandler = this.checkedHandler.bind(this);
-        this.eGui.addEventListener('click', this.checkedHandler);
-    }
-
-    checkedHandler(e) {
-        let checked = e.target.checked;
-        let colId = this.params.column.colId;
-        this.params.node.setDataValue(colId, checked);
-    }
-
-    getGui(params) {
-        return this.eGui;
-    }
-
-    destroy(params) {
-    this.eGui.removeEventListener('click', this.checkedHandler);
-    }
-}//end class
-""")
 
 
 ind_df = df[df['Industry'].isin(industry_choice)]
@@ -137,26 +108,13 @@ gb = GridOptionsBuilder.from_dataframe(df)
 gb.configure_default_column(sizeColumnsToFit=True, enablePivot=False, enableValue=True, enableRowGroup=True)
 gb.configure_selection(selection_mode="multiple", use_checkbox=True)
 gb.configure_column("Project Name")
-gb.configure_side_bar()
+gb.configure_side_bar(columns_panel=False)
 
 gb.configure_columns(["Summary","Project Name","Questions We Need Answered","Industry"],wrapText = True,autoHeight = True, flex=1)
 gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=50, resizable=False, cellStyle=cellstyle_jscode,wrapText = True)
 gb.configure_columns(["Project ID","Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email"],hide=True)
-gb.configure_column('Interested?', editable=True, cellRenderer=checkbox_renderer, maxWidth=90)
 
 go = gb.build()
-
-
-# response = AgGrid(
-#     df,
-#     height=200,
-#     gridOptions=go,
-#     enable_enterprise_modules=True,
-#     update_mode=GridUpdateMode.MODEL_CHANGED,
-#     data_return_mode=DataReturnMode.FILTERED_AND_SORTED,
-#     fit_columns_on_grid_load=False,
-#     header_checkbox_selection_filtered_only=True,
-#     use_checkbox=True, allow_unsafe_jscode=True)
 
 ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",fit_columns_on_grid_load=False,allow_unsafe_jscode=True, enable_enterprise_modules=True,custom_css=custom_css,header_checkbox_selection_filtered_only=True,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED,
     data_return_mode=DataReturnMode.FILTERED_AND_SORTED)
