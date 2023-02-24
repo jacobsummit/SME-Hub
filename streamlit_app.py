@@ -178,4 +178,4 @@ ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",allow_unsafe_jscod
 
 int_data = pd.DataFrame(ag['data'])
 
-st.dataframe(int_data[int_data["Interested?"]==True])
+st.dataframe(int_data)
