@@ -151,7 +151,7 @@ cellRenderer_addButton = JsCode('''
                 </style>
                 <button id='click-button' 
                     class="btn_add" 
-                    >&#x2193; Add</button>
+                    >Help Us</button>
             </span>
         `;
         }
