@@ -23,7 +23,7 @@ st.set_page_config(layout='wide', page_icon="mountain", page_title="SME Hub")
 #         Page("streamlit_app.py","Home"),
 #         Page("pages/test.py", "Second Page")
 #     ]
-# )
+# ) 
 
 def button_func(row):
     val = f'''<button onclick="window.open('https://smehub.zohocreatorportal.com/#Form:Interest_Form?Project_ID={str(row['Project ID'])}&Project_Name={row['Project Name']}&Project_Owner={row['Project Owner']}&Project_Owner_Email={row["Project Owner Email"]}&AM_Name={row["SVS acct. mgr."]}&AM_Email={row["AM Email"]}')">Help Us <span class="glyphicon glyphicon-new-window"></span></button>'''
