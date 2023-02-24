@@ -64,7 +64,7 @@ df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace(
 
 custom_css = {
     ".ag-header-cell-text":{"color":"#fff","font-size":"15px !important"},
-    ".ag-header":{"background":"linear-gradient(90deg, rgba(218,120,34,1) 0%, rgba(163,31,36,1) 100%);"},
+    ".ag-header":{"background":"linear-gradient(90deg, rgba(218,120,34,1) 0%, rgba(163,31,36,1) 100%);","height":"80px"},
     ".ag-cell-wrap-text":{"word-break":"break-word"},
     ".ag-root-wrapper":{"border-radius":"1em"},
     ".ag-grid-container":{"box-shadow":  "0 0 20px rgba(0, 0, 0, 0.15)"}
@@ -104,7 +104,6 @@ gb = GridOptionsBuilder.from_dataframe(df)
 gb.sideBar = {'toolPanels': []}
 gb.configure_default_column(sizeColumnsToFit=True, enablePivot=False, enableValue=True, enableRowGroup=True, suppressColumnsToolPanel=True)
 gb.configure_selection(selection_mode="multiple", use_checkbox=True)
-gb.configure_header(headerHeight=90)
 gb.configure_column("Project Name", headerTooltip="The name of the technology")
 gb.configure_column("Summary", headerTooltip="A brief statement including details about the technology")
 gb.configure_column("Industry", headerTooltip="The industry that the technology belongs to")
