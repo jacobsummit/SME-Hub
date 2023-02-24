@@ -165,7 +165,7 @@ ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",fit_columns_on_gri
 v = ag['selected_rows']
 if v:
     st.write('Selected rows')
-    outV = v.iloc[:8]
+    outV = v.iloc[:,8]
     st.dataframe(v)
 # int_data = pd.DataFrame(ag['data'])
 # ind_df = int_data[int_data["Interested?"]=="True"]
