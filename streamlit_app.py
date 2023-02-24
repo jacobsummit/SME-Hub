@@ -21,7 +21,7 @@ st.set_page_config(layout='wide', page_icon="mountain", page_title="SME Hub")
 
 def button_func(row):
     # val = st.button("test", key=row[index])
-    val = row.index
+    val = row[0]
     return val
 
 @st.cache_data
@@ -84,7 +84,7 @@ df.columns = newCols
 # notZList = [(df[col][df[col] > 0].index[i], df.columns.get_loc(col)) for col in styleCols for i in range(len(df[col][df[col] > 0].index))]
 
 df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?\n", regex=True)
-df["Interested? Click Below"] = df.apply(button_func, axis=0)
+df["Interested? Click Below"] = df.apply(button_func, axis=1)
 
 
 
