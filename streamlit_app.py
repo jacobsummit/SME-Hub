@@ -24,7 +24,7 @@ def button_func(row):
     # val = row[0]
     return val
 
-@st.cache_data
+@st.cache_data(ttl=3600)
 def access_api():
     code = st.secrets["code"]
     client_id = st.secrets["client_id"]
