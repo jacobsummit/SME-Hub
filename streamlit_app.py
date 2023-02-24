@@ -84,7 +84,7 @@ df.columns = newCols
 # notZList = [(df[col][df[col] > 0].index[i], df.columns.get_loc(col)) for col in styleCols for i in range(len(df[col][df[col] > 0].index))]
 
 df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?\n", regex=True)
-df["Interested? Click Below"] = ""
+df["Interested?"] = ""
 
 
 
@@ -169,7 +169,7 @@ gb.configure_default_column(sizeColumnsToFit=True)
 gb.configure_columns(["Summary","Project Name","Questions We Need Answered","Industry"],wrapText = True,autoHeight = True, flex=1)
 gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=50, resizable=False, cellStyle=cellstyle_jscode,wrapText = True)
 gb.configure_columns(["Project ID","Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email"],hide=True)
-# gb.configure_columns("apple", cellRenderer=cellRenderer_addButton, maxWidth=80)
+gob.configure_column('Interested?', editable=True, cellRenderer=checkbox_renderer)
 
 go = gb.build()
 
