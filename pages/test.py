@@ -1,3 +1,3 @@
 import streamlit as st
 st.write("hello")
-st.write(st.session_state['interest'])
+st.dataframe(st.session_state['interest'])
