@@ -168,7 +168,7 @@ st.sidebar.write("Projects in Chosen Industry Area(s):",str(len(df)))
 gb = GridOptionsBuilder.from_dataframe(df)
 gb.configure_default_column(sizeColumnsToFit=True)
 gb.configure_columns(["Summary","Project Name","Questions We Need Answered","Industry"],wrapText = True,autoHeight = True, flex=1)
-gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=40, resizable=False, cellStyle=cellstyle_jscode,wrapText = True)
+gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=45, resizable=False, cellStyle=cellstyle_jscode,wrapText = True)
 gb.configure_columns(["Project ID","Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email"],hide=True)
 gb.configure_column("apple", cellRenderer=cellRenderer_addButton, maxWidth=80)
 
