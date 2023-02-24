@@ -10,7 +10,7 @@ import json
 import requests
 import tempfile
 import io
-from st_pages import show_pages, add_page_title
+from st_pages import Page, show_pages, add_page_title
 from IPython.display import HTML
 from AnalyticsClient import AnalyticsClient
 from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
@@ -18,6 +18,12 @@ from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
 
 st.set_page_config(layout='wide', page_icon="mountain", page_title="SME Hub")
 add_page_title("Home")
+show_pages(
+    [
+        Page("streamlit_app.py","Home"),
+        Page("pages/test.py", "Second Page")
+    ]
+)
 
 def button_func(row):
     val = f'''<button onclick="window.open('https://smehub.zohocreatorportal.com/#Form:Interest_Form?Project_ID={str(row['Project ID'])}&Project_Name={row['Project Name']}&Project_Owner={row['Project Owner']}&Project_Owner_Email={row["Project Owner Email"]}&AM_Name={row["SVS acct. mgr."]}&AM_Email={row["AM Email"]}')">Help Us <span class="glyphicon glyphicon-new-window"></span></button>'''
