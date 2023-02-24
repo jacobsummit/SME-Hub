@@ -17,7 +17,7 @@ from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
 from streamlit_extras.switch_page_button import switch_page
 
 st.set_page_config(layout='wide', page_icon="mountain", page_title="SME Hub")
-
+add_page_title("Home")
 show_pages(
     [
         Page("streamlit_app.py","Home"),
