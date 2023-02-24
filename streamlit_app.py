@@ -20,12 +20,12 @@ from streamlit_extras.switch_page_button import switch_page
 
 st.set_page_config(layout='wide', page_icon="mountain", page_title="SME Hub")
 add_page_title("Home")
-show_pages(
-    [
-        Page("streamlit_app.py","Home"),
-        Page("pages/test.py", "page")
-    ]
-)
+# show_pages(
+#     [
+#         Page("streamlit_app.py","Home"),
+#         Page("pages/test.py", "page")
+#     ]
+# )
 st.markdown('<button><a href="/test" target="_self">Next page</a></button>', unsafe_allow_html=True)
 if st.button("test button"):
     switch_page("New page name")
