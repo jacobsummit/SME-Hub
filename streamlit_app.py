@@ -17,40 +17,6 @@ from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
 
 st.set_page_config(layout='wide', page_icon="mountain", page_title="SME Hub")
 
-def completion_color(val):
-    if val == 1:
-        color = 'green'
-    elif val > 0:
-        color = 'yellow'
-    else: 
-        color = 'white'
-    
-    # color = 'green' if val == 1 elif val > 0 'yellow'
-    return f'background-color: {color}'
-
-def text_color(val):
-    if val == 1:
-        tcolor = 'green'
-    elif val > 0:
-        tcolor = 'yellow'
-    else: 
-        tcolor = 'white'
-    
-    # color = 'green' if val == 1 elif val > 0 'yellow'
-    return f'color: {tcolor}'
-
-def highlight_cells(x, hundList, notZList):
-    df = x.copy()
-    # set default color
-    df.iloc[:, :] = ''
-
-    # set particular cell colors
-    for val in notZList:
-        df.iloc[val] = 'background-color: gold'
-    for val in hundList:
-        df.iloc[val] = 'background-color: green'
-    return df
-
 def button_func(row):
     val = f'''<button onclick="window.open('https://smehub.zohocreatorportal.com/#Form:Interest_Form?Project_ID={str(row['Project ID'])}&Project_Name={row['Project Name']}&Project_Owner={row['Project Owner']}&Project_Owner_Email={row["Project Owner Email"]}&AM_Name={row["SVS acct. mgr."]}&AM_Email={row["AM Email"]}')">Help Us <span class="glyphicon glyphicon-new-window"></span></button>'''
     return val
@@ -103,6 +69,11 @@ notZList = [(df[col][df[col] > 0].index[i], df.columns.get_loc(col)) for col in 
 
 df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?\n", regex=True)
 # df["Interested? Click Below"] = df.apply(button_func, axis=1)
+
+
+
+industries = list(df['Industry'].unique())
+
 
 custom_css = {
     ".ag-header-cell-text":{"color":"#fff","font-size":"15px !important"},
