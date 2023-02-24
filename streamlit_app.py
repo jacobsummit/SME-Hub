@@ -176,5 +176,6 @@ go = gb.build()
 
 ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",allow_unsafe_jscode=True, custom_css=custom_css)
 
-int_data = ag['data']
+int_data = pd.DataFrame(ag['data'])
+
 st.dataframe(int_data[int_data["Interested?"]==True])
