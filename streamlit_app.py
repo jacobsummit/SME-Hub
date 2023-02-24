@@ -167,7 +167,7 @@ if v:
     st.write('Selected rows')
     v = pd.DataFrame(v)
     outV = v.iloc[:,8]
-    st.dataframe(v)
+    st.dataframe(outV)
 # int_data = pd.DataFrame(ag['data'])
 # ind_df = int_data[int_data["Interested?"]=="True"]
 
