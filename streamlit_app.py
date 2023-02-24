@@ -104,7 +104,7 @@ gb = GridOptionsBuilder.from_dataframe(df)
 gb.sideBar = {'toolPanels': []}
 gb.configure_default_column(sizeColumnsToFit=True, enablePivot=False, enableValue=True, enableRowGroup=True, suppressColumnsToolPanel=True)
 gb.configure_selection(selection_mode="multiple", use_checkbox=True)
-
+gb.configure_header(headerHeight=90)
 gb.configure_column("Project Name", headerTooltip="The name of the technology")
 gb.configure_column("Summary", headerTooltip="A brief statement including details about the technology")
 gb.configure_column("Industry", headerTooltip="The industry that the technology belongs to")
