@@ -38,19 +38,19 @@ access_token = token_refresh.json()["access_token"]
 
 
 ac = AnalyticsClient(client_id, client_secret, refresh_token)
-
-tmpf = tempfile.NamedTemporaryFile(delete=False)
-
-bulk = ac.get_bulk_instance(org_id, workspace_id)
 # sqlresult = ac.initate_bulk_export_using_sql()
-result = bulk.export_data(view_id, "csv", tmpf.name)
+
+
 @st.cache_data
 def load_data(file):
-    df = pd.read_csv(file)
+    tmpf = tempfile.NamedTemporaryFile(delete=False)
+    bulk = ac.get_bulk_instance(org_id, workspace_id)
+    result = bulk.export_data(view_id, "csv", tmpf.name)
+    df = pd.read_csv(tmpf)
     return df
 # df = df.fillna(0)
 
-df = load_data(tmpf)
+df = load_data()
 
 for col in df.columns[9:].tolist():
     df[col] = df[col].str.replace("%", "")
