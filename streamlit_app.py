@@ -170,7 +170,7 @@ gb.configure_default_column(sizeColumnsToFit=True)
 gb.configure_columns(["Summary","Project Name","Questions We Need Answered","Industry"],wrapText = True,autoHeight = True, flex=1)
 gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=50, resizable=False, cellStyle=cellstyle_jscode,wrapText = True)
 gb.configure_columns(["Project ID","Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email"],hide=True)
-gb.configure_column('Interested?', editable=True, cellRenderer=checkbox_renderer, maxWidth=80)
+gb.configure_column('Interested?', editable=True, cellRenderer=checkbox_renderer, maxWidth=90)
 
 go = gb.build()
 
