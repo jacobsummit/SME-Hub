@@ -133,7 +133,7 @@ st.sidebar.write("Projects in Chosen Industry Area(s):",str(len(ind_df)))
 
 gb = GridOptionsBuilder.from_dataframe(df)
 gb.configure_default_column(sizeColumnsToFit=True, enablePivot=False, enableValue=True, enableRowGroup=True)
-gb.configure_selection(selection_mode="multiple", use_checkbox=True)
+gb.configure_selection(selection_mode="multiple")
 gb.configure_column("Project Name", use_checkbox=True)
 gb.configure_side_bar()
 
