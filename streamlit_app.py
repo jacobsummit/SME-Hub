@@ -28,7 +28,7 @@ add_page_title("Home")
 # )
 st.markdown('<button><a href="/test" target="_self">Next page</a></button>', unsafe_allow_html=True)
 if st.button("test button"):
-    switch_page("test")
+    switch_page("page")
 
 
 def button_func(row):
