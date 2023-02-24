@@ -109,9 +109,19 @@ gb.sideBar = {'toolPanels': []}
 gb.configure_default_column(sizeColumnsToFit=True, enablePivot=False, enableValue=True, enableRowGroup=True, suppressColumnsToolPanel=True)
 gb.configure_selection(selection_mode="multiple", use_checkbox=True)
 
+gb.configure_column("Project Name", headerTooltip="The name of the technology")
+gb.configure_column("Summary", headerTooltip="A brief statement including details about the technology")
+gb.configure_column("Industry", headerTooltip="The industry that the technology belongs to")
 gb.configure_column("1", headerTooltip="Initial Analysis")
-# gb.suppressColumnsToolPanel(True)
-# gb.configure_side_bar({'toolPanels': []})
+gb.configure_column("2", headerTooltip="Technical Analysis")
+gb.configure_column("3", headerTooltip="Market Analysis")
+gb.configure_column("4", headerTooltip="Technical Validation")
+gb.configure_column("5", headerTooltip="Market Validation")
+gb.configure_column("6", headerTooltip="Final Review and Decision")
+gb.configure_column("Questions We Need Answered" headerTooltip="A list of a few questions we have about the project")
+
+
+
 
 gb.configure_columns(["Summary","Project Name","Questions We Need Answered","Industry"],wrapText = True,autoHeight = True, flex=1)
 gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=50, resizable=False, cellStyle=cellstyle_jscode,wrapText = True)
