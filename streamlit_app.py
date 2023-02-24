@@ -155,9 +155,9 @@ ag = AgGrid(ind_df, height=500, gridOptions=go, theme="streamlit",allow_unsafe_j
     data_return_mode=DataReturnMode.FILTERED_AND_SORTED,)
 
 int_data = pd.DataFrame(ag['data'])
-ind_df = int_data[int_data["Interested?"]=="True"]
+# ind_df = int_data[int_data["Interested?"]=="True"]
 
-st.sidebar.write(ind_df.columns)
+# st.sidebar.write(ind_df.columns)
 
-for i in range(len(ind_df)):
-    st.write(int_data.iloc[i,11])
+# for i in range(len(ind_df)):
+#     st.write(int_data.iloc[i,11])
