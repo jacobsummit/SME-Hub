@@ -20,7 +20,7 @@ st.set_page_config(layout='wide', page_icon="mountain", page_title="SME Hub")
 
 
 def button_func(row):
-    val = st.button("test", key=row[0])
+    val = st.markdown('<a href="/test" target="_self">Next page</a>', unsafe_allow_html=True)
     # val = row[0]
     return val
 
