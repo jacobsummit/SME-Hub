@@ -182,4 +182,4 @@ int_data = int_data[int_data["Interested?"]=="True"]
 st.write(int_data.columns)
 
 for i in range(len(int_data)):
-    st.write(int_data.iloc[i,1])
+    st.write(int_data.iloc[i,11])
