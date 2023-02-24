@@ -23,7 +23,7 @@ add_page_title("Home")
 
 st.markdown('<button><a href="/test" target="_self">Next page</a></button>', unsafe_allow_html=True)
 if st.button("test button"):
-    st.session_state['interest'] = "this is a test for interest"
+    st.session_state['interest'] = df.iloc[1,:]
     switch_page("test")
 
 
