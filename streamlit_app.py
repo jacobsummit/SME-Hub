@@ -161,7 +161,7 @@ response = AgGrid(
     data_return_mode=DataReturnMode.FILTERED_AND_SORTED,
     fit_columns_on_grid_load=False,
     header_checkbox_selection_filtered_only=True,
-    use_checkbox=True)
+    use_checkbox=True, allow_unsafe_jscode=True)
 
 # ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",fit_columns_on_grid_load=False,allow_unsafe_jscode=True, enable_enterprise_modules=True,custom_css=custom_css,header_checkbox_selection_filtered_only=True,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED,
     # data_return_mode=DataReturnMode.FILTERED_AND_SORTED)
