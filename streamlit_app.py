@@ -177,5 +177,7 @@ go = gb.build()
 ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",allow_unsafe_jscode=True, custom_css=custom_css)
 
 int_data = pd.DataFrame(ag['data'])
+int_data = int_data[int_data["Interested?"]=="True"]
 
-st.dataframe(int_data[int_data["Interested?"]=="True"])
+for i in range(len(int_data)):
+    st.write(int_data.iloc[i,1])
