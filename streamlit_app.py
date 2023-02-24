@@ -136,10 +136,10 @@ class CheckboxRenderer{
 """)
 
 
-df = df[df['Industry'].isin(industry_choice)]
-st.sidebar.write("Projects in Chosen Industry Area(s):",str(len(df)))
+ind_df = df[df['Industry'].isin(industry_choice)]
+st.sidebar.write("Projects in Chosen Industry Area(s):",str(len(ind_df)))
 
-gb = GridOptionsBuilder.from_dataframe(df)
+gb = GridOptionsBuilder.from_dataframe(ind_df)
 gb.configure_default_column(sizeColumnsToFit=True)
 gb.configure_columns(["Summary","Project Name","Questions We Need Answered","Industry"],wrapText = True,autoHeight = True, flex=1)
 gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=50, resizable=False, cellStyle=cellstyle_jscode,wrapText = True)
@@ -148,7 +148,7 @@ gb.configure_column('Interested?', editable=True, cellRenderer=checkbox_renderer
 
 go = gb.build()
 
-ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",allow_unsafe_jscode=True, custom_css=custom_css)
+ag = AgGrid(ind_df, height=500, gridOptions=go, theme="streamlit",allow_unsafe_jscode=True, custom_css=custom_css)
 
 int_data = pd.DataFrame(ag['data'])
 int_data = int_data[int_data["Interested?"]=="True"]
