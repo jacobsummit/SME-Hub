@@ -22,7 +22,7 @@ add_page_title("Home")
 show_pages(
     [
         Page("streamlit_app.py","Home"),
-        Page("pages/test.py", "page")
+        # Page("pages/test.py", "page")
     ]
 )
 st.markdown('<button><a href="/test" target="_self">Next page</a></button>', unsafe_allow_html=True)
