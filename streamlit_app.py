@@ -75,6 +75,9 @@ df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace(
 industries = list(df['Industry'].unique())
 
 
+industry_choice = st.sidebar.multiselect('Choose Industries:',industries, default=industries)
+
+
 custom_css = {
     ".ag-header-cell-text":{"color":"#fff","font-size":"15px !important"},
     ".ag-header":{"background":"linear-gradient(90deg, rgba(218,120,34,1) 0%, rgba(163,31,36,1) 100%);"},
@@ -110,7 +113,9 @@ function(params){
 }
 """)
 
-gb = GridOptionsBuilder.from_dataframe(df, )
+df = df[df['Industry'].isin(industry_choice)]
+
+gb = GridOptionsBuilder.from_dataframe(df)
 gb.configure_default_column(sizeColumnsToFit=True)
 gb.configure_columns(["Summary","Project Name","Questions We Need Answered"],wrapText = True,autoHeight = True, flex=1)
 gb.configure_columns(["1", "2", "3", "4", "5", "6"],width=60, resizable=False, cellStyle=cellstyle_jscode)
