@@ -16,6 +16,25 @@ from streamlit_extras.switch_page_button import switch_page
 
 st.set_page_config(layout='wide', page_icon="mountain", page_title="SME Hub")
 
+def send_email(sender, password, receiver, smtp_server, smtp_port, email_message, subject, attachment=None):
+  message = MIMEMultipart()
+  message['To'] = Header(receiver)
+  message['From']  = Header(sender)
+  message['Subject'] = Header(subject)
+  message.attach(MIMEText(email_message,'plain', 'utf-8'))
+  if attachment:
+    att = MIMEApplication(attachment.read(), _subtype="txt")
+    att.add_header('Content-Disposition', 'attachment', filename=attachment.name)
+    message.attach(att)
+    server = smtplib.SMTP(smtp_server, smtp_port)
+    server.starttls()
+    server.ehlo()
+    server.login(sender, password)
+    text = message.as_string()
+    server.sendmail(sender, receiver, text)
+    server.quit()
+
+
 
 @st.cache_data(ttl=3600)
 def access_api():
@@ -40,7 +59,10 @@ def load_data():
     df = pd.read_csv(tmpf)
     return df
 
-
+sender = st.secrets["sender"]
+sender_pass = st.secrets["sender-pass"]
+smtp_server = smtp.gmail.com
+smtp_port = 587
 
 
 with st.sidebar:
@@ -139,7 +161,7 @@ v = ag['selected_rows']
 if v:
     v = pd.DataFrame(v)
     if st.button("Send Email to Express Interest"):
-        send_email(message)
+        send_email(sender=sender, password=sender_pass,receiver="jacobtminson@gmail.com",smtp_server=smtp_server,smtp_port=smtp_port,email_message="test",subject="test")
     st.write('## Selected Projects:')
     
     for i in range(len(v)):
