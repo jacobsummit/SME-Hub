@@ -1,9 +1,15 @@
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.header import Header
+from email.mime.application import MIMEApplication
+
+
 
 import streamlit as st
 import pandas as pd
 import requests
 import tempfile
-# from st_pages import Page, show_pages, add_page_title
 from AnalyticsClient import AnalyticsClient
 from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
 from streamlit_extras.switch_page_button import switch_page
@@ -38,10 +44,9 @@ def load_data():
 
 
 with st.sidebar:
-
     # with st.form(key='my_form'):
     fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
-    email = st.text_input(label = "Email", placeholder="Enter Email")
+    userEmail = st.text_input(label = "Email", placeholder="Enter Email")
 
 df = load_data()
 
