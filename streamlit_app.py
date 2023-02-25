@@ -71,7 +71,7 @@ custom_css = {
     ".ag-header-row":{"height":"100px"},
     ".ag-cell-wrap-text":{"word-break":"break-word"},
     ".ag-root-wrapper":{"border-radius":"1em"},
-    ".stAgGrid":{"box-shadow":  "0 0 20px rgba(0, 0, 0, 0.15)"},
+    ".stAgGrid":{"box-shadow":  "5px 5px 5px grey"},
 }
 
 cellstyle_jscode = JsCode("""
