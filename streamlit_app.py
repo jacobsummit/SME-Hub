@@ -40,7 +40,8 @@ def load_data():
 with st.sidebar:
 
     # with st.form(key='my_form'):
-    fullName = st.text_input(label = "Full Name", placeholder="enter name")
+    fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
+    email = st.text_input(label = "Email", placeholder="Enter Email")
 
 df = load_data()
 
