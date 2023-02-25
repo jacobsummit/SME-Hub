@@ -35,8 +35,6 @@ def load_data():
     return df
 
 
-
-
 df = load_data()
 
 for col in df.columns[9:].tolist():
@@ -99,15 +97,11 @@ function(params){
 }
 """)
 
-
-
-
-
-
 gb = GridOptionsBuilder.from_dataframe(df)
 gb.sideBar = {'toolPanels': ["filter"]}
 gb.configure_default_column(sizeColumnsToFit=True, enablePivot=False, enableValue=True, enableRowGroup=True, suppressColumnsToolPanel=True)
 gb.configure_selection(selection_mode="multiple", use_checkbox=True)
+
 gb.configure_column("Project Name", headerTooltip="The name of the technology")
 gb.configure_column("Summary", headerTooltip="A brief statement including details about the technology")
 gb.configure_column("Industry", headerTooltip="The industry that the technology belongs to")
@@ -119,39 +113,23 @@ gb.configure_column("5", headerTooltip="Market Validation")
 gb.configure_column("6", headerTooltip="Final Review and Decision")
 gb.configure_column("Questions We Need Answered", headerTooltip="A list of a few questions we have about the project")
 
-
-
-
 gb.configure_columns(["Summary","Project Name","Questions We Need Answered","Industry"],wrapText = True,autoHeight = True, flex=1)
 gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=50, resizable=False, cellStyle=cellstyle_jscode,wrapText = True)
 gb.configure_columns(["Project ID","Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email"],hide=True)
-
 go = gb.build()
 
 ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",fit_columns_on_grid_load=False,allow_unsafe_jscode=True,custom_css=custom_css,header_checkbox_selection_filtered_only=True,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED,
     data_return_mode=DataReturnMode.FILTERED_AND_SORTED)
 
-st.write("""
-    <style>
-    .stAgGrid {
-        box-shadow: 5px 5px 5px grey;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
-
 
 v = ag['selected_rows']
 if v:
-    st.write('## Selected Projects:')
     v = pd.DataFrame(v)
+    if st.button("Send Email to Express Interest"):
+        send_email(message)
+    st.write('## Selected Projects:')
+    
     for i in range(len(v)):
         st.write(f"### {v.iloc[i,7]}")
         st.write(v.iloc[i,8])
     
-# int_data = pd.DataFrame(ag['data'])
-# ind_df = int_data[int_data["Interested?"]=="True"]
-
-# st.sidebar.write(ind_df.columns)
-
-# 
