@@ -61,7 +61,7 @@ def load_data():
 
 sender = st.secrets["sender"]
 sender_pass = st.secrets["sender-pass"]
-smtp_server = smtp.gmail.com
+smtp_server = "smtp.gmail.com"
 smtp_port = 587
 
 
