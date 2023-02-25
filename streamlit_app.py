@@ -64,6 +64,13 @@ df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace(
 mask = df[["Project Name","Summary", "Industry","Questions We Need Answered"]].notnull().all(axis=1)
 df = df[mask]
 
+st.write("""
+    <style>
+    .stAgGrid {
+        box-shadow: 5px 5px 5px grey;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
 custom_css = {
     ".ag-header-cell-text":{"color":"#fff","font-size":"15px !important"},
