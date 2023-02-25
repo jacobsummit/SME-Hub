@@ -39,8 +39,8 @@ def load_data():
 
 with st.sidebar:
 
-    with st.form(key='my_form'):
-        fullName = st.text_input(label = "Full Name", placeholder="enter name")
+    # with st.form(key='my_form'):
+    fullName = st.text_input(label = "Full Name", placeholder="enter name")
 
 df = load_data()
 
