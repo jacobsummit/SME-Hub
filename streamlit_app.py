@@ -64,13 +64,6 @@ df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace(
 mask = df[["Project Name","Summary", "Industry","Questions We Need Answered"]].notnull().all(axis=1)
 df = df[mask]
 
-st.write("""
-    <style>
-    .stAgGrid {
-        box-shadow: 5px 5px 5px grey;
-    }
-    </style>
-""", unsafe_allow_html=True)
 
 custom_css = {
     ".ag-header-cell-text":{"color":"#fff","font-size":"15px !important"},
@@ -137,6 +130,15 @@ go = gb.build()
 
 ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",fit_columns_on_grid_load=False,allow_unsafe_jscode=True,custom_css=custom_css,header_checkbox_selection_filtered_only=True,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED,
     data_return_mode=DataReturnMode.FILTERED_AND_SORTED)
+
+st.write("""
+    <style>
+    .stAgGrid {
+        box-shadow: 5px 5px 5px grey;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 
 
 v = ag['selected_rows']
