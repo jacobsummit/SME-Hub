@@ -3,6 +3,3 @@ IPython
 streamlit-aggrid
 st_pages
 streamlit_extras
-google
-google_auth_oauthlib
-googleapiclient
