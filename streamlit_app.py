@@ -141,7 +141,7 @@ ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",fit_columns_on_gri
 
 def anaEmail(anav):
     fName = anav.iloc[0,12].split(" ")[0]
-    contents = f"""hello {fName}, someone has expressed interest in one or more of your projects! Their information is below.  
+    contents = f"""hello {fName}, <br>someone has expressed interest in one or more of your projects! Their information is below.  
     Please contact them as soon as possible!"""
 
     return contents
@@ -149,7 +149,7 @@ def anaEmail(anav):
 
 def extEmail(v, fullname):
     fName = fullname.split(" ")[0]
-    contents = f"""hello {fName}, thank you for expressing interest in some of our projects at Summit Venture Studio.  
+    contents = f"""hello {fName}, <br>thank you for expressing interest in some of our projects at Summit Venture Studio.  
     The team members for each of these projects should reach out to you soon.<br><br>"""
     for tech in range(len(v)):
         contents = contents + f"<h3>{v.iloc[tech, 7]}</h3>"
