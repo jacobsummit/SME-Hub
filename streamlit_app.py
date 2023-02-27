@@ -144,7 +144,11 @@ def anaEmail(anav, fullname, useremail):
     contents = f"""Hello {fName}, <br>someone has expressed interest in one or more of your projects! Their information is below.  
     Please contact them as soon as possible!<br><br>"""
 
-    contents += f"Name of the person espressing interest: {fullname}<br>Email of the person expressing interest: {useremail}"
+    contents += f"Name of the person espressing interest: {fullname}<br>Email of the person expressing interest: {useremail}<br> Below are the project names and URLs they have expressed interest in:<br><br>"
+
+    for tech in range(len(anav)):
+        contents += f"<h3>Project Name: {v.iloc[tech, 7]}</h3>"
+        contents += f"<p>Project url: <a href='https://projects.zoho.com/portal/summitventurestudiodotcom#project/{v.iloc[tech, 11]}'>click here</a></p><br>"
 
     return contents
     # st.dataframe(anav)
@@ -154,8 +158,8 @@ def extEmail(v, fullname):
     contents = f"""Hello {fName}, <br>thank you for expressing interest in some of our projects at Summit Venture Studio.  
     The team members for each of these projects should reach out to you soon.<br><br>"""
     for tech in range(len(v)):
-        contents = contents + f"<h3>{v.iloc[tech, 7]}</h3>"
-        contents = contents + f"<p>{v.iloc[tech, 8]}</p><br>"
+        contents += f"<h3>Project Name: {v.iloc[tech, 7]}</h3>"
+        contents += f"<p>Project description: {v.iloc[tech, 8]}</p><br>"
     return contents
 
 def emailer(useremail, contents, subject):
