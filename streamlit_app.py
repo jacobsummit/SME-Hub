@@ -153,7 +153,7 @@ def emailer(useremail, contents, subject):
     with yagmail.SMTP(sender, sender_pass) as yag:
         yag.send(to=useremail, contents=contents, subject=subject)
         # st.write("Email sent Successfully")
-        yagmail.SMTP.close()
+        yagmail.SMTP.close(yag)
 
 
 v = ag['selected_rows']
