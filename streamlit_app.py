@@ -140,6 +140,13 @@ ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",fit_columns_on_gri
 
 
 
+def intEmail():
+    pass
+
+def extEmail():
+    pass
+
+
 v = ag['selected_rows']
 if v:
     v = pd.DataFrame(v)
@@ -148,9 +155,11 @@ if v:
             with yagmail.SMTP(sender, sender_pass) as yag:
                 yag.send(userEmail, "test", "hello")
                 st.write("Email sent Successfully")
+                yagmail.SMTP.close()
         
     else: st.write("please enter your name and valid email address to initiate the interest submission process.")
     st.write('## Selected Projects:')
+    st.write(len(v))
     for i in range(len(v)):
         st.write(f"### {v.iloc[i,7]}")
         st.write(v.iloc[i,8])
