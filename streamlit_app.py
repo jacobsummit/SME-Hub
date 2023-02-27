@@ -140,10 +140,9 @@ ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",fit_columns_on_gri
 
 
 def anaEmail(anav, fullname, useremail):
-    fName = anav.iloc[0,12].split(" ")[0]
-    contents = f"""Hello {fName}, <br>someone has expressed interest in one or more of your projects! Their information is below.  
+    fname = anav.iloc[0,12].split(" ")[0]
+    contents = f"""Hello {fname}, <br>someone has expressed interest in one or more of your projects! Their information is below.  
     Please contact them as soon as possible!<br><br>"""
-
     contents += f"Name of the person espressing interest: {fullname}<br>Email of the person expressing interest: {useremail}<br> Below are the project names and URLs they have expressed interest in:<br><br>"
 
     for tech in range(len(anav)):
@@ -152,11 +151,25 @@ def anaEmail(anav, fullname, useremail):
         contents += f"<p><b>Your questions about the tech:</b><br> {anav.iloc[tech, 10].replace('?', '?<br>')}</p><br>"
 
     return contents
-    # st.dataframe(anav)
+
+def amEmail(amv, fullname, useremail):
+    fname = amv.iloc[0,14].split(" ")[0]
+    contents = f"""Hello {fname}, <br>someone has expressed interest in one or more projects that you are the account manager for! Their information is below.  
+    The analyst assigned to each of these projects has been notified, feel free to follow up with them about their efforts!!<br><br>"""
+    contents += f"Name of the person espressing interest: {fullname}<br>Email of the person expressing interest: {useremail}<br> Below are the project names and URLs they have expressed interest in:<br><br>"
+
+    for tech in range(len(amv)):
+        contents += f"<p><b>Project Name:</b> {amv.iloc[tech, 7]}</p>"
+        contents += f"<p><b>Analyst Name:</b> {amv.iloc[tech, 12]}</p>"
+        contents += f"<p><b>Project url:</b> <a href='https://projects.zoho.com/portal/summitventurestudiodotcom#project/{amv.iloc[tech, 11]}'>click here</a></p>"
+        contents += f"<p><b>Analyst's questions about the tech:</b><br> {amv.iloc[tech, 10].replace('?', '?<br>')}</p><br>"
+
+    return contents
+
 
 def extEmail(v, fullname):
-    fName = fullname.split(" ")[0]
-    contents = f"""Hello {fName}, <br>thank you for expressing interest in some of our projects at Summit Venture Studio.  
+    fname = fullname.split(" ")[0]
+    contents = f"""Hello {fname}, <br>thank you for expressing interest in some of our projects at Summit Venture Studio.  
     The team members for each of these projects should reach out to you soon.<br><br>"""
     for tech in range(len(v)):
         contents += f"<h3>Project Name: {v.iloc[tech, 7]}</h3>"
@@ -178,9 +191,13 @@ if v:
         if st.button("Send Email to Express Interest"):
             # emailer(userEmail, extEmail(v, fullName), subject)
             anaList = v["Project Owner Email"].unique().tolist()
+            amList = v["AM Email"].unique().tolist()
             for ana in anaList:
+                break
                 # emailer("jacobtminson@gmail.com", anaEmail(v[v["Project Owner Email"]==ana]), "You have a message from SME HUB!")
-                st.markdown(anaEmail(v[v["Project Owner Email"]==ana], fullName, userEmail), unsafe_allow_html=True)
+                # st.markdown(anaEmail(v[v["Project Owner Email"]==ana], fullName, userEmail), unsafe_allow_html=True)
+            for am in amList:
+                st.markdown(amEmail(v[v["AM Email"]==am], fullName, userEmail), unsafe_allow_html=True)
 
             
 
