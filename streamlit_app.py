@@ -145,8 +145,8 @@ def intEmail():
 def extEmail(v):
     contents = """Thank you for expressing interest in some of our projects at Summit Venture Studio.  The team members for each of these projects should reach out to you soon.<br><br>"""
     for tech in range(len(v)):
-        contents = contents + f"<h3>{v.iloc[tech, 7]}</h3><br>"
-        contents = contents + f"<p>{v.iloc[tech, 8]}</p><br><br>"
+        contents = contents + f"<h3>{v.iloc[tech, 7]}</h3>"
+        contents = contents + f"<p>{v.iloc[tech, 8]}</p><br>"
     return contents
 
 def emailer(useremail, contents, subject):
