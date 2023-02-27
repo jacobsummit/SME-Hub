@@ -160,7 +160,7 @@ if v:
         
     else: st.write("please enter your name and valid email address to initiate the interest submission process.")
     st.write('## Selected Projects:')
-    st.write(len(v))
+    st.write(len(v["Project Owner Email"].unique()))
     for i in range(len(v)):
         st.write(f"### {v.iloc[i,7]}")
         st.write(v.iloc[i,8])
