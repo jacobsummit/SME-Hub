@@ -149,7 +149,7 @@ def anaEmail(anav, fullname, useremail):
     for tech in range(len(anav)):
         contents += f"<p>Project Name: {anav.iloc[tech, 7]}</p>"
         contents += f"<p>Project url: <a href='https://projects.zoho.com/portal/summitventurestudiodotcom#project/{anav.iloc[tech, 11]}'>click here</a></p>"
-        contents += f"<p>Your questions about the tech:<br> {anav.iloc[tech, 10].replace("?", "?<br>")}</p><br>"
+        contents += f"<p>Your questions about the tech:<br> {anav.iloc[tech, 10].replace('?', '?<br>')}</p><br>"
 
     return contents
     # st.dataframe(anav)
