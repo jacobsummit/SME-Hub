@@ -149,9 +149,9 @@ def extEmail(v):
         contents = contents + f"<p>{v.iloc[tech, 8]}</p><br><br>"
     return contents
 
-def emailer(useremail, contents, cc, subject):
+def emailer(useremail, contents, subject):
     with yagmail.SMTP(sender, sender_pass) as yag:
-        yag.send(to=useremail, cc=cc, contents=contents, subject=subject)
+        yag.send(to=useremail, contents=contents, subject=subject)
         # st.write("Email sent Successfully")
         yagmail.SMTP.close()
 
@@ -166,7 +166,7 @@ if v:
             cc = ""
             subject = "test"
             contents = extEmail(v)
-            emailer(userEmail,contents, cc, subject)
+            emailer(userEmail,contents, subject)
             anaList = v["Project Owner Email"].unique().tolist()
             
 
