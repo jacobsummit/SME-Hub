@@ -4,12 +4,14 @@ import streamlit as st
 import pandas as pd
 import requests
 import tempfile
+import re
 from AnalyticsClient import AnalyticsClient
 from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
 from streamlit_extras.switch_page_button import switch_page
 
 st.set_page_config(layout='wide', page_icon="mountain", page_title="SME Hub")
 
+eReg = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
 
 
 @st.cache_data(ttl=3600)
@@ -34,6 +36,13 @@ def load_data():
     result = bulk.export_data(view_id, "csv", tmpf.name)
     df = pd.read_csv(tmpf)
     return df
+
+
+def validEmail(email):
+    if re.fullmatch(eReg, email):
+      return True
+    else:
+      return False
 
 sender = st.secrets["sender"]
 sender_pass = st.secrets["sender-pass"]
@@ -130,13 +139,15 @@ ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",fit_columns_on_gri
     data_return_mode=DataReturnMode.FILTERED_AND_SORTED)
 
 
+
 v = ag['selected_rows']
 if v:
     v = pd.DataFrame(v)
-    if fullName and userEmail:
+    if fullName and validEmail(userEmail):
         if st.button("Send Email to Express Interest"):
             send_email(sender=sender, password=sender_pass,receiver="jacobtminson@gmail.com",smtp_server=smtp_server,smtp_port=smtp_port,email_message="test",subject="test")
         st.write('## Selected Projects:')
+    else: st.write("please enter your name and valid email address to initiate the interest submission process.")
     
     for i in range(len(v)):
         st.write(f"### {v.iloc[i,7]}")
