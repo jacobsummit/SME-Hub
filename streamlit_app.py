@@ -153,6 +153,8 @@ if v:
     st.sidebar.write(v.columns)
     if fullName and validEmail(userEmail):
         if st.button("Send Email to Express Interest"):
+            anaList = v["Project Owner Email"].unique().tolist()
+            st.write(anaList)
             with yagmail.SMTP(sender, sender_pass) as yag:
                 yag.send(userEmail, "test", "hello")
                 st.write("Email sent Successfully")
@@ -160,7 +162,6 @@ if v:
         
     else: st.write("please enter your name and valid email address to initiate the interest submission process.")
     st.write('## Selected Projects:')
-    st.write(v["Project Owner Email"].unique())
     for i in range(len(v)):
         st.write(f"### {v.iloc[i,7]}")
         st.write(v.iloc[i,8])
