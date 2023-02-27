@@ -148,8 +148,9 @@ def extEmail():
 
 v = ag['selected_rows']
 if v:
-    st.sidebar.write(v.columns)
+    
     v = pd.DataFrame(v)
+    st.sidebar.write(v.columns)
     if fullName and validEmail(userEmail):
         if st.button("Send Email to Express Interest"):
             with yagmail.SMTP(sender, sender_pass) as yag:
