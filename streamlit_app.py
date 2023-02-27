@@ -139,8 +139,13 @@ ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",fit_columns_on_gri
 
 
 
-def intEmail(anav):
-    st.dataframe(anav)
+def anaEmail(anav):
+    fName = anav.iloc[1,12].split(" ")[0]
+    contents = f"""hello {fName}, someone has expressed interest in one or more of your projects! Their information is below.  
+    Please contact them as soon as possible!"""
+
+    return contents
+    # st.dataframe(anav)
 
 def extEmail(v, fullname):
     fName = fullname.split(" ")[0]
@@ -167,7 +172,8 @@ if v:
             # emailer(userEmail, extEmail(v, fullName), subject)
             anaList = v["Project Owner Email"].unique().tolist()
             for ana in anaList:
-                emailer("jacobtminson@gmail.com", intEmail(v[v["Project Owner Email"]==ana]), "You have a message from SME HUB!")
+                # emailer("jacobtminson@gmail.com", anaEmail(v[v["Project Owner Email"]==ana]), "You have a message from SME HUB!")
+                st.write(anaEmail(v[v["Project Owner Email"]==ana]))
 
             
 
