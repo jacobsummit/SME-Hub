@@ -139,11 +139,11 @@ ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",fit_columns_on_gri
 
 
 
-def intEmail():
-    pass
+def intEmail(anav):
+    st.dataframe(anav)
 
-def extEmail(v, fullName):
-    fName = fullName.split(" ")[0]
+def extEmail(v, fullname):
+    fName = fullname.split(" ")[0]
     contents = f"""hello {fName}, thank you for expressing interest in some of our projects at Summit Venture Studio.  
     The team members for each of these projects should reach out to you soon.<br><br>"""
     for tech in range(len(v)):
@@ -154,7 +154,6 @@ def extEmail(v, fullName):
 def emailer(useremail, contents, subject):
     with yagmail.SMTP(sender, sender_pass) as yag:
         yag.send(to=useremail, contents=contents, subject=subject)
-        # st.write("Email sent Successfully")
         yagmail.SMTP.close(yag)
 
 
@@ -165,11 +164,11 @@ if v:
     st.sidebar.write(v.columns)
     if fullName and validEmail(userEmail):
         if st.button("Send Email to Express Interest"):
-            cc = ""
-            subject = "test"
-            contents = extEmail(v, fullName)
-            emailer(userEmail,contents, subject)
+            # emailer(userEmail, extEmail(v, fullName), subject)
             anaList = v["Project Owner Email"].unique().tolist()
+            for ana in anaList:
+                emailer("jacobtminson@gmail.com", intEmail(v[v["Project Owner Email"]==ana]), "You have a message from SME HUB!")
+
             
 
 
