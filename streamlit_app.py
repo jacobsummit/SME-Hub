@@ -144,7 +144,7 @@ def anaEmail(anav, fullname, useremail):
     contents = f"""Hello {fName}, <br>someone has expressed interest in one or more of your projects! Their information is below.  
     Please contact them as soon as possible!<br><br>"""
 
-    contents += f"Name of the person espressing interest: {fullname}<br>Email of the person expressing interest: {useremail}<br> Below are the project names and URLs they have expressed interest in:<br>"
+    contents += f"Name of the person espressing interest: {fullname}<br>Email of the person expressing interest: {useremail}<br> Below are the project names and URLs they have expressed interest in:<br><br>"
 
     for tech in range(len(anav)):
         contents += f"<p>Project Name: {v.iloc[tech, 7]}</p>"
