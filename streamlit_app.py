@@ -51,6 +51,7 @@ with st.sidebar:
     # with st.form(key='my_form'):
     fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
     userEmail = st.text_input(label = "Email", placeholder="Enter Email")
+    st.write(v.columns)
 
 df = load_data()
 
@@ -159,7 +160,7 @@ if v:
         
     else: st.write("please enter your name and valid email address to initiate the interest submission process.")
     st.write('## Selected Projects:')
-    st.write(len(v))
+    st.write(len(v[]))
     for i in range(len(v)):
         st.write(f"### {v.iloc[i,7]}")
         st.write(v.iloc[i,8])
