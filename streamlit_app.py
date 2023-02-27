@@ -145,10 +145,12 @@ if v:
     v = pd.DataFrame(v)
     if fullName and validEmail(userEmail):
         if st.button("Send Email to Express Interest"):
-            send_email(sender=sender, password=sender_pass,receiver="jacobtminson@gmail.com",smtp_server=smtp_server,smtp_port=smtp_port,email_message="test",subject="test")
-        st.write('## Selected Projects:')
+            with yagmail.SMTP(sender, sender_pass) as yag:
+                yag.send(userEmail, "test", "hello")
+                st.write("Email sent Successfully")
+        
     else: st.write("please enter your name and valid email address to initiate the interest submission process.")
-    
+    st.write('## Selected Projects:')
     for i in range(len(v)):
         st.write(f"### {v.iloc[i,7]}")
         st.write(v.iloc[i,8])
