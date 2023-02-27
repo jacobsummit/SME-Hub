@@ -3,3 +3,4 @@ IPython
 streamlit-aggrid
 st_pages
 streamlit_extras
+yagmail
