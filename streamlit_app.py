@@ -51,7 +51,8 @@ with st.sidebar:
     # with st.form(key='my_form'):
     fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
     userEmail = st.text_input(label = "Email", placeholder="Enter Email")
-    st.write(v.columns)
+    if v:
+        st.write(v.columns)
 
 df = load_data()
 
