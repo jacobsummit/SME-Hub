@@ -51,11 +51,6 @@ with st.sidebar:
     # with st.form(key='my_form'):
     fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
     userEmail = st.text_input(label = "Email", placeholder="Enter Email")
-    try:
-        st.write(v.columns)
-    except:
-        pass
-
 df = load_data()
 
 for col in df.columns[9:].tolist():
@@ -153,6 +148,7 @@ def extEmail():
 
 v = ag['selected_rows']
 if v:
+    st.sidebar.write(v.columns)
     v = pd.DataFrame(v)
     if fullName and validEmail(userEmail):
         if st.button("Send Email to Express Interest"):
