@@ -142,8 +142,18 @@ ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",fit_columns_on_gri
 def intEmail():
     pass
 
-def extEmail():
-    pass
+def extEmail(v):
+    contents = """Thank you for expressing interest in some of our projects at Summit Venture Studio.  The team members for each of these projects should reach out to you soon.<br><br>"""
+    for tech in range(len(v)):
+        contents = contents + f"<h3>{v.iloc[tech, 7]}</h3><br>"
+        contents = contents + f"<p>{v.iloc[tech, 8]}</p><br><br>"
+    return contents
+
+def emailer(useremail, contents, cc, subject):
+    with yagmail.SMTP(sender, sender_pass) as yag:
+        yag.send(to=useremail, cc=cc, contents=contents, subject=subject)
+        # st.write("Email sent Successfully")
+        yagmail.SMTP.close()
 
 
 v = ag['selected_rows']
@@ -153,17 +163,19 @@ if v:
     st.sidebar.write(v.columns)
     if fullName and validEmail(userEmail):
         if st.button("Send Email to Express Interest"):
+            cc = ""
+            subject = "test"
+            contents = extEmail(v)
+            emailer(userEmail, cc, contents, subject)
+            anaList = v["Project Owner Email"].unique().tolist()
             
-            
-            with yagmail.SMTP(sender, sender_pass) as yag:
-                yag.send(userEmail, "test", "hello")
-                st.write("Email sent Successfully")
-                yagmail.SMTP.close()
+
+
+                
         
     else: st.write("please enter your name and valid email address to initiate the interest submission process.")
     st.write('## Selected Projects:')
-    anaList = v["Project Owner Email"].unique().tolist()
-    st.write(anaList)
+    # st.write(anaList)
     for i in range(len(v)):
         st.write(f"### {v.iloc[i,7]}")
         st.write(v.iloc[i,8])
