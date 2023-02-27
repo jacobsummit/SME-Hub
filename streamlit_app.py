@@ -142,8 +142,10 @@ ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",fit_columns_on_gri
 def intEmail():
     pass
 
-def extEmail(v):
-    contents = """Thank you for expressing interest in some of our projects at Summit Venture Studio.  The team members for each of these projects should reach out to you soon.<br><br>"""
+def extEmail(v, fullName):
+    fName = fullName.split(" ")[0]
+    contents = f"""hello {fName}, thank you for expressing interest in some of our projects at Summit Venture Studio.  
+    The team members for each of these projects should reach out to you soon.<br><br>"""
     for tech in range(len(v)):
         contents = contents + f"<h3>{v.iloc[tech, 7]}</h3>"
         contents = contents + f"<p>{v.iloc[tech, 8]}</p><br>"
@@ -165,7 +167,7 @@ if v:
         if st.button("Send Email to Express Interest"):
             cc = ""
             subject = "test"
-            contents = extEmail(v)
+            contents = extEmail(v, fullName)
             emailer(userEmail,contents, subject)
             anaList = v["Project Owner Email"].unique().tolist()
             
