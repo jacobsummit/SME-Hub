@@ -139,17 +139,19 @@ ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",fit_columns_on_gri
 
 
 
-def anaEmail(anav):
+def anaEmail(anav, fullname, useremail):
     fName = anav.iloc[0,12].split(" ")[0]
-    contents = f"""hello {fName}, <br>someone has expressed interest in one or more of your projects! Their information is below.  
-    Please contact them as soon as possible!"""
+    contents = f"""Hello {fName}, <br>someone has expressed interest in one or more of your projects! Their information is below.  
+    Please contact them as soon as possible!<br><br>"""
+
+    contents += f"Name of the person espressing interest: {fullname}<br>Email of the person expressing interest: {useremail}"
 
     return contents
     # st.dataframe(anav)
 
 def extEmail(v, fullname):
     fName = fullname.split(" ")[0]
-    contents = f"""hello {fName}, <br>thank you for expressing interest in some of our projects at Summit Venture Studio.  
+    contents = f"""Hello {fName}, <br>thank you for expressing interest in some of our projects at Summit Venture Studio.  
     The team members for each of these projects should reach out to you soon.<br><br>"""
     for tech in range(len(v)):
         contents = contents + f"<h3>{v.iloc[tech, 7]}</h3>"
@@ -173,7 +175,7 @@ if v:
             anaList = v["Project Owner Email"].unique().tolist()
             for ana in anaList:
                 # emailer("jacobtminson@gmail.com", anaEmail(v[v["Project Owner Email"]==ana]), "You have a message from SME HUB!")
-                st.markdown(anaEmail(v[v["Project Owner Email"]==ana]), unsafe_allow_html=True)
+                st.markdown(anaEmail(v[v["Project Owner Email"]==ana], fullName, userEmail), unsafe_allow_html=True)
 
             
 
