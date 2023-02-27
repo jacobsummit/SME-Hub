@@ -173,7 +173,7 @@ if v:
             anaList = v["Project Owner Email"].unique().tolist()
             for ana in anaList:
                 # emailer("jacobtminson@gmail.com", anaEmail(v[v["Project Owner Email"]==ana]), "You have a message from SME HUB!")
-                st.markdown(anaEmail(v[v["Project Owner Email"]==ana]))
+                st.markdown(anaEmail(v[v["Project Owner Email"]==ana]), unsafe_allow_html=True)
 
             
 
