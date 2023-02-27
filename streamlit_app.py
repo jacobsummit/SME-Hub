@@ -140,7 +140,7 @@ ag = AgGrid(df, height=500, gridOptions=go, theme="streamlit",fit_columns_on_gri
 
 
 def anaEmail(anav):
-    fName = anav.iloc[1,12].split(" ")[0]
+    fName = anav.iloc[0,12].split(" ")[0]
     contents = f"""hello {fName}, someone has expressed interest in one or more of your projects! Their information is below.  
     Please contact them as soon as possible!"""
 
