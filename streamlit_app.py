@@ -166,7 +166,7 @@ if v:
             cc = ""
             subject = "test"
             contents = extEmail(v)
-            emailer(userEmail, cc, contents, subject)
+            emailer(userEmail,contents, cc, subject)
             anaList = v["Project Owner Email"].unique().tolist()
             
 
