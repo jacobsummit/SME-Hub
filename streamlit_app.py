@@ -14,7 +14,11 @@ head = Image.open("image1.png")
 
 st.set_page_config(layout='wide', page_icon=im, page_title="SME Hub")
 st.columns(3)[1].image(head)
-st.columns(3)[2].write("test")
+st.columns(3)[2].markdown("""<div class="green-square"></div>
+<span style="position: relative; right:0px;">= Complete</span>
+<br/>
+<div class="green-square yellow-square"></div>
+<span> = In Process</span>""",unsafe_allow_html=True)
 st.sidebar.header("SME HUB")
 st.sidebar.write("""Welcome to Summit Venture Studio's SME Hub! Thank you so much for taking the time to help us out.  Here are some instructions:\n
 Please begin by looking through the table to the left and checking the boxes of the projects you are interested in.  
