@@ -40,7 +40,6 @@ float: right;
 .yellow-square {
 left: 0px;
 background-color: gold;
-margin-bottom: -4px;
 }</style><br>&nbsp;
 <div class="green-square"></div>
 <span style="float:right; position: relative; right:10px;">Complete: </span>
