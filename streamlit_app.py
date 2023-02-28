@@ -59,13 +59,8 @@ eReg = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2
 
 @st.cache_data(ttl=3600)
 def access_api():
-    code = st.secrets["code"]
-    client_id = st.secrets["client_id"]
-    client_secret = st.secrets["client_secret"]
     redirect_uri = "https://jacobsummit-sme-hub-streamlit-app-z2fgzo.streamlit.app/"
-    refresh_token = st.secrets["refresh-token"]
-    token_refresh = requests.post(f"https://accounts.zoho.com/oauth/v2/token?refresh_token={refresh_token}&client_id={client_id}&client_secret={client_secret}&redirect_uri={redirect_uri}&grant_type=refresh_token")
-    
+    token_refresh = requests.post(f"https://accounts.zoho.com/oauth/v2/token?refresh_token={st.secrets["refresh-token"]}&client_id={st.secrets["client_id"]}&client_secret={st.secrets["client_secret"]}&redirect_uri={redirect_uri}&grant_type=refresh_token")
     access_token = token_refresh.json()["access_token"]
     ac = AnalyticsClient(client_id, client_secret, refresh_token)
     return ac
@@ -86,6 +81,49 @@ def validEmail(email):
       return True
     else:
       return False
+
+def anaEmail(anav, fullname, useremail):
+    fname = anav.iloc[0,12].split(" ")[0]
+    contents = f"""Hello {fname}, <br>someone has expressed interest in one or more of your projects! Their information is below.  
+    Please contact them as soon as possible!<br><br>"""
+    contents += f"Name of the person espressing interest: {fullname}<br>Email of the person expressing interest: {useremail}<br> Below are the project names and URLs they have expressed interest in:<br><br>"
+
+    for tech in range(len(anav)):
+        contents += f"<p><b>Project Name:</b> {anav.iloc[tech, 7]}</p>"
+        contents += f"<p><b>Project url:</b> <a href='https://projects.zoho.com/portal/summitventurestudiodotcom#project/{anav.iloc[tech, 11]}'>click here</a></p>"
+        contents += f"<p><b>Your questions about the tech:</b><br> {anav.iloc[tech, 10].replace('?', '?<br>')}</p><br>"
+
+    return contents
+
+def amEmail(amv, fullname, useremail):
+    fname = amv.iloc[0,14].split(" ")[0]
+    contents = f"""Hello {fname}, <br>Someone has expressed interest in one or more projects that you are the account manager for! Their information is below.  
+    The analyst assigned to each of these projects has been notified, feel free to follow up with them about their efforts!!<br><br>"""
+    contents += f"Name of the person espressing interest: {fullname}<br>Email of the person expressing interest: {useremail}<br> Below are the project names and URLs they have expressed interest in:<br><br>"
+
+    for tech in range(len(amv)):
+        contents += f"<p><b>Project Name:</b> {amv.iloc[tech, 7]}</p>"
+        contents += f"<p><b>Analyst Name:</b> {amv.iloc[tech, 12]}</p>"
+        contents += f"<p><b>Project url:</b> <a href='https://projects.zoho.com/portal/summitventurestudiodotcom#project/{amv.iloc[tech, 11]}'>click here</a></p>"
+        contents += f"<p><b>Analyst's questions about the tech:</b><br> {amv.iloc[tech, 10].replace('?', '?<br>')}</p><br>"
+
+    return contents
+
+
+def extEmail(v, fullname):
+    fname = fullname.split(" ")[0]
+    contents = f"""Hello {fname}, <br>thank you for expressing interest in some of our projects at Summit Venture Studio.  
+    The team members for each of these projects should reach out to you soon.<br><br>"""
+    for tech in range(len(v)):
+        contents += f"<h3>Project Name: {v.iloc[tech, 7]}</h3>"
+        contents += f"<p>Project description: {v.iloc[tech, 8]}</p><br>"
+    return contents
+
+def emailer(useremail, contents, subject):
+    with yagmail.SMTP(sender, sender_pass) as yag:
+        yag.send(to=useremail, contents=contents, subject=subject)
+        yagmail.SMTP.close(yag)
+
 
 sender = st.secrets["sender"]
 sender_pass = st.secrets["sender-pass"]
@@ -183,49 +221,7 @@ ag = AgGrid(df, height=600, gridOptions=go, theme="streamlit",fit_columns_on_gri
 
 
 
-def anaEmail(anav, fullname, useremail):
-    fname = anav.iloc[0,12].split(" ")[0]
-    contents = f"""Hello {fname}, <br>someone has expressed interest in one or more of your projects! Their information is below.  
-    Please contact them as soon as possible!<br><br>"""
-    contents += f"Name of the person espressing interest: {fullname}<br>Email of the person expressing interest: {useremail}<br> Below are the project names and URLs they have expressed interest in:<br><br>"
 
-    for tech in range(len(anav)):
-        contents += f"<p><b>Project Name:</b> {anav.iloc[tech, 7]}</p>"
-        contents += f"<p><b>Project url:</b> <a href='https://projects.zoho.com/portal/summitventurestudiodotcom#project/{anav.iloc[tech, 11]}'>click here</a></p>"
-        contents += f"<p><b>Your questions about the tech:</b><br> {anav.iloc[tech, 10].replace('?', '?<br>')}</p><br>"
-
-    return contents
-
-def amEmail(amv, fullname, useremail):
-    fname = amv.iloc[0,14].split(" ")[0]
-    contents = f"""Hello {fname}, <br>Someone has expressed interest in one or more projects that you are the account manager for! Their information is below.  
-    The analyst assigned to each of these projects has been notified, feel free to follow up with them about their efforts!!<br><br>"""
-    contents += f"Name of the person espressing interest: {fullname}<br>Email of the person expressing interest: {useremail}<br> Below are the project names and URLs they have expressed interest in:<br><br>"
-
-    for tech in range(len(amv)):
-        contents += f"<p><b>Project Name:</b> {amv.iloc[tech, 7]}</p>"
-        contents += f"<p><b>Analyst Name:</b> {amv.iloc[tech, 12]}</p>"
-        contents += f"<p><b>Project url:</b> <a href='https://projects.zoho.com/portal/summitventurestudiodotcom#project/{amv.iloc[tech, 11]}'>click here</a></p>"
-        contents += f"<p><b>Analyst's questions about the tech:</b><br> {amv.iloc[tech, 10].replace('?', '?<br>')}</p><br>"
-
-    return contents
-
-
-def extEmail(v, fullname):
-    fname = fullname.split(" ")[0]
-    contents = f"""Hello {fname}, <br>thank you for expressing interest in some of our projects at Summit Venture Studio.  
-    The team members for each of these projects should reach out to you soon.<br><br>"""
-    for tech in range(len(v)):
-        contents += f"<h3>Project Name: {v.iloc[tech, 7]}</h3>"
-        contents += f"<p>Project description: {v.iloc[tech, 8]}</p><br>"
-    return contents
-
-def emailer(useremail, contents, subject):
-    with yagmail.SMTP(sender, sender_pass) as yag:
-        yag.send(to=useremail, contents=contents, subject=subject)
-        yagmail.SMTP.close(yag)
-
-st.write(df.iloc[0,9]==" ")
 v = ag['selected_rows']
 if v:
     
@@ -241,9 +237,9 @@ if v:
                 # emailer("jacobtminson@gmail.com", anaEmail(v[v["Project Owner Email"]==ana]), "You have a message from SME HUB!")
                 st.markdown(anaEmail(v[v["Project Owner Email"]==ana], fullName, userEmail), unsafe_allow_html=True)
             for am in amList:
-                st.markdown(amEmail(v[v["AM Email"]==am], fullName, userEmail), unsafe_allow_html=True)
                 # emailer(userEmail, amEmail(v[v["AM Email"]==am], fullName, userEmail), "Message from SME Hub!")
-
+                st.markdown(amEmail(v[v["AM Email"]==am], fullName, userEmail), unsafe_allow_html=True)
+                
             
 
 
