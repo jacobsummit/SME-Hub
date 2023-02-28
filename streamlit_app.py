@@ -29,8 +29,10 @@ left: 0px;
 left: 0px;
 background-color: gold;
 margin-bottom: -4px;
-}</style><div class="green-square"></div>
+}</style>
+<div class="green-square">
 <span style="position: relative; right:0px;">= Complete</span>
+</div>
 <br/>
 <div class="green-square yellow-square"></div>
 <span> = In Process</span>""",unsafe_allow_html=True)
