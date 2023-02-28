@@ -33,7 +33,7 @@ height: 20px;
 background-color: green;
 margin-top: 0px;
 margin-bottom: 4px;
-padding-left: 5px
+margin-left: 15px
 left: 0px;
 float: right;
 }
