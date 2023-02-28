@@ -33,7 +33,7 @@ height: 20px;
 background-color: green;
 margin-top: 0px;
 margin-bottom: 4px;
-margin-left: 15px
+margin-left: 115px
 left: 0px;
 float: right;
 }
