@@ -225,7 +225,7 @@ def emailer(useremail, contents, subject):
         yag.send(to=useremail, contents=contents, subject=subject)
         yagmail.SMTP.close(yag)
 
-
+st.write(df.iloc[0,-1])
 v = ag['selected_rows']
 if v:
     
