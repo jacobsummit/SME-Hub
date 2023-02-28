@@ -10,7 +10,7 @@ from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
 from streamlit_extras.switch_page_button import switch_page
 from PIL import Image
 
-st.markdown("<img 'src=image1.png'/>")
+st.markdown("<img 'src=image1.png'/>", unsafe_allow_html=True)
 im = Image.open("svsfavicon.png")
 
 st.set_page_config(layout='wide', page_icon=im, page_title="SME Hub")
