@@ -23,7 +23,7 @@ with col2:
 
 with col3:
     st.markdown("""<style>.green-square {
-position: relative;
+position: right;
 display: inline-block;
 width: 20px;
 height: 20px;
