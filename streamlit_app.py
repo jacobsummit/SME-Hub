@@ -13,7 +13,7 @@ from PIL import Image
 
 im = Image.open("svsfavicon.png")
 
-st.set_page_config(layout='wide', page_icon=im, page_title="SME Hub")
+st.set_page_config(layout='wide', page_icon=im, page_title="SME Hub", menu_items={"test":"www.google.com"})
 
 eReg = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
 
