@@ -14,7 +14,22 @@ head = Image.open("image1.png")
 
 st.set_page_config(layout='wide', page_icon=im, page_title="SME Hub")
 st.columns(3)[1].image(head)
-st.columns(3)[2].markdown("""<div class="green-square"></div>
+st.columns(3)[2].markdown("""<style>.green-square {
+position: relative;
+display: inline-block;
+width: 20px;
+height: 20px;
+background-color: green;
+margin-top: 10px;
+margin-bottom: -4px;
+left: 0px;
+}
+
+.yellow-square {
+left: 0px;
+background-color: gold;
+margin-bottom: -4px;
+}</style><div class="green-square"></div>
 <span style="position: relative; right:0px;">= Complete</span>
 <br/>
 <div class="green-square yellow-square"></div>
