@@ -17,6 +17,8 @@ col1, col2, col3 = st.columns(3)
 
 with col1:
     st.write('')
+    st.write('')
+    st.write('')
     st.write('<- See sidebar for instructions ')
 
 with col2:
