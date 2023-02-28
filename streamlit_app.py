@@ -186,7 +186,7 @@ function(params){
 
 gb = GridOptionsBuilder.from_dataframe(df)
 # gb.sideBar = ["filters"]
-gb.configure_default_column(sizeColumnsToFit=True, enablePivot=False, enableValue=True, enableRowGroup=True, suppressColumnsToolPanel=True)
+gb.configure_default_column(sizeColumnsToFit=True, enablePivot=False, enableValue=True, enableRowGroup=True)
 gb.configure_selection(selection_mode="multiple", use_checkbox=True)
 
 gb.configure_column("Project Name", headerTooltip="The name of the technology")
