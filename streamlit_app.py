@@ -49,7 +49,7 @@ st.sidebar.header("SME HUB")
 st.sidebar.write("""Welcome to Summit Venture Studio's SME Hub! Thank you so much for taking the time to help us out.  Here are some instructions:\n
 Please begin by looking through the table to the left and checking the boxes of the projects you are interested in.  
 Hover on the table headers to get more information about what each column means.
-\nYou can also click on a header to sort alphanumerically, or you can click the three-bar menu on each header to sort or filter by different values."""
+\nYou can also click on a header to sort alphanumerically, or you can click the three-bar menu on each header to sort or filter by different values.""")
 ind_im = Image.open("menu_show.png")
 st.sidebar.image(ind_im)
 st.sidebar.write("""  Grouping by values is also available.
