@@ -37,7 +37,7 @@ left: 0px;
 left: 0px;
 background-color: gold;
 margin-bottom: -4px;
-}</style>
+}</style><br>
 <div class="green-square"></div>
 <span style="text-align:right; position: relative; right:0px;">= Complete</span>
 <br/>
