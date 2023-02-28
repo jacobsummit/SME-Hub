@@ -118,7 +118,7 @@ df = df[cols]
 df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?\n", regex=True)
 # df["Interested?"] = ""
 
-mask = ~df[["Project Name","Summary", "Industry","Questions We Need Answered"]] == ""
+mask = ~df[["Project Name","Summary", "Industry","Questions We Need Answered"]].equals("")
 df = df[mask]
 
 
