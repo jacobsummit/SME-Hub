@@ -88,7 +88,6 @@ def anaEmail(anav, fullname, useremail):
         contents += f"<p><b>Project Name:</b> {anav.iloc[tech, 7]}</p>"
         contents += f"<p><b>Project url:</b> <a href='https://projects.zoho.com/portal/summitventurestudiodotcom#project/{anav.iloc[tech, 11]}'>click here</a></p>"
         contents += f"<p><b>Your questions about the tech:</b><br> {anav.iloc[tech, 10].replace('?', '?<br>')}</p><br>"
-
     return contents
 
 def amEmail(amv, fullname, useremail):
@@ -102,7 +101,6 @@ def amEmail(amv, fullname, useremail):
         contents += f"<p><b>Analyst Name:</b> {amv.iloc[tech, 12]}</p>"
         contents += f"<p><b>Project url:</b> <a href='https://projects.zoho.com/portal/summitventurestudiodotcom#project/{amv.iloc[tech, 11]}'>click here</a></p>"
         contents += f"<p><b>Analyst's questions about the tech:</b><br> {amv.iloc[tech, 10].replace('?', '?<br>')}</p><br>"
-
     return contents
 
 
@@ -116,18 +114,14 @@ def extEmail(v, fullname):
     return contents
 
 def emailer(useremail, contents, subject):
-    with yagmail.SMTP(sender, sender_pass) as yag:
+    with yagmail.SMTP(st.secrets["sender"], st.secrets["sender-pass"]) as yag:
         yag.send(to=useremail, contents=contents, subject=subject)
         yagmail.SMTP.close(yag)
 
-
-sender = st.secrets["sender"]
-sender_pass = st.secrets["sender-pass"]
-
 with st.sidebar:
-    # with st.form(key='my_form'):
     fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
     userEmail = st.text_input(label = "Email", placeholder="Enter Email")
+
 df = load_data()
 
 for col in df.columns[9:].tolist():
@@ -149,13 +143,12 @@ cols = df.columns.tolist()
 cols = cols[5:]+cols[:5]
 df = df[cols]
 
-df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?\n", regex=True)
-# df["Interested?"] = ""
+# df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?\n", regex=True)
 
-st.write(len(df))
+# st.write(len(df))
 df = df[(df['Project Name'].str.len()>1) & (df['Summary'].str.len()>1)& (df['Industry'].str.len()>1)& (df['Questions We Need Answered'].str.len()>1)]
 
-st.write(len(df))
+# st.write(len(df))
 
 custom_css = {
     ".ag-header-cell-text":{"color":"#fff","font-size":"15px !important"},
@@ -192,7 +185,7 @@ function(params){
 """)
 
 gb = GridOptionsBuilder.from_dataframe(df)
-gb.sideBar = {'toolPanels': ["filter"]}
+gb.sideBar = {'toolPanels': ["filters"]}
 gb.configure_default_column(sizeColumnsToFit=True, enablePivot=False, enableValue=True, enableRowGroup=True, suppressColumnsToolPanel=True)
 gb.configure_selection(selection_mode="multiple", use_checkbox=True)
 
