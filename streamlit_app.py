@@ -9,11 +9,11 @@ from AnalyticsClient import AnalyticsClient
 from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
 from streamlit_extras.switch_page_button import switch_page
 from PIL import Image
+im = Image.open("svsfavicon.png")
 
 st.set_page_config(layout='wide', page_icon=im, page_title="SME Hub")
 
 st.markdown("<img 'src=image1.png'/>", unsafe_allow_html=True)
-im = Image.open("svsfavicon.png")
 
 
 eReg = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
