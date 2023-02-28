@@ -31,6 +31,7 @@ background-color: green;
 margin-top: 10px;
 margin-bottom: -4px;
 left: 0px;
+text-align: right
 }
 
 .yellow-square {
@@ -45,7 +46,7 @@ margin-bottom: -4px;
 <span> = In Process</span>""",unsafe_allow_html=True)
 st.sidebar.header("SME HUB")
 st.sidebar.write("""Welcome to Summit Venture Studio's SME Hub! Thank you so much for taking the time to help us out.  Here are some instructions:\n
-Please begin by looking through the table to the left and checking the boxes of the projects you are interested in.  
+Please begin by looking through the table to the right and checking the boxes of the projects you are interested in.  
 Hover on the table headers to get more information about what each column means.
 \nYou can also click on a header to sort alphanumerically, or you can click the three-bar menu on each header to sort or filter by different values.  Grouping by values is also available.
 \n  Once you have checked the boxes of all the projects you are interested in, fill in your name and email below and a button will appear below the table.  
@@ -246,7 +247,7 @@ if v:
 
                 
         
-    else: st.write("please enter your name and valid email address to initiate the interest submission process.")
+    else: st.write("please enter your name and valid email address in the sidebar to initiate the interest submission process.")
     st.write('## Selected Projects:')
     # st.write(anaList)
     for i in range(len(v)):
