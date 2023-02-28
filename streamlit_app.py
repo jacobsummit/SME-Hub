@@ -119,7 +119,7 @@ df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace(
 # df["Interested?"] = ""
 
 
-df = df[(len(df['Project Name'])>1) & (len(df['Summary'])>1)& (len(df['Industry'])>1)& (len(df['Questions We Need Answered'])>1)]
+df = df[(df['Project Name'].str.len()>1) & (df['Summary'].str.len()>1)& (df['Industry'].str.len()>1)& (df['Questions We Need Answered'].str.len()>1)]
 
 
 
