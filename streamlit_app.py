@@ -23,7 +23,7 @@ with col2:
 
 with col3:
     st.markdown("""<style>.green-square {
-position: right;
+position: relative;
 display: inline-block;
 width: 20px;
 height: 20px;
@@ -31,7 +31,6 @@ background-color: green;
 margin-top: 10px;
 margin-bottom: -4px;
 left: 0px;
-align: right;
 }
 
 .yellow-square {
@@ -40,13 +39,13 @@ background-color: gold;
 margin-bottom: -4px;
 }</style>
 <div class="green-square"></div>
-<span style="position: relative; right:0px;">= Complete</span>
+<span style="text-align:right; position: relative; right:0px;">= Complete</span>
 <br/>
 <div class="green-square yellow-square"></div>
 <span> = In Process</span>""",unsafe_allow_html=True)
 st.sidebar.header("SME HUB")
 st.sidebar.write("""Welcome to Summit Venture Studio's SME Hub! Thank you so much for taking the time to help us out.  Here are some instructions:\n
-Please begin by looking through the table to the right and checking the boxes of the projects you are interested in.  
+Please begin by looking through the table to the left and checking the boxes of the projects you are interested in.  
 Hover on the table headers to get more information about what each column means.
 \nYou can also click on a header to sort alphanumerically, or you can click the three-bar menu on each header to sort or filter by different values.  Grouping by values is also available.
 \n  Once you have checked the boxes of all the projects you are interested in, fill in your name and email below and a button will appear below the table.  
