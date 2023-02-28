@@ -53,8 +53,8 @@ Hover on the table headers to get more information about what each column means.
 ind_im = Image.open("menu_show.png")
 st.sidebar.image(ind_im)
 st.sidebar.write("""  Grouping by values is also available.
-\n  Once you have checked the boxes of all the projects you are interested in, fill in your name and email below and a button will appear below the table.  
-\nOnce you click on that button, an email will be sent to you confirming your choices, and to each of our team members who are responsible for the given projects. """)
+\n  Once you have selected the projects you are interested in, fill in your name and email.  
+\nNext click on the button that appears below the table. You will receive an email confirming your choices. A specialist from our team will reach out to you shortly regarding your selections. Thank you!""")
 
 
 eReg = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
