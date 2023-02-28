@@ -154,7 +154,7 @@ def anaEmail(anav, fullname, useremail):
 
 def amEmail(amv, fullname, useremail):
     fname = amv.iloc[0,14].split(" ")[0]
-    contents = f"""Hello {fname}, <br>someone has expressed interest in one or more projects that you are the account manager for! Their information is below.  
+    contents = f"""Hello {fname}, <br>Someone has expressed interest in one or more projects that you are the account manager for! Their information is below.  
     The analyst assigned to each of these projects has been notified, feel free to follow up with them about their efforts!!<br><br>"""
     contents += f"Name of the person espressing interest: {fullname}<br>Email of the person expressing interest: {useremail}<br> Below are the project names and URLs they have expressed interest in:<br><br>"
 
@@ -186,18 +186,20 @@ v = ag['selected_rows']
 if v:
     
     v = pd.DataFrame(v)
-    st.sidebar.write(v.columns)
+    # st.sidebar.write(v.columns)
     if fullName and validEmail(userEmail):
         if st.button("Send Email to Express Interest"):
             # emailer(userEmail, extEmail(v, fullName), subject)
+            st.markdown(extEmail(v, fullName), unsafe_allow_html=True)
             anaList = v["Project Owner Email"].unique().tolist()
             amList = v["AM Email"].unique().tolist()
             for ana in anaList:
                 break
                 # emailer("jacobtminson@gmail.com", anaEmail(v[v["Project Owner Email"]==ana]), "You have a message from SME HUB!")
-                # st.markdown(anaEmail(v[v["Project Owner Email"]==ana], fullName, userEmail), unsafe_allow_html=True)
+                st.markdown(anaEmail(v[v["Project Owner Email"]==ana], fullName, userEmail), unsafe_allow_html=True)
             for am in amList:
                 st.markdown(amEmail(v[v["AM Email"]==am], fullName, userEmail), unsafe_allow_html=True)
+                # emailer(userEmail, amEmail(v[v["AM Email"]==am], fullName, userEmail), "Message from SME Hub!")
 
             
 
