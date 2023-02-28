@@ -31,6 +31,7 @@ background-color: green;
 margin-top: 10px;
 margin-bottom: -4px;
 left: 0px;
+float: right;
 }
 
 .yellow-square {
