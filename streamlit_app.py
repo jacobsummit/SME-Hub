@@ -39,7 +39,7 @@ background-color: gold;
 margin-bottom: -4px;
 }</style>
 <div class="green-square"></div>
-<span style="text-align:right;  right:0px;">= Complete</span>
+<span style="text-align:right; position: relative; right:0px;">= Complete</span>
 <br/>
 <div class="green-square yellow-square"></div>
 <span> = In Process</span>""",unsafe_allow_html=True)
@@ -251,5 +251,5 @@ if v:
     # st.write(anaList)
     for i in range(len(v)):
         st.write(f"### {v.iloc[i,7]}")
-        st.write(v.iloc[i,8])
+        st.write(v.iloc[i,8].replace(".",".\n"))
     
