@@ -33,7 +33,7 @@ height: 20px;
 background-color: green;
 margin-top: 0px;
 margin-bottom: 4px;
-margin-left: 115px
+-left: 115px
 left: 0px;
 float: right;
 }
@@ -44,7 +44,7 @@ background-color: gold;
 margin-bottom: -4px;
 }</style><br>&nbsp;
 <div class="green-square"></div>
-<span style="float:right; position: relative; right:0px;">Complete: </span>
+<span style="float:right; position: relative; right:-5px;">Complete: </span>
 <br/>
 <div class="green-square yellow-square"></div>
 <span style="float:right;">In Process: </span>""",unsafe_allow_html=True)
