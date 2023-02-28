@@ -31,14 +31,11 @@ display: inline-block;
 width: 20px;
 height: 20px;
 background-color: green;
-margin-top: 0px;
-margin-bottom: 4px;
 
 float: right;
 }
 
 .yellow-square {
-left: 0px;
 background-color: gold;
 }</style><br>&nbsp;
 <div class="green-square"></div>
