@@ -194,7 +194,6 @@ if v:
             anaList = v["Project Owner Email"].unique().tolist()
             amList = v["AM Email"].unique().tolist()
             for ana in anaList:
-                break
                 # emailer("jacobtminson@gmail.com", anaEmail(v[v["Project Owner Email"]==ana]), "You have a message from SME HUB!")
                 st.markdown(anaEmail(v[v["Project Owner Email"]==ana], fullName, userEmail), unsafe_allow_html=True)
             for am in amList:
