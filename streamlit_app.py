@@ -14,8 +14,7 @@ head = Image.open("image1.png")
 
 st.set_page_config(layout='wide', page_icon=im, page_title="SME Hub")
 st.image(head)
-st.header("SME HUB")
-st.markdown("<img 'src=image1.png'/>", unsafe_allow_html=True)
+st.sidebar.header("SME HUB")
 
 
 eReg = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
