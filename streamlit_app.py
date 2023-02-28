@@ -29,7 +29,7 @@ width: 20px;
 height: 20px;
 background-color: green;
 margin-top: 10px;
-margin-bottom: 0px;
+margin-bottom: 4px;
 left: 0px;
 float: right;
 }
