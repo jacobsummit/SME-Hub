@@ -234,9 +234,9 @@ if v:
                 
         
     else: st.write("please enter your name and valid email address in the sidebar to initiate the interest submission process.")
-    st.write('## Selected Projects:')
+    st.write('### Selected Projects:')
     # st.write(anaList)
     for i in range(len(v)):
-        st.write(f"### {v.iloc[i,7]}")
+        st.write(f"#### {v.iloc[i,7]}")
         st.write(v.iloc[i,8].replace(".",".\n"))
     
