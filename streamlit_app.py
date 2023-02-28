@@ -118,10 +118,10 @@ df = df[cols]
 df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?\n", regex=True)
 # df["Interested?"] = ""
 
-
+st.write(len(df))
 df = df[(df['Project Name'].str.len()>1) & (df['Summary'].str.len()>1)& (df['Industry'].str.len()>1)& (df['Questions We Need Answered'].str.len()>1)]
 
-
+st.write(len(df))
 
 custom_css = {
     ".ag-header-cell-text":{"color":"#fff","font-size":"15px !important"},
