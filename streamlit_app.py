@@ -60,8 +60,8 @@ eReg = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2
 @st.cache_data(ttl=3600)
 def access_api():
     redirect_uri = "https://jacobsummit-sme-hub-streamlit-app-z2fgzo.streamlit.app/"
-    token_refresh = requests.post(f"https://accounts.zoho.com/oauth/v2/token?refresh_token={st.secrets["refresh-token"]}&client_id={st.secrets["client_id"]}&client_secret={st.secrets["client_secret"]}&redirect_uri={redirect_uri}&grant_type=refresh_token")
-    access_token = token_refresh.json()["access_token"]
+    token_refresh = requests.post(f"https://accounts.zoho.com/oauth/v2/token?refresh_token={st.secrets['refresh-token']}&client_id={st.secrets['client_id']}&client_secret={st.secrets['client_secret']}&redirect_uri={redirect_uri}&grant_type=refresh_token")
+    # access_token = token_refresh.json()["access_token"]
     ac = AnalyticsClient(client_id, client_secret, refresh_token)
     return ac
 
