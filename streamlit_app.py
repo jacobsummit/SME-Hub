@@ -67,20 +67,16 @@ def access_api():
 
 @st.cache_data
 def load_data():
-    workspace_id = "2388301000001369040"
-    view_id = "2388301000003333001"
     tmpf = tempfile.NamedTemporaryFile(delete=False)
-    bulk = access_api().get_bulk_instance(st.secrets["org_id"], workspace_id)
-    result = bulk.export_data(view_id, "csv", tmpf.name)
+    bulk = access_api().get_bulk_instance(st.secrets["org_id"], "2388301000001369040")
+    result = bulk.export_data("2388301000003333001", "csv", tmpf.name)
     df = pd.read_csv(tmpf)
     return df
 
 
 def validEmail(email):
-    if re.fullmatch(eReg, email):
-      return True
-    else:
-      return False
+    if re.fullmatch(eReg, email): return True
+    else: return False
 
 def anaEmail(anav, fullname, useremail):
     fname = anav.iloc[0,12].split(" ")[0]
