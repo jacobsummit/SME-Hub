@@ -13,8 +13,16 @@ im = Image.open("svsfavicon.png")
 head = Image.open("image1.png")
 
 st.set_page_config(layout='wide', page_icon=im, page_title="SME Hub")
-st.columns(3)[1].image(head)
-st.columns(3)[2].markdown("""<style>.green-square {
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.write('<- See sidebar for instructions ')
+
+with col2:
+    st.image(head)
+
+with col3:
+    st.markdown("""<style>.green-square {
 position: relative;
 display: inline-block;
 width: 20px;
@@ -30,9 +38,8 @@ left: 0px;
 background-color: gold;
 margin-bottom: -4px;
 }</style>
-<div class="green-square">
+<div class="green-square"></div>
 <span style="position: relative; right:0px;">= Complete</span>
-</div>
 <br/>
 <div class="green-square yellow-square"></div>
 <span> = In Process</span>""",unsafe_allow_html=True)
