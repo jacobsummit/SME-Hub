@@ -185,7 +185,7 @@ function(params){
 """)
 
 gb = GridOptionsBuilder.from_dataframe(df)
-# gb.sideBar = ["filters"]
+gb.sideBar = True
 gb.configure_default_column(sizeColumnsToFit=True, enablePivot=False, enableValue=False, enableRowGroup=True, suppressColumnsToolPanel=True)
 gb.configure_selection(selection_mode="multiple", use_checkbox=True)
 
