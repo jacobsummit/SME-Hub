@@ -169,6 +169,7 @@ function(params){
             'color': 'green', 
             'backgroundColor': 'green',
             'display':'block',
+            'borderColor':'gray'
         }
     }
     else if (params.value > '0') {
