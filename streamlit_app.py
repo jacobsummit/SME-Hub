@@ -13,7 +13,7 @@ from PIL import Image
 im = Image.open("svsfavicon.png")
 head = Image.open("image1.png")
 
-st.set_page_config(layout='wide', page_icon=im, page_title="SME Hub")
+st.set_page_config(layout='wide', page_icon=im, page_title="SME Hub", initial_sidebar_state="expanded")
 col1, col2, col3 = st.columns(3)
 
 with col1:
