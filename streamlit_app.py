@@ -219,7 +219,7 @@ v = ag['selected_rows']
 v = pd.DataFrame(v)
 # st.sidebar.write(v.columns)
 enButton = True
-if fullName and validEmail(userEmail) and not v.empty():
+if fullName and validEmail(userEmail) and not v.empty:
     enButton = False
 
 if st.sidebar.button("Send Email to Express Interest", disabled=enButton):
