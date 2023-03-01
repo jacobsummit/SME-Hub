@@ -220,7 +220,6 @@ v = pd.DataFrame(v)
 enButton = True
 if fullName and validEmail(userEmail) and not v.empty:
     enButton = False
-else: st.sidebar.write("Make sure to enter your name, email, and check at least one box")
 
 if st.sidebar.button("Send Email to Express Interest", disabled=enButton):
     # emailer(userEmail, extEmail(v, fullName), subject)
@@ -234,7 +233,7 @@ if st.sidebar.button("Send Email to Express Interest", disabled=enButton):
         # emailer(userEmail, amEmail(v[v["AM Email"]==am], fullName, userEmail), "Message from SME Hub!")
         st.markdown(amEmail(v[v["AM Email"]==am], fullName, userEmail), unsafe_allow_html=True)
             
-        
+if enButton == False: st.sidebar.write("Make sure to enter your name, email, and check at least one box")
 
 
             
