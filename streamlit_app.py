@@ -73,7 +73,7 @@ def load_data():
     tmpf = tempfile.NamedTemporaryFile(delete=False)
     bulk = access_api().get_bulk_instance(st.secrets["org_id"], "2388301000001369040")
     result = bulk.export_data("2388301000003333001", "csv", tmpf.name)
-    df = pd.read_csv(tmpf)
+    df = pd.read_csv(tmpf, dtype={"Project ID":str})
     return df
 
 
