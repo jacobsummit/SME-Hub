@@ -218,25 +218,28 @@ if v:
     
     v = pd.DataFrame(v)
     # st.sidebar.write(v.columns)
+    enButton = True
     if fullName and validEmail(userEmail):
-        if st.button("Send Email to Express Interest"):
-            # emailer(userEmail, extEmail(v, fullName), subject)
-            st.markdown(extEmail(v, fullName), unsafe_allow_html=True)
-            anaList = v["Project Owner Email"].unique().tolist()
-            amList = v["AM Email"].unique().tolist()
-            for ana in anaList:
-                # emailer("jacobtminson@gmail.com", anaEmail(v[v["Project Owner Email"]==ana]), "You have a message from SME HUB!")
-                st.markdown(anaEmail(v[v["Project Owner Email"]==ana], fullName, userEmail), unsafe_allow_html=True)
-            for am in amList:
-                # emailer(userEmail, amEmail(v[v["AM Email"]==am], fullName, userEmail), "Message from SME Hub!")
-                st.markdown(amEmail(v[v["AM Email"]==am], fullName, userEmail), unsafe_allow_html=True)
+        enButton = False
+
+    if st.sidebar.button("Send Email to Express Interest", disabled=enButton):
+        # emailer(userEmail, extEmail(v, fullName), subject)
+        st.markdown(extEmail(v, fullName), unsafe_allow_html=True)
+        anaList = v["Project Owner Email"].unique().tolist()
+        amList = v["AM Email"].unique().tolist()
+        for ana in anaList:
+            # emailer("jacobtminson@gmail.com", anaEmail(v[v["Project Owner Email"]==ana]), "You have a message from SME HUB!")
+            st.markdown(anaEmail(v[v["Project Owner Email"]==ana], fullName, userEmail), unsafe_allow_html=True)
+        for am in amList:
+            # emailer(userEmail, amEmail(v[v["AM Email"]==am], fullName, userEmail), "Message from SME Hub!")
+            st.markdown(amEmail(v[v["AM Email"]==am], fullName, userEmail), unsafe_allow_html=True)
                 
             
 
 
                 
         
-    else: st.write("please enter your name and valid email address in the sidebar to initiate the interest submission process.")
+    else: st.sidebar.write("please enter your name and valid email address in the sidebar to initiate the interest submission process.")
     st.write('### Selected Projects:')
     # st.write(anaList)
     for i in range(len(v)):
