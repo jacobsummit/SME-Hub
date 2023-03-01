@@ -176,13 +176,15 @@ function(params){
         return{
             'color': 'gold',
             'backgroundColor': 'gold',
+            'borderColor':'gray'
         }
     }
     if (params.value == '0') {
         return{
             'color': 'white',
             'backgroundColor': 'green',
-            'display':'none'
+            'display':'none',
+            'borderColor':'gray'
         }
     }
 }
