@@ -217,11 +217,11 @@ v = ag['selected_rows']
     
 v = pd.DataFrame(v)
 # st.sidebar.write(v.columns)
-enButton = True
+disButton = True
 if fullName and validEmail(userEmail) and not v.empty:
-    enButton = False
+    disButton = False
 
-if st.sidebar.button("Send Email to Express Interest", disabled=enButton):
+if st.sidebar.button("Send Email to Express Interest", disabled=disButton):
     # emailer(userEmail, extEmail(v, fullName), subject)
     st.markdown(extEmail(v, fullName), unsafe_allow_html=True)
     anaList = v["Project Owner Email"].unique().tolist()
@@ -233,7 +233,7 @@ if st.sidebar.button("Send Email to Express Interest", disabled=enButton):
         # emailer(userEmail, amEmail(v[v["AM Email"]==am], fullName, userEmail), "Message from SME Hub!")
         st.markdown(amEmail(v[v["AM Email"]==am], fullName, userEmail), unsafe_allow_html=True)
             
-if enButton == False: st.sidebar.write("Make sure to enter your name, email, and check at least one box")
+if disButton: st.sidebar.write("Make sure to enter your name, email, and check at least one box")
 
 
             
