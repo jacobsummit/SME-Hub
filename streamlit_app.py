@@ -89,11 +89,9 @@ def anaEmail(anav, fullname, useremail):
 
     for tech in range(len(anav)):
         contents += f"<p><b>Project Name:</b> {anav.iloc[tech, 7]}</p>"
-        contents += f"<p><b>Project url:</b> <a href='https://projects.zoho.com/portal/summitventurestudiodotcom#todomilestones/{anav.iloc[tech, 11]}/'>click here</a></p>"
+        contents += f"<p><b>Project url:</b> <a href='https://projects.zoho.com/portal/summitventurestudiodotcom#project/{anav.iloc[tech, 11]}'>click here</a></p>"
         contents += f"<p><b>Your questions about the tech:</b><br> {anav.iloc[tech, 10].replace('?', '?<br>')}</p><br>"
     return contents
-
-    
 
 def amEmail(amv, fullname, useremail):
     fname = amv.iloc[0,14].split(" ")[0]
