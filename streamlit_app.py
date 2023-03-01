@@ -221,6 +221,7 @@ v = pd.DataFrame(v)
 enButton = True
 if fullName and validEmail(userEmail) and not v.empty:
     enButton = False
+else: st.sidebar.write("please enter your name and valid email address in the sidebar to initiate the interest submission process.")
 
 if st.sidebar.button("Send Email to Express Interest", disabled=enButton):
     # emailer(userEmail, extEmail(v, fullName), subject)
@@ -239,7 +240,7 @@ if st.sidebar.button("Send Email to Express Interest", disabled=enButton):
 
             
     
-else: st.sidebar.write("please enter your name and valid email address in the sidebar to initiate the interest submission process.")
+
 st.write('### Selected Projects:')
 # st.write(anaList)
 for i in range(len(v)):
