@@ -221,7 +221,7 @@ v = pd.DataFrame(v)
 enButton = True
 if fullName and validEmail(userEmail) and not v.empty:
     enButton = False
-else: st.sidebar.write("please enter your name and valid email address in the sidebar to initiate the interest submission process.")
+else: st.sidebar.write("Make sure to enter your name, email, and check at least one box")
 
 if st.sidebar.button("Send Email to Express Interest", disabled=enButton):
     # emailer(userEmail, extEmail(v, fullName), subject)
