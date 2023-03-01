@@ -47,9 +47,9 @@ background-color: gold;
 <span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
 st.sidebar.header("SME HUB")
 st.sidebar.write("""Welcome to Summit Venture Studio's SME Hub! Thank you so much for taking the time to help us out.  Here are some instructions:\n
-Please begin by looking through the table to the left and checking the boxes of the projects you are interested in.  
+Please begin by looking through the table to the right and checking the boxes of the projects you are interested in.
 Hover on the table headers to get more information about what each column means.
-\nYou can also click on a header to sort alphanumerically, or you can click the three-bar menu on each header to sort or filter by different values. (If on mobile, press and hold)""")
+\nYou can also click on a header to sort alphanumerically, or you can click the three-bar menu on each header to filter by different values. (If on mobile, press and hold)""")
 ind_im = Image.open("menu_show.png")
 st.sidebar.image(ind_im)
 st.sidebar.write("""  Grouping by values is also available.
@@ -89,9 +89,11 @@ def anaEmail(anav, fullname, useremail):
 
     for tech in range(len(anav)):
         contents += f"<p><b>Project Name:</b> {anav.iloc[tech, 7]}</p>"
-        contents += f"<p><b>Project url:</b> <a href='https://projects.zoho.com/portal/summitventurestudiodotcom#project/{anav.iloc[tech, 11]}'>click here</a></p>"
+        contents += f"<p><b>Project url:</b> <a href='https://projects.zoho.com/portal/summitventurestudiodotcom#todomilestones/{anav.iloc[tech, 11]}/'>click here</a></p>"
         contents += f"<p><b>Your questions about the tech:</b><br> {anav.iloc[tech, 10].replace('?', '?<br>')}</p><br>"
     return contents
+
+    
 
 def amEmail(amv, fullname, useremail):
     fname = amv.iloc[0,14].split(" ")[0]
