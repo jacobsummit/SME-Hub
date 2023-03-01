@@ -126,7 +126,6 @@ with st.sidebar:
     userEmail = st.text_input(label = "Email", placeholder="Enter Email")
 
 df = load_data()
-st.dataframe(df)
 for col in df.columns[9:].tolist():
     df[col] = df[col].str.replace("%", "")
     df[col] = df[col].astype("float")
