@@ -226,7 +226,7 @@ if email_submit:
         for am in amList:
             # emailer(userEmail, amEmail(v[v["AM Email"]==am], fullName, userEmail), "Message from SME Hub!")
             st.markdown(amEmail(v[v["AM Email"]==am], fullName, userEmail), unsafe_allow_html=True)
-        st.sidebar.success("Email Successfully Sent!")
+        st.sidebar.success("Email Successfully Sent!", icon="🎉")
     if not fullName: st.sidebar.error("Please Enter your Name")
     if not validEmail(userEmail): st.sidebar.error("Please Enter a Valid Email Address")
     if v.empty: st.sidebar.error("Please check at least one box.")
