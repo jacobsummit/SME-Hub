@@ -212,7 +212,7 @@ with st.sidebar:
     with st.form("email_form"):
         fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
         userEmail = st.text_input(label = "Email", placeholder="Enter Email")
-    email_submit = st.form_submit_button("Send Email")
+        email_submit = st.form_submit_button("Send Email")
 
 if email_submit:
     if fullName and validEmail(userEmail) and not v.empty:
