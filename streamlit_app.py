@@ -119,7 +119,7 @@ def emailer(useremail, contents, subject):
 with st.sidebar:
     fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
     try: st.write(nameMessage)
-    catch: pass
+    except: pass
     userEmail = st.text_input(label = "Email", placeholder="Enter Email")
 
 df = load_data()
