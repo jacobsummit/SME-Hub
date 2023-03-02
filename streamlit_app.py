@@ -227,7 +227,7 @@ if st.sidebar.button("Send Email to Express Interest"):
         for am in amList:
             # emailer(userEmail, amEmail(v[v["AM Email"]==am], fullName, userEmail), "Message from SME Hub!")
             st.markdown(amEmail(v[v["AM Email"]==am], fullName, userEmail), unsafe_allow_html=True)
-    if not fullName: nameMessage = "name error"
+    if not fullName: st.error("name error")
     if not validEmail(userEmail): st.sidebar.write("email error")
     if v.empty: st.sidebar.write("Please check at least one box.")
 
