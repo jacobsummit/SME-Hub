@@ -116,11 +116,7 @@ def emailer(useremail, contents, subject):
     with yagmail.SMTP(st.secrets["sender"], st.secrets["sender-pass"]) as yag:
         yag.send(to=useremail, contents=contents, subject=subject)
         yagmail.SMTP.close(yag)
-with st.sidebar:
-    fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
-    try: st.write(nameMessage)
-    except: pass
-    userEmail = st.text_input(label = "Email", placeholder="Enter Email")
+
 
 df = load_data()
 for col in df.columns[9:].tolist():
@@ -205,17 +201,20 @@ gb.configure_columns(["Project ID","Project Owner","Project Owner Email", "SVS a
 go = gb.build()
 
 ag = AgGrid(df, height=600, gridOptions=go, theme="streamlit",fit_columns_on_grid_load=False,allow_unsafe_jscode=True,custom_css=custom_css,header_checkbox_selection_filtered_only=True,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED)
-
-
-
-
 v = ag['selected_rows']
 
     
 v = pd.DataFrame(v)
 # st.sidebar.write(v.columns)
 
-if st.sidebar.button("Send Email to Express Interest"):
+
+with st.sidebar:
+    with st.form("email_form"):
+        fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
+        userEmail = st.text_input(label = "Email", placeholder="Enter Email")
+    email_submit = st.form_submit_button("Send Email")
+
+if email_submit:
     if fullName and validEmail(userEmail) and not v.empty:
         # emailer(userEmail, extEmail(v, fullName), subject)
         st.markdown(extEmail(v, fullName), unsafe_allow_html=True)
