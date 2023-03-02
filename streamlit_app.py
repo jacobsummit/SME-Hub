@@ -214,7 +214,7 @@ v = ag['selected_rows']
 v = pd.DataFrame(v)
 # st.sidebar.write(v.columns)
 
-if st.sidebar.button("Send Email to Express Interest", disabled=disButton):
+if st.sidebar.button("Send Email to Express Interest"):
     if fullName and validEmail(userEmail) and not v.empty:
         # emailer(userEmail, extEmail(v, fullName), subject)
         st.markdown(extEmail(v, fullName), unsafe_allow_html=True)
