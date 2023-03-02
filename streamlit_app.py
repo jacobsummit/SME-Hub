@@ -116,9 +116,10 @@ def emailer(useremail, contents, subject):
     with yagmail.SMTP(st.secrets["sender"], st.secrets["sender-pass"]) as yag:
         yag.send(to=useremail, contents=contents, subject=subject)
         yagmail.SMTP.close(yag)
-
+nameMessage= ""
 with st.sidebar:
     fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
+    st.write(nameMessage)
     userEmail = st.text_input(label = "Email", placeholder="Enter Email")
 
 df = load_data()
@@ -226,7 +227,7 @@ if st.sidebar.button("Send Email to Express Interest"):
         for am in amList:
             # emailer(userEmail, amEmail(v[v["AM Email"]==am], fullName, userEmail), "Message from SME Hub!")
             st.markdown(amEmail(v[v["AM Email"]==am], fullName, userEmail), unsafe_allow_html=True)
-    if not fullName: st.sidebar.write("name error")
+    if not fullName: nameMessage = "name error"
     if not validEmail(userEmail): st.sidebar.write("email error")
     if v.empty: st.sidebar.write("Please check at least one box.")
 
