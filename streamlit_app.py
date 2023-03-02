@@ -213,21 +213,20 @@ v = ag['selected_rows']
     
 v = pd.DataFrame(v)
 # st.sidebar.write(v.columns)
-disButton = True
-if fullName and validEmail(userEmail) and not v.empty:
-    disButton = False
 
 if st.sidebar.button("Send Email to Express Interest", disabled=disButton):
-    # emailer(userEmail, extEmail(v, fullName), subject)
-    st.markdown(extEmail(v, fullName), unsafe_allow_html=True)
-    anaList = v["Project Owner Email"].unique().tolist()
-    amList = v["AM Email"].unique().tolist()
-    for ana in anaList:
-        # emailer("jacobtminson@gmail.com", anaEmail(v[v["Project Owner Email"]==ana]), "You have a message from SME HUB!")
-        st.markdown(anaEmail(v[v["Project Owner Email"]==ana], fullName, userEmail), unsafe_allow_html=True)
-    for am in amList:
-        # emailer(userEmail, amEmail(v[v["AM Email"]==am], fullName, userEmail), "Message from SME Hub!")
-        st.markdown(amEmail(v[v["AM Email"]==am], fullName, userEmail), unsafe_allow_html=True)
+    if fullName and validEmail(userEmail) and not v.empty:
+        # emailer(userEmail, extEmail(v, fullName), subject)
+        st.markdown(extEmail(v, fullName), unsafe_allow_html=True)
+        anaList = v["Project Owner Email"].unique().tolist()
+        amList = v["AM Email"].unique().tolist()
+        for ana in anaList:
+            # emailer("jacobtminson@gmail.com", anaEmail(v[v["Project Owner Email"]==ana]), "You have a message from SME HUB!")
+            st.markdown(anaEmail(v[v["Project Owner Email"]==ana], fullName, userEmail), unsafe_allow_html=True)
+        for am in amList:
+            # emailer(userEmail, amEmail(v[v["AM Email"]==am], fullName, userEmail), "Message from SME Hub!")
+            st.markdown(amEmail(v[v["AM Email"]==am], fullName, userEmail), unsafe_allow_html=True)
+    elif ~fullName:st.sidebar.write("name error")
             
 if disButton: st.sidebar.write("Make sure to enter your name, email, and check at least one box")
 
