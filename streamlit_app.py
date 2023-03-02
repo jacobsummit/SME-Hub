@@ -233,7 +233,7 @@ if email_submit:
             
 # if disButton: st.sidebar.write("Make sure to enter your name, email, and check at least one box")
 
-
+st.warning("yay!")
             
     
 
