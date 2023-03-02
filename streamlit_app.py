@@ -116,10 +116,10 @@ def emailer(useremail, contents, subject):
     with yagmail.SMTP(st.secrets["sender"], st.secrets["sender-pass"]) as yag:
         yag.send(to=useremail, contents=contents, subject=subject)
         yagmail.SMTP.close(yag)
-nameMessage= ""
 with st.sidebar:
     fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
-    st.write(nameMessage)
+    try: st.write(nameMessage)
+    catch: pass
     userEmail = st.text_input(label = "Email", placeholder="Enter Email")
 
 df = load_data()
