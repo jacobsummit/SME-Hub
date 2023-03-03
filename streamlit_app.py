@@ -24,13 +24,7 @@ with col2:
 
 with col3:
     st.markdown("""<style>
-    [data-testid=“stSidebar”][aria-expanded=“true”] > div:first-child {
-width: 400px;
-}
-[data-testid=“stSidebar”][aria-expanded=“false”] > div:first-child {
-width: 400px;
-margin-left: -400px;
-}
+    
 .green-square {
 position: relative;
 display: inline-block;
