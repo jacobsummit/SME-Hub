@@ -7,7 +7,7 @@ import requests
 import tempfile
 import re
 from AnalyticsClient import AnalyticsClient
-from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode
+from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, JsCode, ColumnsAutoSizeMode
 from streamlit_extras.switch_page_button import switch_page
 from PIL import Image
 im = Image.open("svsfavicon.png")
@@ -196,14 +196,13 @@ gb.configure_column("4", headerTooltip="Technical Validation")
 gb.configure_column("5", headerTooltip="Market Validation")
 gb.configure_column("6", headerTooltip="Final Review and Decision")
 gb.configure_column("Questions We Need Answered", headerTooltip="A list of a few questions we have about the project")
-gb.columns_auto_size_mode=ColumnsAutoSizeMode.FIT_CONTENTS
 
 gb.configure_columns(["Summary","Project Name","Questions We Need Answered","Industry"],wrapText = True,autoHeight = True)
 gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=48, resizable=False, cellStyle=cellstyle_jscode)
 gb.configure_columns(["Project ID","Project Owner","Project Owner Email", "SVS acct. mgr.", "AM Email"],hide=True)
 go = gb.build()
 
-ag = AgGrid(df, height=600, gridOptions=go, theme="streamlit",fit_columns_on_grid_load=False,allow_unsafe_jscode=True,custom_css=custom_css,header_checkbox_selection_filtered_only=True,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED)
+ag = AgGrid(df, height=600, gridOptions=go, theme="streamlit",columns_auto_size_mode=ColumnsAutoSizeMode.FIT_CONTENTS, fit_columns_on_grid_load=False,allow_unsafe_jscode=True,custom_css=custom_css,header_checkbox_selection_filtered_only=True,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED)
 v = ag['selected_rows']
 
     
