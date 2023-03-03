@@ -195,7 +195,7 @@ gb.configure_column("3", headerTooltip="Market Analysis")
 gb.configure_column("4", headerTooltip="Technical Validation")
 gb.configure_column("5", headerTooltip="Market Validation")
 gb.configure_column("6", headerTooltip="Final Review and Decision")
-gb.configure_column("Questions We Need Answered", headerTooltip="A list of a few questions we have about the project")
+gb.configure_column("Questions We Need Answered", headerTooltip="A list of a few questions we have about the project",flex=1)
 
 gb.configure_columns(["Summary","Project Name","Questions We Need Answered","Industry"],wrapText = True,autoHeight = True)
 gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=48, resizable=False, cellStyle=cellstyle_jscode)
