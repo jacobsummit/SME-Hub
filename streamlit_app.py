@@ -23,7 +23,11 @@ with col2:
     st.image(head)
 
 with col3:
-    st.markdown("""<style>.green-square {
+    st.markdown("""<style>
+    .sidebar .sidebar-content {{
+                width: 375px;
+            }}
+.green-square {
 position: relative;
 display: inline-block;
 width: 20px;
