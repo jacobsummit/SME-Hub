@@ -25,7 +25,7 @@ with col2:
 with col3:
     st.markdown("""<style>
     .sidebar .sidebar-content {{
-                width: 375px;
+                width: 200px;
             }}
 .green-square {
 position: relative;
