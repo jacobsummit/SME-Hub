@@ -46,6 +46,7 @@ background-color: gold;
 st.sidebar.header("SME HUB")
 st.sidebar.write("""Welcome to Summit Venture Studio's SME Hub! Thank you so much for taking the time to help us out.  Here are some instructions:\n
 Please begin by looking through the table to the right and checking the boxes of the projects you are interested in.
+\n**Columns 1-6 represent the stages in our analysis process.  Hover 
 \n**Column Definitions:** Hover on the table headers for at least three seconds to get more information about what each column means.
 \n**Sorting:** Click on a header to sort alphanumerically
 \n**Filtering:** Click the three-bar menufor filtering and other options . (If on mobile, press and hold)""")
@@ -202,7 +203,7 @@ gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=48, resizable=False
 gb.configure_columns(["Project ID","Project Owner","Project Owner Email", "SVS acct. mgr.", "AM Email"],hide=True)
 go = gb.build()
 
-ag = AgGrid(df, height=600, gridOptions=go, theme="streamlit",columns_auto_size_mode=ColumnsAutoSizeMode.FIT_ALL_COLUMNS_TO_VIEW, fit_columns_on_grid_load=False,allow_unsafe_jscode=True,custom_css=custom_css,header_checkbox_selection_filtered_only=True,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED)
+ag = AgGrid(df, height=600, gridOptions=go, theme="streamlit",columns_auto_size_mode=ColumnsAutoSizeMode.FIT_ALL_COLUMNS_TO_VIEW,allow_unsafe_jscode=True,custom_css=custom_css,header_checkbox_selection_filtered_only=True,use_checkbox=True,update_mode=GridUpdateMode.VALUE_CHANGED)
 v = ag['selected_rows']
 
     
