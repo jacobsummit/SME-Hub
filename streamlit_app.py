@@ -24,7 +24,7 @@ with col2:
 
 with col3:
     st.markdown("""<style>
-    section[data-testid="stSidebar"] .css-ng1t4o {{width: 14rem;}}
+    section[data-testid="stSidebar"] .css-1vencpc {{width: 14rem;}}
 .green-square {
 position: relative;
 display: inline-block;
