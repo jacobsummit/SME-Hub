@@ -124,11 +124,11 @@ for col in df.columns[9:].tolist():
     df[col] = df[col].astype("float")
     df[col] = df[col].fillna(0)
 
-keepCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email", "Project Name",
+keepCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email","Priority Level", "Project Name",
             "Summary", "Industry", "1. Eval & Screening", "2. Technical Analysis", "3. Market Analysis",
             "4. Technical Validation", "5. Market Validation", "6. Final Review and Decision",
             "Critical Questions"]
-newCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email", "Project Name",
+newCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email","Priority Level", "Project Name",
            "Summary", "Industry", "1", "2", "3", "4", "5", "6", "Critical Questions"]
 
 df = df[keepCols]
@@ -197,7 +197,7 @@ gb.configure_column("Critical Questions", headerTooltip="A list of a few questio
 
 gb.configure_columns(["Summary","Project Name","Critical Questions","Industry"],wrapText = True,autoHeight = True)
 gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=48, minWidth=48,resizable=False, cellStyle=cellstyle_jscode)
-gb.configure_columns(["Project ID","Project Owner","Project Owner Email", "SVS acct. mgr.", "AM Email"],hide=True)
+gb.configure_columns(["Project ID","Project Owner","Project Owner Email", "SVS acct. mgr.", "AM Email","Priority Level"],hide=True)
 go = gb.build()
 
 ag = AgGrid(df, height=600, gridOptions=go, theme="streamlit", fit_columns_on_grid_load=False,allow_unsafe_jscode=True,custom_css=custom_css,header_checkbox_selection_filtered_only=True,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED, enable_quicksearch=True, suppressMenuHide=True)
