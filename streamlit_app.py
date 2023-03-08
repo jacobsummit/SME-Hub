@@ -21,7 +21,7 @@ st.write('<- See sidebar for instructions ')
 # with col2:
 #     st.image(head)
 
-with col3:
+# with col3:
 #     st.markdown("""<style>
     
 # .green-square {
