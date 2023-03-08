@@ -19,33 +19,33 @@ col1, col2, col3 = st.columns(3)
 with col1:
     st.write('<- See sidebar for instructions ')
 
-with col2:
-    st.image(head)
+# with col2:
+#     st.image(head)
 
-with col3:
-    st.markdown("""<style>
+# with col3:
+#     st.markdown("""<style>
     
-.green-square {
-position: relative;
-display: inline-block;
-width: 20px;
-height: 20px;
-background-color: green;
+# .green-square {
+# position: relative;
+# display: inline-block;
+# width: 20px;
+# height: 20px;
+# background-color: green;
 
-float: right;
-}
+# float: right;
+# }
 
-.yellow-square {
-background-color: gold;
-}</style><br><br>
-<div class="green-square"></div>
-<span style="float:right; position: relative; right:10px;">Complete: </span>
-<br/>
-<div class="green-square yellow-square"></div>
-<span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
+# .yellow-square {
+# background-color: gold;
+# }</style><br><br>
+# <div class="green-square"></div>
+# <span style="float:right; position: relative; right:10px;">Complete: </span>
+# <br/>
+# <div class="green-square yellow-square"></div>
+# <span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
 st.sidebar.header("SME HUB")
 st.sidebar.write("""Begin by looking through the table to the right and checking the boxes of the projects you are interested in.
-\n**Columns 1-6 represent the stages in our analysis process.  Hover 
+\n**Columns 1-6 represent the stages in our analysis process.
 \n**Column Definitions:** Hover on the table headers for at least three seconds to get more information about what each column means.
 \n**Sorting:** Click on a header to sort alphanumerically
 \n**Filtering:** Click the three-bar menufor filtering and other options . (If on mobile, press and hold)""")
