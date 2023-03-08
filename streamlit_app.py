@@ -17,11 +17,11 @@ st.set_page_config(layout='wide', page_icon=im, page_title="SME Hub", initial_si
 
 
 st.write('<- See sidebar for more details')
-col1, col2, col3 = st.columns(3)
+col1, col2 = st.columns(2)
 with col1:
     st.write("Check boxes for projects you are interested in, then click the sidebar button in the top left for more information")
 
-with col3:
+with col2:
     st.markdown("""<style>
     
 .green-square {
