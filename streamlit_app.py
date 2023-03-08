@@ -20,7 +20,7 @@ st.set_page_config(layout='wide', page_icon=im, page_title="SME Hub", initial_si
 col1, col2 = st.columns((3,1))
 with col1:
     st.write('<- See sidebar for more details')
-    st.write("Check boxes for projects you are interested in, then click the sidebar button in the top left for more information")
+    st.write("Check boxes for projects you are interested in, then enter your information below.")
     with st.expander("Enter your information"):
         with st.form("email_form"):
             fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
