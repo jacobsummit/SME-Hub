@@ -43,7 +43,7 @@ with col1:
 # <br/>
 # <div class="green-square yellow-square"></div>
 # <span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
-st.sidebar.header("SME HUB")
+
 st.sidebar.write("""Begin by looking through the table to the right and checking the boxes of the projects you are interested in.
 \n**Columns 1-6 represent the stages in our analysis process.
 \n**Column Definitions:** Hover on the table headers for at least three seconds to get more information about what each column means.
