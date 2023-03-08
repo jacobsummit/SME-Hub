@@ -62,6 +62,7 @@ def access_api():
     token_refresh = requests.post(f"https://accounts.zoho.com/oauth/v2/token?refresh_token={st.secrets['refresh-token']}&client_id={st.secrets['client_id']}&client_secret={st.secrets['client_secret']}&redirect_uri={redirect_uri}&grant_type=refresh_token")
     # access_token = token_refresh.json()["access_token"]
     ac = AnalyticsClient(st.secrets['client_id'], st.secrets['client_secret'], st.secrets['refresh-token'])
+    test = "test"
     return ac
 
 @st.cache_data
