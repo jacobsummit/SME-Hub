@@ -22,26 +22,26 @@ st.write('<- See sidebar for instructions ')
 #     st.image(head)
 
 with col3:
-    st.markdown("""<style>
+#     st.markdown("""<style>
     
-.green-square {
-position: relative;
-display: inline-block;
-width: 20px;
-height: 20px;
-background-color: green;
+# .green-square {
+# position: relative;
+# display: inline-block;
+# width: 20px;
+# height: 20px;
+# background-color: green;
 
-float: right;
-}
+# float: right;
+# }
 
-.yellow-square {
-background-color: gold;
-}</style><br><br>
-<div class="green-square"></div>
-<span style="float:right; position: relative; right:10px;">Complete: </span>
-<br/>
-<div class="green-square yellow-square"></div>
-<span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
+# .yellow-square {
+# background-color: gold;
+# }</style><br><br>
+# <div class="green-square"></div>
+# <span style="float:right; position: relative; right:10px;">Complete: </span>
+# <br/>
+# <div class="green-square yellow-square"></div>
+# <span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
 
 st.sidebar.write("""Begin by looking through the table to the right and checking the boxes of the projects you are interested in.
 \n**Columns 1-6 represent the stages in our analysis process.
