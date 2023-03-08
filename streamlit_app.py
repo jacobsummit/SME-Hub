@@ -21,7 +21,11 @@ col1, col2 = st.columns((3,1))
 with col1:
     st.write('<- See sidebar for more details')
     st.write("Check boxes for projects you are interested in, then click the sidebar button in the top left for more information")
-
+    with st.expander("Enter your information")
+        with st.form("email_form"):
+            fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
+            userEmail = st.text_input(label = "Email", placeholder="Enter Email")
+            email_submit = st.form_submit_button("Send Email")
 with col2:
     st.markdown("""<style>
     
@@ -46,10 +50,7 @@ background-color: gold;
 
 with st.sidebar:
     st.write("Enter your information and a team member will reach out!")
-    with st.form("email_form"):
-        fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
-        userEmail = st.text_input(label = "Email", placeholder="Enter Email")
-        email_submit = st.form_submit_button("Send Email")
+    
     
 
 eReg = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
