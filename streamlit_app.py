@@ -119,7 +119,7 @@ def emailer(useremail, contents, subject):
 
 
 df = load_data()
-for col in df.columns[9:].tolist():
+for col in df.columns[10:].tolist():
     df[col] = df[col].str.replace("%", "")
     df[col] = df[col].astype("float")
     df[col] = df[col].fillna(0)
