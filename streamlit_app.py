@@ -123,6 +123,7 @@ for col in df.columns[9:].tolist():
     df[col] = df[col].str.replace("%", "")
     df[col] = df[col].astype("float")
     df[col] = df[col].fillna(0)
+st.dataframe(df)
 
 keepCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email","Priority Level", "Project Name",
             "Summary", "Industry", "1. Eval & Screening", "2. Technical Analysis", "3. Market Analysis",
