@@ -129,9 +129,9 @@ for col in df.columns[9:].tolist():
 keepCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email", "Project Name",
             "Summary", "Industry", "1. Eval & Screening", "2. Technical Analysis", "3. Market Analysis",
             "4. Technical Validation", "5. Market Validation", "6. Final Review and Decision",
-            "Questions We Need Answered"]
+            "Critical Questions"]
 newCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email", "Project Name",
-           "Summary", "Industry", "1", "2", "3", "4", "5", "6", "Questions We Need Answered"]
+           "Summary", "Industry", "1", "2", "3", "4", "5", "6", "Critical Questions"]
 
 df = df[keepCols]
 df.columns = newCols 
@@ -140,10 +140,10 @@ cols = df.columns.tolist()
 cols = cols[5:]+cols[:5]
 df = df[cols]
 
-# df["Questions We Need Answered"] = df["Questions We Need Answered"].str.replace("?", "?\n", regex=True)
+# df["Critical Questions"] = df["Critical Questions"].str.replace("?", "?\n", regex=True)
 
 # st.write(len(df))
-df = df[(df['Project Name'].str.len()>1) & (df['Summary'].str.len()>1)& (df['Industry'].str.len()>1)& (df['Questions We Need Answered'].str.len()>1)]
+df = df[(df['Project Name'].str.len()>1) & (df['Summary'].str.len()>1)& (df['Industry'].str.len()>1)& (df['Critical Questions'].str.len()>1)]
 
 # st.write(len(df))
 
@@ -195,9 +195,9 @@ gb.configure_column("3", headerTooltip="Market Analysis")
 gb.configure_column("4", headerTooltip="Technical Validation")
 gb.configure_column("5", headerTooltip="Market Validation")
 gb.configure_column("6", headerTooltip="Final Review and Decision")
-gb.configure_column("Questions We Need Answered", headerTooltip="A list of a few questions we have about the project")
+gb.configure_column("Critical Questions", headerTooltip="A list of a few questions we have about the project")
 
-gb.configure_columns(["Summary","Project Name","Questions We Need Answered","Industry"],wrapText = True,autoHeight = True)
+gb.configure_columns(["Summary","Project Name","Critical Questions","Industry"],wrapText = True,autoHeight = True)
 gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=48, minWidth=48,resizable=False, cellStyle=cellstyle_jscode)
 gb.configure_columns(["Project ID","Project Owner","Project Owner Email", "SVS acct. mgr.", "AM Email"],hide=True)
 go = gb.build()
