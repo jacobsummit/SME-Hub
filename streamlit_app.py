@@ -44,14 +44,19 @@ background-color: gold;
 <div class="green-square yellow-square"></div>
 <span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
 
-st.sidebar.write("""**Columns 1-6 represent the stages in our analysis process.**
-\n**Column Definitions:** Hover on the table headers for at least three seconds to get more information.
-\n**Sorting:** Click on a header to sort alphanumerically
-\n**Filtering:** Click the three-bar menufor filtering and other options . (If on mobile, press and hold)""")
-ind_im = Image.open("menu_show.png")
-st.sidebar.image(ind_im)
-st.sidebar.write("""Once you have selected the projects you are interested in, fill in your name and email.  
-\nNext, click on the button that appears below the table. You will receive an email confirming your choices. A specialist from our team will reach out to you shortly regarding your selections. Thank you!""")
+with st.sidebar:
+    with st.form("email_form"):
+        fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
+        userEmail = st.text_input(label = "Email", placeholder="Enter Email")
+        email_submit = st.form_submit_button("Send Email")
+    st.write("""**Columns 1-6 represent the stages in our analysis process.**
+    \n**Column Definitions:** Hover on the table headers for at least three seconds to get more information.
+    \n**Sorting:** Click on a header to sort alphanumerically
+    \n**Filtering:** Click the three-bar menufor filtering and other options . (If on mobile, press and hold)""")
+    ind_im = Image.open("menu_show.png")
+    st.image(ind_im)
+    st.write("""Once you have selected the projects you are interested in, fill in your name and email.  
+    \nNext, click on the button that appears below the table. You will receive an email confirming your choices. A specialist from our team will reach out to you shortly regarding your selections. Thank you!""")
 
 
 eReg = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
@@ -211,11 +216,7 @@ v = pd.DataFrame(v)
 # st.sidebar.write(v.columns)
 
 
-with st.sidebar:
-    with st.form("email_form"):
-        fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
-        userEmail = st.text_input(label = "Email", placeholder="Enter Email")
-        email_submit = st.form_submit_button("Send Email")
+
 
 if email_submit:
     if fullName and validEmail(userEmail) and not v.empty:
