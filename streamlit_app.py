@@ -123,7 +123,6 @@ for col in df.columns[10:].tolist():
     df[col] = df[col].str.replace("%", "")
     df[col] = df[col].astype("float")
     df[col] = df[col].fillna(0)
-st.dataframe(df)
 
 keepCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email","Priority Level", "Project Name",
             "Summary", "Industry", "1. Eval & Screening", "2. Technical Analysis", "3. Market Analysis",
@@ -141,10 +140,10 @@ df = df[cols]
 
 # df["Critical Questions"] = df["Critical Questions"].str.replace("?", "?\n", regex=True)
 
-# st.write(len(df))
 df = df[(df['Project Name'].str.len()>1) & (df['Summary'].str.len()>1)& (df['Industry'].str.len()>1)& (df['Critical Questions'].str.len()>1)]
 df = df.sort_values("Priority Level", ascending=False)
-# st.write(len(df))
+st.dataframe(df)
+
 
 custom_css = {
     ".ag-header-cell-text":{"color":"#fff","font-size":"15px !important"},
