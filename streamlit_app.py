@@ -135,14 +135,14 @@ df = df[keepCols]
 df.columns = newCols 
 
 cols = df.columns.tolist()
-cols = cols[5:]+cols[:5]
+cols = cols[6:]+cols[:6]
 df = df[cols]
 
 # df["Critical Questions"] = df["Critical Questions"].str.replace("?", "?\n", regex=True)
 
 # st.write(len(df))
 df = df[(df['Project Name'].str.len()>1) & (df['Summary'].str.len()>1)& (df['Industry'].str.len()>1)& (df['Critical Questions'].str.len()>1)]
-
+df.sort_values("Priority Level")
 # st.write(len(df))
 
 custom_css = {
