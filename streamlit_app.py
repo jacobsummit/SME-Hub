@@ -143,7 +143,7 @@ df = df[cols]
 
 # st.write(len(df))
 df = df[(df['Project Name'].str.len()>1) & (df['Summary'].str.len()>1)& (df['Industry'].str.len()>1)& (df['Critical Questions'].str.len()>1)]
-df.sort_values("Priority Level")
+df = df.sort_values("Priority Level")
 # st.write(len(df))
 
 custom_css = {
