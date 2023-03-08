@@ -70,7 +70,7 @@ def load_data():
     bulk = access_api().get_bulk_instance(st.secrets["org_id"], "2388301000001369040")
     result = bulk.export_data("2388301000003333001", "csv", tmpf.name)
     df = pd.read_csv(tmpf, dtype={"Project ID":str})
-    df["Priority Level"] = df["Priority Level"].replace("", np.nan)
+    df["Priority Level"] = df["Priority Level"].replace(" ", np.nan)
     for col in df.columns[10:].tolist():
         df[col] = df[col].str.replace("%", "")
         df[col] = df[col].astype("float")
