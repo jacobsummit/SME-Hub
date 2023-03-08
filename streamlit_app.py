@@ -36,7 +36,7 @@ float: right;
 
 .yellow-square {
 background-color: gold;
-}</style><br><br>
+}</style>
 <div class="green-square"></div>
 <span style="float:right; position: relative; right:10px;">Complete: </span>
 <br/>
