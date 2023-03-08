@@ -70,6 +70,30 @@ def load_data():
     bulk = access_api().get_bulk_instance(st.secrets["org_id"], "2388301000001369040")
     result = bulk.export_data("2388301000003333001", "csv", tmpf.name)
     df = pd.read_csv(tmpf, dtype={"Project ID":str})
+    for col in df.columns[10:].tolist():
+        df[col] = df[col].str.replace("%", "")
+        df[col] = df[col].astype("float")
+        df[col] = df[col].fillna(0)
+
+    keepCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email","Priority Level", "Project Name",
+                "Summary", "Industry", "1. Eval & Screening", "2. Technical Analysis", "3. Market Analysis",
+                "4. Technical Validation", "5. Market Validation", "6. Final Review and Decision",
+                "Critical Questions"]
+    newCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email","Priority Level", "Project Name",
+            "Summary", "Industry", "1", "2", "3", "4", "5", "6", "Critical Questions"]
+
+    df = df[keepCols]
+    df.columns = newCols 
+
+    cols = df.columns.tolist()
+    cols = cols[6:]+cols[:6]
+    df = df[cols]
+
+    # df["Critical Questions"] = df["Critical Questions"].str.replace("?", "?\n", regex=True)
+
+    df = df[(df['Project Name'].str.len()>1) & (df['Summary'].str.len()>1)& (df['Industry'].str.len()>1)& (df['Critical Questions'].str.len()>1)]
+    df = df.sort_values("Priority Level", ascending=True,na_position="last")
+
     return df
 
 
@@ -119,29 +143,7 @@ def emailer(useremail, contents, subject):
 
 
 df = load_data()
-for col in df.columns[10:].tolist():
-    df[col] = df[col].str.replace("%", "")
-    df[col] = df[col].astype("float")
-    df[col] = df[col].fillna(0)
 
-keepCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email","Priority Level", "Project Name",
-            "Summary", "Industry", "1. Eval & Screening", "2. Technical Analysis", "3. Market Analysis",
-            "4. Technical Validation", "5. Market Validation", "6. Final Review and Decision",
-            "Critical Questions"]
-newCols = ["Project ID", "Project Owner", "Project Owner Email", "SVS acct. mgr.", "AM Email","Priority Level", "Project Name",
-           "Summary", "Industry", "1", "2", "3", "4", "5", "6", "Critical Questions"]
-
-df = df[keepCols]
-df.columns = newCols 
-
-cols = df.columns.tolist()
-cols = cols[6:]+cols[:6]
-df = df[cols]
-
-# df["Critical Questions"] = df["Critical Questions"].str.replace("?", "?\n", regex=True)
-
-df = df[(df['Project Name'].str.len()>1) & (df['Summary'].str.len()>1)& (df['Industry'].str.len()>1)& (df['Critical Questions'].str.len()>1)]
-df = df.sort_values("Priority Level", ascending=True,na_position="last")
 st.dataframe(df)
 
 
