@@ -16,9 +16,10 @@ head = Image.open("image1.png")
 st.set_page_config(layout='wide', page_icon=im, page_title="SME Hub", initial_sidebar_state="collapsed")
 
 
-st.write('<- See sidebar for more details')
+
 col1, col2 = st.columns((3,1))
 with col1:
+    st.write('<- See sidebar for more details')
     st.write("Check boxes for projects you are interested in, then click the sidebar button in the top left for more information")
 
 with col2:
