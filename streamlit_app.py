@@ -44,8 +44,7 @@ background-color: gold;
 <div class="green-square yellow-square"></div>
 <span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
 st.sidebar.header("SME HUB")
-st.sidebar.write("""Welcome to Summit Venture Studio's SME Hub! Thank you so much for taking the time to help us out.  Here are some instructions:\n
-Please begin by looking through the table to the right and checking the boxes of the projects you are interested in.
+st.sidebar.write("""Begin by looking through the table to the right and checking the boxes of the projects you are interested in.
 \n**Columns 1-6 represent the stages in our analysis process.  Hover 
 \n**Column Definitions:** Hover on the table headers for at least three seconds to get more information about what each column means.
 \n**Sorting:** Click on a header to sort alphanumerically
