@@ -141,7 +141,7 @@ df = df[cols]
 # df["Critical Questions"] = df["Critical Questions"].str.replace("?", "?\n", regex=True)
 
 df = df[(df['Project Name'].str.len()>1) & (df['Summary'].str.len()>1)& (df['Industry'].str.len()>1)& (df['Critical Questions'].str.len()>1)]
-df = df.sort_values("Priority Level", ascending=False)
+df = df.sort_values("Priority Level", ascending=True)
 st.dataframe(df)
 
 
