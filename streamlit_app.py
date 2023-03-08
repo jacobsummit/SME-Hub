@@ -50,12 +50,13 @@ with st.sidebar:
         fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
         userEmail = st.text_input(label = "Email", placeholder="Enter Email")
         email_submit = st.form_submit_button("Send Email")
-    st.write("""**Columns 1-6 represent the stages in our analysis process.**
-    \n**Column Definitions:** Hover on the table headers for at least three seconds to get more information.
-    \n**Sorting:** Click on a header to sort alphanumerically
-    \n**Filtering:** Click the three-bar menufor filtering and other options . (If on mobile, press and hold)""")
-    ind_im = Image.open("menu_show.png")
-    st.image(ind_im)
+    with st.expander("Help for Table Usage",expanded=False):
+        st.write("""**Columns 1-6 represent the stages in our analysis process.**
+        \n**Column Definitions:** Hover on the table headers for at least three seconds to get more information.
+        \n**Sorting:** Click on a header to sort alphanumerically
+        \n**Filtering:** Click the three-bar menufor filtering and other options . (If on mobile, press and hold)""")
+        ind_im = Image.open("menu_show.png")
+        st.image(ind_im)
 
 eReg = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
 
