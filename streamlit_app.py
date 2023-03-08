@@ -17,7 +17,31 @@ st.set_page_config(layout='wide', page_icon=im, page_title="SME Hub", initial_si
 
 
 st.write('<- See sidebar for instructions ')
+col1, col2, col3 = st.columns(3)
+# with col2:
+#     st.image(head)
 
+with col3:
+    st.markdown("""<style>
+    
+.green-square {
+position: relative;
+display: inline-block;
+width: 20px;
+height: 20px;
+background-color: green;
+
+float: right;
+}
+
+.yellow-square {
+background-color: gold;
+}</style><br><br>
+<div class="green-square"></div>
+<span style="float:right; position: relative; right:10px;">Complete: </span>
+<br/>
+<div class="green-square yellow-square"></div>
+<span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
 
 st.sidebar.write("""Begin by looking through the table to the right and checking the boxes of the projects you are interested in.
 \n**Columns 1-6 represent the stages in our analysis process.
@@ -158,7 +182,7 @@ function(params){
 
 gb = GridOptionsBuilder.from_dataframe(df)
 # gb.configure_side_bar(filters_panel=True, columns_panel=False, defaultToolPanel="filters")
-gb.configure_default_column(sizeColumnsToFit=True, enablePivot=False, enableValue=False, enableRowGroup=True, suppressColumnsToolPanel=True,menuTabs=['filterMenuTab'], suppressMenuHide=True)
+gb.configure_default_column(sizeColumnsToFit=True, enablePivot=False, enableValue=False, enableRowGroup=True, suppressColumnsToolPanel=True,menuTabs=['filterMenuTab'])
 gb.configure_selection(selection_mode="multiple", use_checkbox=True)
 
 gb.configure_column("Project Name", headerTooltip="The name of the technology", width=150)
