@@ -144,8 +144,7 @@ def emailer(useremail, contents, subject):
 
 
 df = load_data()
-st.write(df.iloc[0,-1].isspace())
-st.dataframe(df)
+
 
 
 custom_css = {
