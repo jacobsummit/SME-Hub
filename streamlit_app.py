@@ -19,7 +19,7 @@ st.set_page_config(layout='wide', page_icon=im, page_title="SME Hub", initial_si
 st.write('<- See sidebar for more details')
 col1, col2, col3 = st.columns(3)
 with col1:
-    st.write("Check boxes for projects you are interested in, then open the sidebar above for more information.")
+    st.write("Check boxes for projects you are interested in, then click the sidebar button in the top left for more information")
 
 with col3:
     st.markdown("""<style>
@@ -43,8 +43,8 @@ background-color: gold;
 <div class="green-square yellow-square"></div>
 <span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
 
-st.sidebar.write("""**Columns 1-6 represent the stages in our analysis process.
-\n**Column Definitions:** Hover on the table headers for at least three seconds to get more information about what each column means.
+st.sidebar.write("""**Columns 1-6 represent the stages in our analysis process.**
+\n**Column Definitions:** Hover on the table headers for at least three seconds to get more information.
 \n**Sorting:** Click on a header to sort alphanumerically
 \n**Filtering:** Click the three-bar menufor filtering and other options . (If on mobile, press and hold)""")
 ind_im = Image.open("menu_show.png")
@@ -200,7 +200,7 @@ gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=48, minWidth=48,res
 gb.configure_columns(["Project ID","Project Owner","Project Owner Email", "SVS acct. mgr.", "AM Email"],hide=True)
 go = gb.build()
 
-ag = AgGrid(df, height=600, gridOptions=go, theme="streamlit", fit_columns_on_grid_load=False,allow_unsafe_jscode=True,custom_css=custom_css,header_checkbox_selection_filtered_only=True,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED, enable_quicksearch=True)
+ag = AgGrid(df, height=600, gridOptions=go, theme="streamlit", fit_columns_on_grid_load=False,allow_unsafe_jscode=True,custom_css=custom_css,header_checkbox_selection_filtered_only=True,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED, enable_quicksearch=True, suppressMenuHide=True)
 v = ag['selected_rows']
 
     
