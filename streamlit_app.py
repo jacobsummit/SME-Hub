@@ -144,7 +144,7 @@ def emailer(useremail, contents, subject):
 
 
 df = load_data()
-st.write(df.iloc[0,-1])
+st.write(type(df.iloc[0,-1]))
 st.dataframe(df)
 
 
