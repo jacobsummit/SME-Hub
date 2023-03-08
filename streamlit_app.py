@@ -186,7 +186,7 @@ gb = GridOptionsBuilder.from_dataframe(df)
 gb.configure_default_column(sizeColumnsToFit=True, enablePivot=False, enableValue=False, enableRowGroup=True, suppressColumnsToolPanel=True)
 gb.configure_selection(selection_mode="multiple", use_checkbox=True)
 
-gb.configure_column("Project Name", headerTooltip="The name of the technology", width=40)
+gb.configure_column("Project Name", headerTooltip="The name of the technology", width=100)
 gb.configure_column("Summary", headerTooltip="A brief statement including details about the technology")
 gb.configure_column("Industry", headerTooltip="The industry that the technology belongs to")
 gb.configure_column("1", headerTooltip="Initial Analysis")
