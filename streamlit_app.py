@@ -167,10 +167,10 @@ df = load_data()
 
 gb = GridOptionsBuilder.from_dataframe(df)
 # gb.configure_side_bar(filters_panel=True, columns_panel=False, defaultToolPanel="filters")
-gb.configure_default_column(sizeColumnsToFit=False, enablePivot=False, enableValue=False, enableRowGroup=True, suppressColumnsToolPanel=True,menuTabs=['filterMenuTab'], suppressMenuHide=True)
+gb.configure_default_column(sizeColumnsToFit=False, enablePivot=False, enableValue=False, enableRowGroup=True, suppressColumnsToolPanel=True,menuTabs=['filterMenuTab'])
 gb.configure_selection(selection_mode="multiple", use_checkbox=True)
 
-gb.configure_column("Project Name", headerTooltip="The name of the technology", width=150,suppressMenuHide=True)
+gb.configure_column("Project Name", headerTooltip="The name of the technology", width=150)
 gb.configure_column("Summary", headerTooltip="A brief statement including details about the technology")
 gb.configure_column("Industry", headerTooltip="The industry that the technology belongs to", width=130)
 gb.configure_column("1", headerTooltip="Initial Analysis")
@@ -186,7 +186,7 @@ gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=48, minWidth=48,res
 gb.configure_columns(["Project ID","Project Owner","Project Owner Email", "SVS acct. mgr.", "AM Email","Priority Level"],hide=True)
 go = gb.build()
 
-ag = AgGrid(df, height=600, gridOptions=go, theme="streamlit", fit_columns_on_grid_load=True,allow_unsafe_jscode=True,custom_css=custom_css,header_checkbox_selection_filtered_only=True,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED, enable_quicksearch=True, suppressMenuHide=True)
+ag = AgGrid(df, height=600, gridOptions=go, theme="streamlit", fit_columns_on_grid_load=True,allow_unsafe_jscode=True,custom_css=custom_css,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED, enable_quicksearch=True)
 v = pd.DataFrame(ag['selected_rows'])
 
 
