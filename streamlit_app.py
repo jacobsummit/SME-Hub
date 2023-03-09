@@ -221,13 +221,12 @@ if email_submit:
 # if disButton: st.sidebar.write("Make sure to enter your name, email, and check at least one box")
 
 with st.sidebar:
-    with st.expander("Help for Table Usage",expanded=False):
-        st.write("""**Columns 1-6 represent the stages in our analysis process.**
-        \n**Column Definitions:** Hover on the table headers for at least three seconds to get more information.
-        \n**Sorting:** Click on a header to sort alphanumerically
-        \n**Filtering:** Click the three-bar menufor filtering and other options . (If on mobile, press and hold)""")
-        ind_im = Image.open("menu_show.png")
-        st.image(ind_im)
+    st.write("""**Columns 1-6 represent the stages in our analysis process.**
+    \n**Column Definitions:** Hover on the table headers for at least three seconds to get more information.
+    \n**Sorting:** Click on a header to sort alphanumerically
+    \n**Filtering:** Click the three-bar menufor filtering and other options . (If on mobile, press and hold)""")
+    ind_im = Image.open("menu_show.png")
+    st.image(ind_im)
 
 st.write('### Selected Projects:')
 # st.write(anaList)
