@@ -172,7 +172,7 @@ gb.configure_selection(selection_mode="multiple", use_checkbox=True)
 
 gb.configure_column("Project Name", headerTooltip="The name of the technology", width=150,suppressMenuHide=True)
 gb.configure_column("Summary", headerTooltip="A brief statement including details about the technology")
-gb.configure_column("Industry", headerTooltip="The industry that the technology belongs to", width=150)
+gb.configure_column("Industry", headerTooltip="The industry that the technology belongs to", width=130)
 gb.configure_column("1", headerTooltip="Initial Analysis")
 gb.configure_column("2", headerTooltip="Technical Analysis")
 gb.configure_column("3", headerTooltip="Market Analysis")
@@ -193,15 +193,17 @@ v = pd.DataFrame(ag['selected_rows'])
 if email_submit:
     if fullName and validEmail(userEmail) and not v.empty:
         # emailer(userEmail, extEmail(v, fullName), subject)
-        st.markdown(extEmail(v, fullName), unsafe_allow_html=True)
+        # st.markdown(extEmail(v, fullName), unsafe_allow_html=True)
         anaList = v["Project Owner Email"].unique().tolist()
         amList = v["AM Email"].unique().tolist()
         for ana in anaList:
+            pass
             # emailer("jacobtminson@gmail.com", anaEmail(v[v["Project Owner Email"]==ana]), "You have a message from SME HUB!")
-            st.markdown(anaEmail(v[v["Project Owner Email"]==ana], fullName, userEmail), unsafe_allow_html=True)
+            # st.markdown(anaEmail(v[v["Project Owner Email"]==ana], fullName, userEmail), unsafe_allow_html=True)
         for am in amList:
+            pass
             # emailer(userEmail, amEmail(v[v["AM Email"]==am], fullName, userEmail), "Message from SME Hub!")
-            st.markdown(amEmail(v[v["AM Email"]==am], fullName, userEmail), unsafe_allow_html=True)
+            # st.markdown(amEmail(v[v["AM Email"]==am], fullName, userEmail), unsafe_allow_html=True)
         with col2:
             st.success("Email Successfully Sent!", icon="🎉")
     with col2:
