@@ -118,9 +118,6 @@ with col1:
             fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
             userEmail = st.text_input(label = "Email", placeholder="Enter Email")
             email_submit = st.form_submit_button("Send Email")
-            if email_submit:
-                
-                if v.empty: st.error("Please check at least one box.", icon="❗")
 with col2:
     st.markdown("""<style>
     
