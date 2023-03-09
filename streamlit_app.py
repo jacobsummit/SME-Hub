@@ -128,11 +128,6 @@ background-color: gold;
 <div class="green-square yellow-square"></div>
 <span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
 
-
-    
-
-df = load_data()
-
 custom_css = {
     ".ag-header-cell-text":{"color":"#fff","font-size":"15px !important"},
     ".ag-header":{"background":"linear-gradient(90deg, rgba(218,120,34,1) 0%, rgba(163,31,36,1) 100%);"},
@@ -167,6 +162,8 @@ function(params){
 }
 """)
 
+df = load_data()
+
 gb = GridOptionsBuilder.from_dataframe(df)
 # gb.configure_side_bar(filters_panel=True, columns_panel=False, defaultToolPanel="filters")
 gb.configure_default_column(sizeColumnsToFit=True, enablePivot=False, enableValue=False, enableRowGroup=True, suppressColumnsToolPanel=True,menuTabs=['filterMenuTab'], suppressMenuHide=True)
@@ -189,13 +186,7 @@ gb.configure_columns(["Project ID","Project Owner","Project Owner Email", "SVS a
 go = gb.build()
 
 ag = AgGrid(df, height=600, gridOptions=go, theme="streamlit", fit_columns_on_grid_load=False,allow_unsafe_jscode=True,custom_css=custom_css,header_checkbox_selection_filtered_only=True,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED, enable_quicksearch=True, suppressMenuHide=True)
-v = ag['selected_rows']
-
-    
-v = pd.DataFrame(v)
-# st.sidebar.write(v.columns)
-
-
+v = pd.DataFrame(ag['selected_rows'])
 
 
 if email_submit:
