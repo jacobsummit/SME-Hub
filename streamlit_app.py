@@ -15,8 +15,6 @@ head = Image.open("image1.png")
 
 st.set_page_config(layout='wide', page_icon=im, page_title="SME Hub", initial_sidebar_state="collapsed")
 
-
-
 @st.cache_data(ttl=3600)
 def access_api():
     redirect_uri = "https://jacobsummit-sme-hub-streamlit-app-z2fgzo.streamlit.app/"
@@ -46,18 +44,12 @@ def load_data():
 
     df = df[keepCols]
     df.columns = newCols 
-
     cols = df.columns.tolist()
     cols = cols[6:]+cols[:6]
     df = df[cols]
-
-    # df["Critical Questions"] = df["Critical Questions"].str.replace("?", "?\n", regex=True)
-
     df = df[(df['Project Name'].str.len()>1) & (df['Summary'].str.len()>1)& (df['Industry'].str.len()>1)& (df['Critical Questions'].str.len()>1)]
     df = df.sort_values("Priority Level", ascending=True,na_position="last")
-
     return df
-
 
 def validEmail(email):
     eReg = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
@@ -69,7 +61,6 @@ def anaEmail(anav, fullname, useremail):
     contents = f"""Hello {fname}, <br>someone has expressed interest in one or more of your projects! Their information is below.  
     Please contact them as soon as possible!<br><br>"""
     contents += f"Name of the person espressing interest: {fullname}<br>Email of the person expressing interest: {useremail}<br> Below are the project names and URLs they have expressed interest in:<br><br>"
-
     for tech in range(len(anav)):
         contents += f"<p><b>Project Name:</b> {anav.iloc[tech, 7]}</p>"
         contents += f"<p><b>Project url:</b> <a href='https://projects.zoho.com/portal/summitventurestudiodotcom#project/{anav.iloc[tech, 11]}'>click here</a></p>"
@@ -137,14 +128,10 @@ background-color: gold;
 <div class="green-square yellow-square"></div>
 <span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
 
-with st.sidebar:
-    st.write("Enter your information and a team member will reach out!")
-    
+
     
 
 df = load_data()
-
-
 
 custom_css = {
     ".ag-header-cell-text":{"color":"#fff","font-size":"15px !important"},
@@ -232,8 +219,9 @@ if email_submit:
 
             
 # if disButton: st.sidebar.write("Make sure to enter your name, email, and check at least one box")
-            
-with st.sidebar.expander("Help for Table Usage",expanded=False):
+
+with st.sidebar:
+    with st.expander("Help for Table Usage",expanded=False):
         st.write("""**Columns 1-6 represent the stages in our analysis process.**
         \n**Column Definitions:** Hover on the table headers for at least three seconds to get more information.
         \n**Sorting:** Click on a header to sort alphanumerically
