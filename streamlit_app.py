@@ -228,9 +228,9 @@ with st.sidebar:
     ind_im = Image.open("menu_show.png")
     st.image(ind_im)
 
-st.write('### Selected Projects:')
-# st.write(anaList)
-for i in range(len(v)):
-    st.write(f"#### {v.iloc[i,7]}")
-    st.write(v.iloc[i,8].replace(".",".\n"))
+st.write('#### Number of Selected Projects:')
+st.write(len(v))
+# for i in range(len(v)):
+#     st.write(f"#### {v.iloc[i,7]}")
+#     st.write(v.iloc[i,8].replace(".",".\n"))
     
