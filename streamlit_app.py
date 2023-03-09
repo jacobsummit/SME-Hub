@@ -17,10 +17,6 @@ st.set_page_config(layout='wide', page_icon=im, page_title="SME Hub", initial_si
 
 
 
-
-eReg = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
-
-
 @st.cache_data(ttl=3600)
 def access_api():
     redirect_uri = "https://jacobsummit-sme-hub-streamlit-app-z2fgzo.streamlit.app/"
@@ -64,6 +60,7 @@ def load_data():
 
 
 def validEmail(email):
+    eReg = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
     if re.fullmatch(eReg, email): return True
     else: return False
 
