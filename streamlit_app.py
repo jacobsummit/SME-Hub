@@ -186,7 +186,7 @@ gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=48, minWidth=48,res
 gb.configure_columns(["Project ID","Project Owner","Project Owner Email", "SVS acct. mgr.", "AM Email","Priority Level"],hide=True)
 go = gb.build()
 
-ag = AgGrid(df, height=600, gridOptions=go, theme="streamlit", fit_columns_on_grid_load=False,allow_unsafe_jscode=True,custom_css=custom_css,header_checkbox_selection_filtered_only=True,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED, enable_quicksearch=True, suppressMenuHide=True)
+ag = AgGrid(df, height=600, gridOptions=go, theme="streamlit", fit_columns_on_grid_load=True,allow_unsafe_jscode=True,custom_css=custom_css,header_checkbox_selection_filtered_only=True,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED, enable_quicksearch=True, suppressMenuHide=True)
 v = pd.DataFrame(ag['selected_rows'])
 
 
