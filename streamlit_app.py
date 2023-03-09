@@ -17,45 +17,6 @@ st.set_page_config(layout='wide', page_icon=im, page_title="SME Hub", initial_si
 
 
 
-col1, col2 = st.columns((3,1))
-with col1:
-    st.write('<- See sidebar for more details')
-    st.write("Check boxes for projects you are interested in, then enter your information below.")
-    with st.expander("Enter your information"):
-        with st.form("email_form"):
-            fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
-            userEmail = st.text_input(label = "Email", placeholder="Enter Email")
-            email_submit = st.form_submit_button("Send Email")
-            if email_submit:
-                if not fullName: st.error("Please Enter your Name", icon="❗")
-                if not validEmail(userEmail): st.error("Please Enter a Valid Email Address", icon="❗")
-                if v.empty: st.error("Please check at least one box.", icon="❗")
-with col2:
-    st.markdown("""<style>
-    
-.green-square {
-position: relative;
-display: inline-block;
-width: 20px;
-height: 20px;
-background-color: green;
-
-float: right;
-}
-
-.yellow-square {
-background-color: gold;
-}</style><br><br><br>
-<div class="green-square"></div>
-<span style="float:right; position: relative; right:10px;">Complete: </span>
-<br/>
-<div class="green-square yellow-square"></div>
-<span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
-
-with st.sidebar:
-    st.write("Enter your information and a team member will reach out!")
-    
-    
 
 eReg = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
 
@@ -146,6 +107,47 @@ def emailer(useremail, contents, subject):
         yag.send(to=useremail, contents=contents, subject=subject)
         yagmail.SMTP.close(yag)
 
+
+
+col1, col2 = st.columns((3,1))
+with col1:
+    st.write('<- See sidebar for more details')
+    st.write("Check boxes for projects you are interested in, then enter your information below.")
+    with st.expander("Enter your information"):
+        with st.form("email_form"):
+            fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
+            userEmail = st.text_input(label = "Email", placeholder="Enter Email")
+            email_submit = st.form_submit_button("Send Email")
+            if email_submit:
+                if not fullName: st.error("Please Enter your Name", icon="❗")
+                if not validEmail(userEmail): st.error("Please Enter a Valid Email Address", icon="❗")
+                if v.empty: st.error("Please check at least one box.", icon="❗")
+with col2:
+    st.markdown("""<style>
+    
+.green-square {
+position: relative;
+display: inline-block;
+width: 20px;
+height: 20px;
+background-color: green;
+
+float: right;
+}
+
+.yellow-square {
+background-color: gold;
+}</style><br><br><br>
+<div class="green-square"></div>
+<span style="float:right; position: relative; right:10px;">Complete: </span>
+<br/>
+<div class="green-square yellow-square"></div>
+<span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
+
+with st.sidebar:
+    st.write("Enter your information and a team member will reach out!")
+    
+    
 
 df = load_data()
 
