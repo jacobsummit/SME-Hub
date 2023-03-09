@@ -135,7 +135,7 @@ col1, col2 = st.columns((3,1))
 with col1:
     st.write('<- See sidebar for table usage (sorting, filtering, more information)')
     st.write("Check boxes for projects you are interested in, then enter your information below.")
-    with st.expander("Enter your information"):
+    with st.expander("Enter your Information"):
         with st.form("email_form"):
             fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
             userEmail = st.text_input(label = "Email", placeholder="Enter Email")
@@ -172,7 +172,7 @@ gb.configure_selection(selection_mode="multiple", use_checkbox=True)
 
 gb.configure_column("Project Name", headerTooltip="The name of the technology", width=150,suppressMenuHide=True)
 gb.configure_column("Summary", headerTooltip="A brief statement including details about the technology")
-gb.configure_column("Industry", headerTooltip="The industry that the technology belongs to")
+gb.configure_column("Industry", headerTooltip="The industry that the technology belongs to", width=150)
 gb.configure_column("1", headerTooltip="Initial Analysis")
 gb.configure_column("2", headerTooltip="Technical Analysis")
 gb.configure_column("3", headerTooltip="Market Analysis")
