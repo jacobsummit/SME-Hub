@@ -95,39 +95,6 @@ def emailer(useremail, contents, subject):
         yag.send(to=useremail, contents=contents, subject=subject)
         yagmail.SMTP.close(yag)
 
-
-
-col1, col2 = st.columns((3,1))
-with col1:
-    st.write('<- See sidebar for more details')
-    st.write("Check boxes for projects you are interested in, then enter your information below.")
-    with st.expander("Enter your information"):
-        with st.form("email_form"):
-            fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
-            userEmail = st.text_input(label = "Email", placeholder="Enter Email")
-            email_submit = st.form_submit_button("Send Email")
-with col2:
-    st.markdown("""<style>
-    
-.green-square {
-position: relative;
-display: inline-block;
-width: 20px;
-height: 20px;
-background-color: green;
-
-float: right;
-}
-
-.yellow-square {
-background-color: gold;
-}</style><br><br><br>
-<div class="green-square"></div>
-<span style="float:right; position: relative; right:10px;">Complete: </span>
-<br/>
-<div class="green-square yellow-square"></div>
-<span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
-
 custom_css = {
     ".ag-header-cell-text":{"color":"#fff","font-size":"15px !important"},
     ".ag-header":{"background":"linear-gradient(90deg, rgba(218,120,34,1) 0%, rgba(163,31,36,1) 100%);"},
@@ -161,6 +128,40 @@ function(params){
     }
 }
 """)
+
+
+
+col1, col2 = st.columns((3,1))
+with col1:
+    st.write('<- See sidebar for table usage (sorting, filtering, more information)')
+    st.write("Check boxes for projects you are interested in, then enter your information below.")
+    with st.expander("Enter your information"):
+        with st.form("email_form"):
+            fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
+            userEmail = st.text_input(label = "Email", placeholder="Enter Email")
+            email_submit = st.form_submit_button("Send Email")
+with col2:
+    st.markdown("""<style>
+    
+.green-square {
+position: relative;
+display: inline-block;
+width: 20px;
+height: 20px;
+background-color: green;
+
+float: right;
+}
+.yellow-square {
+background-color: gold;
+}</style><br><br><br>
+<div class="green-square"></div>
+<span style="float:right; position: relative; right:10px;">Complete: </span>
+<br/>
+<div class="green-square yellow-square"></div>
+<span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
+
+
 
 df = load_data()
 
