@@ -131,7 +131,7 @@ function(params){
 
 
 
-col1, col2 = st.columns((3,1))
+col1, col2 = st.columns((2,1))
 with col1:
     st.write('<- See sidebar for table usage (sorting, filtering, more information)')
     st.write("Check boxes for projects you are interested in, then enter your information below.")
