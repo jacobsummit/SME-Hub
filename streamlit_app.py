@@ -228,7 +228,7 @@ with st.sidebar:
     ind_im = Image.open("menu_show.png")
     st.image(ind_im)
 
-st.write(f'Number of Selected Projects: {len(v)}')
+# st.write(f'Number of Selected Projects: {len(v)}')
 
 # for i in range(len(v)):
 #     st.write(f"#### {v.iloc[i,7]}")
