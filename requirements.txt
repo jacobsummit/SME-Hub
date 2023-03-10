@@ -4,4 +4,4 @@ streamlit-aggrid
 st_pages
 streamlit_extras
 yagmail
-
+streamlit==1.19.0
