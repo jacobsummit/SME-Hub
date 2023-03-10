@@ -212,7 +212,6 @@ if email_submit:
         if not validEmail(userEmail): st.error("Please Enter a Valid Email Address", icon="❗")
 
             
-# if disButton: st.sidebar.write("Make sure to enter your name, email, and check at least one box")
 
 with st.sidebar:
     st.write("""**Columns 1-6 represent the stages in our analysis process.**
