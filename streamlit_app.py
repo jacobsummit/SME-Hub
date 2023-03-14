@@ -122,7 +122,7 @@ function(params){
     if (params.value == '0') {
         return{
             'color': 'white',
-            'backgroundColor': 'green',
+            'backgroundColor': 'green', 
             'display':'none'
         }
     }
