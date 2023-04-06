@@ -187,7 +187,7 @@ gb.configure_columns(["Project ID","Project Owner","Project Owner Email", "SVS a
 # gb.tooltipShowDelay(0)
 go = gb.build()
 
-ag = AgGrid(df, height=1000, gridOptions=go, theme="streamlit", enableBrowserTooltips=False,tooltip_show_delay=50000,fit_columns_on_grid_load=True,allow_unsafe_jscode=True,custom_css=custom_css,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED, columns_auto_size_mode=ColumnsAutoSizeMode.FIT_CONTENTS, enable_quicksearch=True)
+ag = AgGrid(df, height=1000, gridOptions=go, theme="streamlit", enableBrowserTooltips=False,tooltip_show_delay=500000,fit_columns_on_grid_load=True,allow_unsafe_jscode=True,custom_css=custom_css,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED, columns_auto_size_mode=ColumnsAutoSizeMode.FIT_CONTENTS, enable_quicksearch=True)
 v = pd.DataFrame(ag['selected_rows'])
 
 
