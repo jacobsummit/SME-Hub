@@ -184,7 +184,7 @@ gb.configure_column("Critical Questions", headerTooltip="A list of a few questio
 gb.configure_columns(["Summary","Project Name","Critical Questions","Industry"],wrapText = True,autoHeight = True)
 gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=48, minWidth=48,resizable=False, cellStyle=cellstyle_jscode)
 gb.configure_columns(["Project ID","Project Owner","Project Owner Email", "SVS acct. mgr.", "AM Email","Priority Level"],hide=True)
-gb.tooltipShowDelay(0)
+# gb.tooltipShowDelay(0)
 go = gb.build()
 
 ag = AgGrid(df, height=1000, gridOptions=go, theme="streamlit", fit_columns_on_grid_load=True,allow_unsafe_jscode=True,custom_css=custom_css,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED, columns_auto_size_mode=ColumnsAutoSizeMode.FIT_CONTENTS, enable_quicksearch=True)
