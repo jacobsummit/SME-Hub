@@ -167,7 +167,7 @@ df = load_data()
 
 gb = GridOptionsBuilder.from_dataframe(df)
 # gb.configure_side_bar(filters_panel=True, columns_panel=False, defaultToolPanel="filters")
-gb.configure_default_column(sizeColumnsToFit=False, enablePivot=False, enableValue=False, enableRowGroup=True, suppressColumnsToolPanel=True,menuTabs=['filterMenuTab'],tooltipShowDelay={0})
+gb.configure_default_column(sizeColumnsToFit=False, enablePivot=False, enableValue=False, enableRowGroup=True, suppressColumnsToolPanel=True,menuTabs=['filterMenuTab'],tooltipShowDelay=0)
 gb.configure_selection(selection_mode="multiple", use_checkbox=True)
 
 gb.configure_column("Project Name", headerTooltip="The name of the technology", width=150)
