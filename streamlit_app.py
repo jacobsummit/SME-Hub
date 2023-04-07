@@ -174,7 +174,7 @@ with st.expander("Sort"):
         sortCol = st.selectbox("Sort by", df.columns)
     with sortCol2:
         st.write()
-        sortAsc = st.checkbox("Sort by Ascending")
+        sortAsc = st.checkbox("Sort by Ascending",value=True)
 
 df = df.sort_values(sortCol,ascending=sortAsc)
 df = df[df["Industry"].isin(indFil)]
