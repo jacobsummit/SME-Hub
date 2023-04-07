@@ -165,62 +165,65 @@ background-color: gold;
 
 df = load_data()
 
-gb = GridOptionsBuilder.from_dataframe(df)
-# gb.configure_side_bar(filters_panel=True, columns_panel=False, defaultToolPanel="filters")
-gb.configure_default_column(sizeColumnsToFit=False, enablePivot=False, enableValue=False, enableRowGroup=True, suppressColumnsToolPanel=True,menuTabs=['filterMenuTab'],enableBrowserTooltips=False,tooltip_show_delay=0)
-gb.configure_selection(selection_mode="multiple", use_checkbox=True)
+for row in df:
+    print(row[0])
 
-gb.configure_column("Project Name", headerTooltip="The name of the technology", width=150)
-gb.configure_column("Summary", headerTooltip="A brief statement including details about the technology")
-gb.configure_column("Industry", headerTooltip="The industry that the technology belongs to", width=130)
-gb.configure_column("1", headerTooltip="Initial Analysis", tooltipShowDelay=0)
-gb.configure_column("2", headerTooltip="Technical Analysis")
-gb.configure_column("3", headerTooltip="Market Analysis")
-gb.configure_column("4", headerTooltip="Technical Validation")
-gb.configure_column("5", headerTooltip="Market Validation")
-gb.configure_column("6", headerTooltip="Final Review and Decision")
-gb.configure_column("Critical Questions", headerTooltip="A list of a few questions we have about the project")
+# gb = GridOptionsBuilder.from_dataframe(df)
+# # gb.configure_side_bar(filters_panel=True, columns_panel=False, defaultToolPanel="filters")
+# gb.configure_default_column(sizeColumnsToFit=False, enablePivot=False, enableValue=False, enableRowGroup=True, suppressColumnsToolPanel=True,menuTabs=['filterMenuTab'],enableBrowserTooltips=False,tooltip_show_delay=0)
+# gb.configure_selection(selection_mode="multiple", use_checkbox=True)
 
-gb.configure_columns(["Summary","Project Name","Critical Questions","Industry"],wrapText = True,autoHeight = True)
-gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=48, minWidth=48,resizable=False, cellStyle=cellstyle_jscode)
-gb.configure_columns(["Project ID","Project Owner","Project Owner Email", "SVS acct. mgr.", "AM Email","Priority Level"],hide=True)
+# gb.configure_column("Project Name", headerTooltip="The name of the technology", width=150)
+# gb.configure_column("Summary", headerTooltip="A brief statement including details about the technology")
+# gb.configure_column("Industry", headerTooltip="The industry that the technology belongs to", width=130)
+# gb.configure_column("1", headerTooltip="Initial Analysis", tooltipShowDelay=0)
+# gb.configure_column("2", headerTooltip="Technical Analysis")
+# gb.configure_column("3", headerTooltip="Market Analysis")
+# gb.configure_column("4", headerTooltip="Technical Validation")
+# gb.configure_column("5", headerTooltip="Market Validation")
+# gb.configure_column("6", headerTooltip="Final Review and Decision")
+# gb.configure_column("Critical Questions", headerTooltip="A list of a few questions we have about the project")
 
-go = gb.build()
+# gb.configure_columns(["Summary","Project Name","Critical Questions","Industry"],wrapText = True,autoHeight = True)
+# gb.configure_columns(["1", "2", "3", "4", "5", "6"],maxWidth=48, minWidth=48,resizable=False, cellStyle=cellstyle_jscode)
+# gb.configure_columns(["Project ID","Project Owner","Project Owner Email", "SVS acct. mgr.", "AM Email","Priority Level"],hide=True)
 
-ag = AgGrid(df, height=1000, gridOptions=go, theme="streamlit", enableBrowserTooltips=False,tooltip_show_delay=500000,fit_columns_on_grid_load=True,allow_unsafe_jscode=True,custom_css=custom_css,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED, columns_auto_size_mode=ColumnsAutoSizeMode.FIT_CONTENTS, enable_quicksearch=True)
-v = pd.DataFrame(ag['selected_rows'])
+# go = gb.build()
+
+# ag = AgGrid(df, height=1000, gridOptions=go, theme="streamlit", enableBrowserTooltips=False,tooltip_show_delay=500000,fit_columns_on_grid_load=True,allow_unsafe_jscode=True,custom_css=custom_css,use_checkbox=True,update_mode=GridUpdateMode.MODEL_CHANGED, columns_auto_size_mode=ColumnsAutoSizeMode.FIT_CONTENTS, enable_quicksearch=True)
+# v = pd.DataFrame(ag['selected_rows'])
 
 
-if email_submit:
-    if fullName and validEmail(userEmail) and not v.empty:
-        # emailer(userEmail, extEmail(v, fullName), subject)
-        # st.markdown(extEmail(v, fullName), unsafe_allow_html=True)
-        anaList = v["Project Owner Email"].unique().tolist()
-        amList = v["AM Email"].unique().tolist()
-        for ana in anaList:
-            pass
-            # emailer("jacobtminson@gmail.com", anaEmail(v[v["Project Owner Email"]==ana]), "You have a message from SME HUB!")
-            # st.markdown(anaEmail(v[v["Project Owner Email"]==ana], fullName, userEmail), unsafe_allow_html=True)
-        for am in amList:
-            pass
-            # emailer(userEmail, amEmail(v[v["AM Email"]==am], fullName, userEmail), "Message from SME Hub!")
-            # st.markdown(amEmail(v[v["AM Email"]==am], fullName, userEmail), unsafe_allow_html=True)
-        with col2:
-            st.success("Email Successfully Sent!", icon="🎉")
-    with col2:
-        if v.empty: st.error("Please check at least one box.", icon="❗")
-        if not fullName: st.error("Please Enter your Name", icon="❗")
-        if not validEmail(userEmail): st.error("Please Enter a Valid Email Address", icon="❗")
+# if email_submit:
+#     if fullName and validEmail(userEmail) and not v.empty:
+#         # emailer(userEmail, extEmail(v, fullName), subject)
+#         # st.markdown(extEmail(v, fullName), unsafe_allow_html=True)
+#         anaList = v["Project Owner Email"].unique().tolist()
+#         amList = v["AM Email"].unique().tolist()
+#         for ana in anaList:
+#             pass
+#             # emailer("jacobtminson@gmail.com", anaEmail(v[v["Project Owner Email"]==ana]), "You have a message from SME HUB!")
+#             # st.markdown(anaEmail(v[v["Project Owner Email"]==ana], fullName, userEmail), unsafe_allow_html=True)
+#         for am in amList:
+#             pass
+#             # emailer(userEmail, amEmail(v[v["AM Email"]==am], fullName, userEmail), "Message from SME Hub!")
+#             # st.markdown(amEmail(v[v["AM Email"]==am], fullName, userEmail), unsafe_allow_html=True)
+#         with col2:
+#             st.success("Email Successfully Sent!", icon="🎉")
+#     with col2:
+#         if v.empty: st.error("Please check at least one box.", icon="❗")
+#         if not fullName: st.error("Please Enter your Name", icon="❗")
+#         if not validEmail(userEmail): st.error("Please Enter a Valid Email Address", icon="❗")
 
             
 
-with st.sidebar:
-    st.write("""**Columns 1-6 represent the stages in our analysis process.**
-    \n**Column Definitions:** Hover on the table headers for at least three seconds to get more information.
-    \n**Sorting:** Click on a header to sort alphanumerically
-    \n**Filtering:** Click the three-bar menu for filtering. (If on mobile, press and hold)""")
-    ind_im = Image.open("menu_show.png")
-    st.image(ind_im)
+# with st.sidebar:
+#     st.write("""**Columns 1-6 represent the stages in our analysis process.**
+#     \n**Column Definitions:** Hover on the table headers for at least three seconds to get more information.
+#     \n**Sorting:** Click on a header to sort alphanumerically
+#     \n**Filtering:** Click the three-bar menu for filtering. (If on mobile, press and hold)""")
+#     ind_im = Image.open("menu_show.png")
+#     st.image(ind_im)
 
 # st.write(f'Number of Selected Projects: {len(v)}')
 
