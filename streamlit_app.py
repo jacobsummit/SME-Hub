@@ -181,7 +181,7 @@ df = df[df["Industry"].isin(indFil)]
 st.header("Our Projects:")
 for row in df.index:
     with st.expander(df.loc[row,"Project Name"]):
-        st.checkbox("Check if Interested")
+        st.checkbox("Check if Interested", key=df.loc[row,"Project ID"])
         st.write(f"**Project Summary:** {df.loc[row,'Summary']}")
 
 # gb = GridOptionsBuilder.from_dataframe(df)
