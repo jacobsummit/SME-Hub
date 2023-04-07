@@ -175,7 +175,7 @@ def proj_changed(rowid, val):
             }
         )
     else:
-        pass
+        [not x["interest"] for x in st.session_state.projs if x["id"]==rowid][0]
 
 if "projs" not in st.session_state:
     st.session_state.projs = []
@@ -218,7 +218,7 @@ with st.expander("See Your interests here"):
             # st.button("Click to Remove", key="x"+i, on_click=updateDict(i, False))
 
 st.session_state.projs
-st.write([not x["interest"] for x in st.session_state.projs if x["id"]=="1650714000003023201"][0])
+st.write()
 
 # gb = GridOptionsBuilder.from_dataframe(df)
 # # gb.configure_side_bar(filters_panel=True, columns_panel=False, defaultToolPanel="filters")
