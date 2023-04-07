@@ -162,7 +162,7 @@ with col1:
 # <div class="green-square yellow-square"></div>
 # <span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
 
-def updateDF(rowid, val):
+def updateDf(rowid, val):
     df[df["Project ID"] == rowid].iloc[0,-1] = val
 
 df = load_data()
