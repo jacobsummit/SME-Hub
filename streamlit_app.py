@@ -167,7 +167,7 @@ df = load_data()
 
 filCol1, filCol2 = st.columns((1,1))
 with filCol1:
-    indFil = st.multiselect("Select Industry", df["Select All Industries you are interested in"].unique())
+    indFil = st.multiselect("Select All Industries you are Interested in", df["Industry"].unique())
 
 
 df = df[df["Industry"].isin(indFil)]
