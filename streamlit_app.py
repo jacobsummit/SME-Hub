@@ -172,8 +172,10 @@ with st.expander("Sort"):
     sortCol1, sortCol2 = st.columns((1,4))
     with sortCol1:
         sortCol = st.selectbox("Sort by", df.columns)
+    with sortCol2:
+        sortAsc = st.checkbox("Sort by Ascending")
 
-df = df.sort_values(sortCol)
+df = df.sort_values(sortCol,ascending=sortAsc)
 df = df[df["Industry"].isin(indFil)]
 for row in df.index:
     with st.expander(df.loc[row,"Project Name"]):
