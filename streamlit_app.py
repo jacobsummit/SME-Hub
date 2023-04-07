@@ -170,7 +170,7 @@ with filCol1:
     indFil = st.multiselect("Select Industry", df["Industry"].unique())
 
 
-df = df[df["Industry"] in indFil]
+df = df[df["Industry"].isin(indFil)]
 for row in df.index:
     with st.expander(df.loc[row,"Project Name"]):
         st.write(f"**Project Summary:** {df.loc[row,'Summary']}")
