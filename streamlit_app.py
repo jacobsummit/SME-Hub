@@ -163,7 +163,7 @@ with col1:
 # <span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
 
 def updateDf(rowid, val):
-    df.loc[df["Project ID"] == rowid, ["Interest"]] = val
+    df.loc[df["Project ID"] == str(rowid), ["Interest"]] = val
 
 df = load_data()
 
@@ -201,9 +201,7 @@ with st.expander("See Your interests here"):
         with intCol2:
             st.write()
             # st.button("Click to Remove", key="x"+i, on_click=updateDict(i, False))
-st.write(type(df.loc[19,"Project ID"]))
 
-# df[].iloc[0,-1] = True
 st.dataframe(df)
 
 # gb = GridOptionsBuilder.from_dataframe(df)
