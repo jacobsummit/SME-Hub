@@ -201,6 +201,8 @@ with st.expander("See Your interests here"):
         intCol1, intCol2 = st.columns((1,1))
         with intCol1:
             st.write(df[df["Project ID"] == i].iloc[0,0])
+        with intCol2:
+            st.button("Click to Remove", key="x"+df.loc[row,"Project ID"], on_click=updateDict(i, False))
 
 # gb = GridOptionsBuilder.from_dataframe(df)
 # # gb.configure_side_bar(filters_panel=True, columns_panel=False, defaultToolPanel="filters")
