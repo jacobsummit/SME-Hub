@@ -195,7 +195,8 @@ with st.expander("See Your interests here"):
         with intCol1:
             st.write(df[df["Project ID"] == i].iloc[0,0])
         with intCol2:
-            st.button("Click to Remove", key="x"+i, on_click=updateDict(i, False))
+            pass
+            # st.button("Click to Remove", key="x"+i, on_click=updateDict(i, False))
 
 st.header("Our Projects:")
 for row in df.index:
