@@ -173,6 +173,7 @@ with st.expander("Sort"):
     with sortCol1:
         sortCol = st.selectbox("Sort by", df.columns)
     with sortCol2:
+        st.write()
         sortAsc = st.checkbox("Sort by Ascending")
 
 df = df.sort_values(sortCol,ascending=sortAsc)
