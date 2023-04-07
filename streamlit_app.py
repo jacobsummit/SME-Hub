@@ -192,6 +192,7 @@ st.header("Our Projects:")
 for row in df.index:
     with st.expander(f"**{df.loc[row,'Project Name']}**"):   
         st.write(f"**Project Summary:** {df.loc[row,'Summary']}")
+        st.write(df.loc[row,'Project ID'])
         # projDict[df.loc[row,"Project ID"]] = st.checkbox("Check if Interested", key=df.loc[row,"Project ID"])
         updateDict(df.loc[row,"Project ID"], st.checkbox("Check if Interested", key=df.loc[row,"Project ID"]))
 # intList = [k for (k,v) in projDict.items() if v]
