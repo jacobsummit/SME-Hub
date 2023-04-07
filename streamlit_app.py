@@ -164,10 +164,10 @@ with col1:
 
 
 df = load_data()
-
-filCol1, filCol2 = st.columns((1,4))
-with filCol1:
-    indFil = st.multiselect("Select All Industries you are Interested in", df["Industry"].unique())
+with st.expander("Filter"):
+    filCol1, filCol2 = st.columns((1,4))
+    with filCol1:
+        indFil = st.multiselect("Select All Industries you are Interested in", df["Industry"].unique())
 
 
 df = df[df["Industry"].isin(indFil)]
