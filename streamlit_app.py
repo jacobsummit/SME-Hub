@@ -165,11 +165,11 @@ with col1:
 
 df = load_data()
 with st.expander("Filter", True):
-    filCol1, filCol2 = st.columns((1,4))
+    filCol1, filCol2 = st.columns((1,3))
     with filCol1:
         indFil = st.multiselect("Select All Industries you are Interested in", df["Industry"].unique())
 with st.expander("Sort"):
-    sortCol1, sortCol2 = st.columns((1,4))
+    sortCol1, sortCol2 = st.columns((1,3))
     with sortCol1:
         sortCol = st.selectbox("Sort by", df.columns)
     with sortCol2:
