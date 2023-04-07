@@ -162,11 +162,14 @@ with col1:
 # <span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
 
 df = load_data()
+@st.cache
+def makeProjDict():
+    projdict = {}
+    for row in df.index:
+        projdict[df.loc[row,"Project ID"]] = False
+    return projdict
 
-projDict = {}
-for row in df.index:
-    projDict[df.loc[row,"Project ID"]] = False
-
+projDict = makeProjDict()
 st.write(projDict)
 
 with st.expander("Filter", True):
