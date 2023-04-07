@@ -205,6 +205,7 @@ for row in df.index:
         st.button("Click if Interested", key=df.loc[row,"Project ID"], on_click=updateDict(df.loc[row,"Project ID"], True))
         # updateDict(df.loc[row,"Project ID"], st.checkbox("Check if Interested", key=df.loc[row,"Project ID"]))
 # intList = [k for (k,v) in projDict.items() if v]
+st.write(projDict)
 
 # gb = GridOptionsBuilder.from_dataframe(df)
 # # gb.configure_side_bar(filters_panel=True, columns_panel=False, defaultToolPanel="filters")
