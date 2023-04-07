@@ -200,7 +200,7 @@ with st.expander("See Your interests here"):
     for i in [k for (k,v) in projDict.items() if v]:
         intCol1, intCol2 = st.columns((1,1))
         with intCol1:
-            st.write(i)
+            st.write(df[df["Project ID"] == i].iloc[:,:])
 
 # gb = GridOptionsBuilder.from_dataframe(df)
 # # gb.configure_side_bar(filters_panel=True, columns_panel=False, defaultToolPanel="filters")
