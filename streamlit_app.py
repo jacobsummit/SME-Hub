@@ -161,9 +161,14 @@ with col1:
 # <div class="green-square yellow-square"></div>
 # <span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
 
-
-
 df = load_data()
+
+projDict = {}
+for row in df.index:
+    projDict[df.loc[row,"Project ID"]] = False
+
+st.write(projDict)
+
 with st.expander("Filter", True):
     filCol1, filCol2 = st.columns((1,3))
     with filCol1:
