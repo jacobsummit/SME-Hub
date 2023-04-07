@@ -168,6 +168,9 @@ df = load_data()
 filCol1, filCol2 = st.columns((1,1))
 with filCol1:
     indFil = st.multiselect("Select Industry", df["Industry"].unique())
+
+
+df = df[df["Industry"] in indFil]
 for row in df.index:
     with st.expander(df.loc[row,"Project Name"]):
         st.write(f"**Project Summary:** {df.loc[row,'Summary']}")
