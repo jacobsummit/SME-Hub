@@ -189,7 +189,7 @@ for row in filtDf.index:
     with st.expander(f"**{filtDf.loc[row,'Project Name']}**"):   
         st.write(f"**Project Summary:** {filtDf.loc[row,'Summary']}")
         st.write(filtDf.loc[row,'Project ID'])
-        st.button("Click if Interested", key=filtDf.loc[row,"Project ID"], on_click=updateDf(filtDf.loc[row,"Project ID"], True))
+        st.button("Click if Interested", key=filtDf.loc[row,"Project ID"], on_click=updateDf, args=(filtDf.loc[row,"Project ID"], True))
         # updateDict(df.loc[row,"Project ID"], st.checkbox("Check if Interested", key=df.loc[row,"Project ID"]))
 
 with st.expander("See Your interests here"):
