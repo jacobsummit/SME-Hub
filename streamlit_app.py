@@ -167,12 +167,13 @@ def updateDf(rowid, val):
     df.loc[df["Project ID"] == rowid, ["Interest"]] = val
 
 def proj_changed(rowid, val):
-    st.session_state.projs.append(
-        {
-            "id":rowid,
-            "interest": True
-        }
-    )
+    if rowid not in st.session_state.projs:
+        st.session_state.projs.append(
+            {
+                "id":rowid,
+                "interest": True
+            }
+        )
 
 if "projs" not in st.session_state:
     st.session_state.projs = []
