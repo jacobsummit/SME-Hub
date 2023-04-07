@@ -162,7 +162,7 @@ with col1:
 # <span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
 
 df = load_data()
-# @st.cache_data
+@st.cache_data
 def makeProjDict():
     projdict = {}
     for row in df.index:
