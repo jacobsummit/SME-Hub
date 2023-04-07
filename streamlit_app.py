@@ -171,7 +171,7 @@ with st.expander("Filter", True):
 with st.expander("Sort"):
     sortCol1, sortCol2 = st.columns((1,4))
     with sortCol1:
-        indFil = st.multiselect("Sort by X", df["Industry"].unique())
+        indFil = st.multiselect("Sort by", df.columns)
 
 df = df[df["Industry"].isin(indFil)]
 for row in df.index:
