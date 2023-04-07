@@ -187,7 +187,7 @@ df = df.sort_values(sortCol,ascending=sortAsc)
 df = df[df["Industry"].isin(indFil)]
 st.header("Our Projects:")
 for row in df.index:
-    with st.expander(f"##### Test {df.loc[row,'Project Name']}"):   
+    with st.expander(f"**{df.loc[row,'Project Name']}**"):   
         st.write(f"**Project Summary:** {df.loc[row,'Summary']}")
         projDict[df.loc[row,"Project ID"]] = st.checkbox("Check if Interested", key=df.loc[row,"Project ID"], value=False)
 
