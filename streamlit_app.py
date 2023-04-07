@@ -202,6 +202,8 @@ with st.expander("See Your interests here"):
         with intCol2:
             st.write()
             # st.button("Click to Remove", key="x"+i, on_click=updateDict(i, False))
+
+df[df["Project ID"] == 1650714000002234043].iloc[0,-1] = True
 st.dataframe(df)
 
 # gb = GridOptionsBuilder.from_dataframe(df)
