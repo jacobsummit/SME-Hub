@@ -193,8 +193,8 @@ for row in df.index:
     with st.expander(f"**{df.loc[row,'Project Name']}**"):   
         st.write(f"**Project Summary:** {df.loc[row,'Summary']}")
         st.write(df.loc[row,'Project ID'])
-        # projDict[df.loc[row,"Project ID"]] = st.checkbox("Check if Interested", key=df.loc[row,"Project ID"])
-        updateDict(df.loc[row,"Project ID"], st.checkbox("Check if Interested", key=df.loc[row,"Project ID"]))
+        st.button("Click if Interested", key=df.loc[row,"Project ID"], on_click=updateDict, args=(df.loc[row,"Project ID"], True))
+        # updateDict(df.loc[row,"Project ID"], st.checkbox("Check if Interested", key=df.loc[row,"Project ID"]))
 # intList = [k for (k,v) in projDict.items() if v]
 st.write(projDict)
 # gb = GridOptionsBuilder.from_dataframe(df)
