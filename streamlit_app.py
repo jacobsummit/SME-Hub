@@ -178,6 +178,7 @@ with st.expander("Sort"):
 
 df = df.sort_values(sortCol,ascending=sortAsc)
 df = df[df["Industry"].isin(indFil)]
+st.header("Our Projects:")
 for row in df.index:
     with st.expander(df.loc[row,"Project Name"]):
         st.write(f"**Project Summary:** {df.loc[row,'Summary']}")
