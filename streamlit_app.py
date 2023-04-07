@@ -170,7 +170,6 @@ def makeProjDict():
     return projdict
 
 projDict = makeProjDict()
-st.write(projDict)
 
 with st.expander("Filter", True):
     filCol1, filCol2 = st.columns((1,3))
