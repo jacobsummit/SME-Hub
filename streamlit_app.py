@@ -170,7 +170,7 @@ def makeProjDict():
     return projdict
 
 projDict = makeProjDict()
-# @st.cache_data
+@st.cache_data
 def updateDict(rowid, val):
     projDict[rowid] = val
 
