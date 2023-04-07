@@ -173,6 +173,7 @@ with st.expander("Sort"):
     with sortCol1:
         indFil = st.multiselect("Sort by", df.columns)
 
+df = df.sort_values(sortCol)
 df = df[df["Industry"].isin(indFil)]
 for row in df.index:
     with st.expander(df.loc[row,"Project Name"]):
