@@ -162,7 +162,7 @@ with col1:
 # <span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
 
 df = load_data()
-@st.cache
+@st.cache_data
 def makeProjDict():
     projdict = {}
     for row in df.index:
@@ -187,9 +187,9 @@ df = df.sort_values(sortCol,ascending=sortAsc)
 df = df[df["Industry"].isin(indFil)]
 st.header("Our Projects:")
 for row in df.index:
-    with st.expander(df.loc[row,"Project Name"]):
-        projDict[df.loc[row,"Project ID"]] = st.checkbox("Check if Interested", key=df.loc[row,"Project ID"], value=False)
+    with st.expander(df.loc[row,"Project Name"]):   
         st.write(f"**Project Summary:** {df.loc[row,'Summary']}")
+        projDict[df.loc[row,"Project ID"]] = st.checkbox("Check if Interested", key=df.loc[row,"Project ID"], value=False)
 
 # gb = GridOptionsBuilder.from_dataframe(df)
 # # gb.configure_side_bar(filters_panel=True, columns_panel=False, defaultToolPanel="filters")
