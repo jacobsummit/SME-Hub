@@ -216,6 +216,7 @@ with st.expander("See Your interests here"):
             # st.button("Click to Remove", key="x"+i, on_click=updateDict(i, False))
 
 st.session_state.projs
+st.write([x["id"] for x in st.session_state.projs ])
 
 # gb = GridOptionsBuilder.from_dataframe(df)
 # # gb.configure_side_bar(filters_panel=True, columns_panel=False, defaultToolPanel="filters")
