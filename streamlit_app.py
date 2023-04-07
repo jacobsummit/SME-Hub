@@ -191,7 +191,7 @@ for row in df.index:
         st.write(f"**Project Summary:** {df.loc[row,'Summary']}")
         projDict[df.loc[row,"Project ID"]] = st.checkbox("Check if Interested", key=df.loc[row,"Project ID"], value=False)
 
-st.write({k:v for (k,v) in projDict.items() if True in v})
+st.write({k:v for (k,v) in projDict.items() if v})
 # gb = GridOptionsBuilder.from_dataframe(df)
 # # gb.configure_side_bar(filters_panel=True, columns_panel=False, defaultToolPanel="filters")
 # gb.configure_default_column(sizeColumnsToFit=False, enablePivot=False, enableValue=False, enableRowGroup=True, suppressColumnsToolPanel=True,menuTabs=['filterMenuTab'],enableBrowserTooltips=False,tooltip_show_delay=0)
