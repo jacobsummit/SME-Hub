@@ -188,6 +188,14 @@ with st.expander("Sort"):
 
 df = df.sort_values(sortCol,ascending=sortAsc)
 df = df[df["Industry"].isin(indFil)]
+with st.expander("See Your interests here"):
+    for i in [k for (k,v) in projDict.items() if v]:
+        intCol1, intCol2 = st.columns((1,1))
+        with intCol1:
+            st.write(df[df["Project ID"] == i].iloc[0,0])
+        with intCol2:
+            st.button("Click to Remove", key="x"+i, on_click=updateDict(i, False))
+
 st.header("Our Projects:")
 for row in df.index:
     with st.expander(f"**{df.loc[row,'Project Name']}**"):   
@@ -196,13 +204,6 @@ for row in df.index:
         st.button("Click if Interested", key=df.loc[row,"Project ID"], on_click=updateDict(df.loc[row,"Project ID"], True))
         # updateDict(df.loc[row,"Project ID"], st.checkbox("Check if Interested", key=df.loc[row,"Project ID"]))
 # intList = [k for (k,v) in projDict.items() if v]
-with st.expander("See Your interests here"):
-    for i in [k for (k,v) in projDict.items() if v]:
-        intCol1, intCol2 = st.columns((1,1))
-        with intCol1:
-            st.write(df[df["Project ID"] == i].iloc[0,0])
-        with intCol2:
-            st.button("Click to Remove", key="x"+i, on_click=updateDict(i, False))
 
 # gb = GridOptionsBuilder.from_dataframe(df)
 # # gb.configure_side_bar(filters_panel=True, columns_panel=False, defaultToolPanel="filters")
