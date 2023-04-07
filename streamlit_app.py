@@ -190,7 +190,7 @@ for row in df.index:
     with st.expander(f"**{df.loc[row,'Project Name']}**"):   
         st.write(f"**Project Summary:** {df.loc[row,'Summary']}")
         projDict[df.loc[row,"Project ID"]] = st.checkbox("Check if Interested", key=df.loc[row,"Project ID"], value=False)
-intList = [k[1] for (k,v) in projDict.items() if v]
+intList = [k.values() for (k,v) in projDict.items() if v]
 st.write(intList)
 # gb = GridOptionsBuilder.from_dataframe(df)
 # # gb.configure_side_bar(filters_panel=True, columns_panel=False, defaultToolPanel="filters")
