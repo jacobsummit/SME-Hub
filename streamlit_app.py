@@ -170,6 +170,9 @@ def makeProjDict():
     return projdict
 
 projDict = makeProjDict()
+@st.cache_data
+def updateDict(rowid, val):
+    projDict[rowid] = val
 
 with st.expander("Filter", True):
     filCol1, filCol2 = st.columns((1,3))
@@ -189,7 +192,8 @@ st.header("Our Projects:")
 for row in df.index:
     with st.expander(f"**{df.loc[row,'Project Name']}**"):   
         st.write(f"**Project Summary:** {df.loc[row,'Summary']}")
-        projDict[df.loc[row,"Project ID"]] = st.checkbox("Check if Interested", key=df.loc[row,"Project ID"])
+        # projDict[df.loc[row,"Project ID"]] = st.checkbox("Check if Interested", key=df.loc[row,"Project ID"])
+        updateDict(df.loc[row,"Project ID"], st.checkbox("Check if Interested", key=df.loc[row,"Project ID"]))
 # intList = [k for (k,v) in projDict.items() if v]
 st.write(projDict)
 # gb = GridOptionsBuilder.from_dataframe(df)
