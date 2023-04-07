@@ -163,8 +163,7 @@ with col1:
 # <span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
 
 def updateDf(rowid, val):
-    st.write(val)
-    df[df["Project ID"] == rowid].iloc[0,-1] = val
+    df.loc[df["Project ID"] == rowid, ["Interest"]] = val
 
 df = load_data()
 
@@ -203,7 +202,7 @@ with st.expander("See Your interests here"):
             st.write()
             # st.button("Click to Remove", key="x"+i, on_click=updateDict(i, False))
 st.write(type(df.loc[19,"Project ID"]))
-df.loc[df["Project ID"] == "1650714000002234043", ["Interest"]] = True
+
 # df[].iloc[0,-1] = True
 st.dataframe(df)
 
