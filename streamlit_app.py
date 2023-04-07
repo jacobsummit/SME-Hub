@@ -170,7 +170,7 @@ def makeProjDict():
     return projdict
 
 projDict = makeProjDict()
-# @st.cache_data
+@st.cache_data
 def updateDict(rowid, val):
     projDict[rowid] = val
 
@@ -197,7 +197,7 @@ for row in df.index:
         st.write(df.loc[row,'Project ID'])
         st.button("Click if Interested", key=df.loc[row,"Project ID"], on_click=updateDict(df.loc[row,"Project ID"], True))
         # updateDict(df.loc[row,"Project ID"], st.checkbox("Check if Interested", key=df.loc[row,"Project ID"]))
-# intList = [k for (k,v) in projDict.items() if v]
+
 with st.expander("See Your interests here"):
     st.write("test")
     for i in [k for (k,v) in projDict.items() if v]:
