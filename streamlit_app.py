@@ -169,7 +169,7 @@ def updateDf(rowid, val):
 def proj_changed():
     pass
 
-if projs not in st.session_state:
+if "projs" not in st.session_state:
     st.session_state.projs = []
 
 df = load_data()
@@ -209,7 +209,7 @@ with st.expander("See Your interests here"):
             st.write()
             # st.button("Click to Remove", key="x"+i, on_click=updateDict(i, False))
 
-st.dataframe(df)
+st.sessionstate
 
 # gb = GridOptionsBuilder.from_dataframe(df)
 # # gb.configure_side_bar(filters_panel=True, columns_panel=False, defaultToolPanel="filters")
