@@ -203,7 +203,8 @@ with st.expander("See Your interests here"):
             st.write()
             # st.button("Click to Remove", key="x"+i, on_click=updateDict(i, False))
 st.write(type(df.loc[19,"Project ID"]))
-df[df["Project ID"] == "1650714000002234043"].iloc[0,-1] = True
+df.loc[df["Project ID"] == "1650714000002234043", ["Interest"]] = True
+# df[].iloc[0,-1] = True
 st.dataframe(df)
 
 # gb = GridOptionsBuilder.from_dataframe(df)
