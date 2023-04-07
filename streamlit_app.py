@@ -163,6 +163,7 @@ with col1:
 # <span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
 
 def updateDf(rowid, val):
+    st.write(rowid)
     df[df["Project ID"] == rowid].iloc[0,-1] = val
 
 df = load_data()
