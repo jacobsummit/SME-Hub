@@ -189,6 +189,7 @@ with st.expander("Sort"):
 df = df.sort_values(sortCol,ascending=sortAsc)
 df = df[df["Industry"].isin(indFil)]
 with st.expander("See Your interests here"):
+    st.write("test")
     for i in [k for (k,v) in projDict.items() if v]:
         intCol1, intCol2 = st.columns((1,1))
         with intCol1:
