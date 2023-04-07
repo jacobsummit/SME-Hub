@@ -201,8 +201,7 @@ with st.expander("See Your interests here"):
         with intCol2:
             st.write()
             # st.button("Click to Remove", key="x"+i, on_click=updateDict(i, False))
-testI = filtDf.loc[44, "Project ID"]
-df.loc[df["Project ID"] == testI, ["Interest"]] = True
+
 st.dataframe(df)
 
 # gb = GridOptionsBuilder.from_dataframe(df)
