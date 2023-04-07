@@ -197,7 +197,7 @@ for row in df.index:
         # updateDict(df.loc[row,"Project ID"], st.checkbox("Check if Interested", key=df.loc[row,"Project ID"]))
 # intList = [k for (k,v) in projDict.items() if v]
 with st.expander("See Your interests here"):
-    for i in projDict:
+    for i in [k for (k,v) in projDict.items() if v]:
         intCol1, intCol2 = st.columns((1,1))
         with intCol1:
             st.write(i)
