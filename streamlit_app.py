@@ -164,6 +164,7 @@ with col1:
 
 def updateDf(rowid, val):
     df.loc[df["Project ID"] == rowid, ["Interest"]] = val
+    st.experimental_rerun()
 
 df = load_data()
 
