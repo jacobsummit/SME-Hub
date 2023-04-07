@@ -166,7 +166,7 @@ background-color: gold;
 df = load_data()
 
 for row in df.index:
-    st.write(df.iloc[row,0])
+    st.write(row)
 
 # gb = GridOptionsBuilder.from_dataframe(df)
 # # gb.configure_side_bar(filters_panel=True, columns_panel=False, defaultToolPanel="filters")
