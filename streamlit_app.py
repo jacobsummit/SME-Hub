@@ -140,26 +140,26 @@ with col1:
             fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
             userEmail = st.text_input(label = "Email", placeholder="Enter Email")
             email_submit = st.form_submit_button("Send Email")
-with col2:
-    st.markdown("""<style>
+# with col2:
+#     st.markdown("""<style>
     
-.green-square {
-position: relative;
-display: inline-block;
-width: 20px;
-height: 20px;
-background-color: green;
+# .green-square {
+# position: relative;
+# display: inline-block;
+# width: 20px;
+# height: 20px;
+# background-color: green;
 
-float: right;
-}
-.yellow-square {
-background-color: gold;
-}</style><br><br><br>
-<div class="green-square"></div>
-<span style="float:right; position: relative; right:10px;">Complete: </span>
-<br/>
-<div class="green-square yellow-square"></div>
-<span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
+# float: right;
+# }
+# .yellow-square {
+# background-color: gold;
+# }</style><br><br><br>
+# <div class="green-square"></div>
+# <span style="float:right; position: relative; right:10px;">Complete: </span>
+# <br/>
+# <div class="green-square yellow-square"></div>
+# <span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
 
 
 
