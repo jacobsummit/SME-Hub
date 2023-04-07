@@ -49,6 +49,7 @@ def load_data():
     df = df[cols]
     df = df[(df['Project Name'].str.len()>1) & (df['Summary'].str.len()>1)& (df['Industry'].str.len()>1)& (df['Critical Questions'].str.len()>1)]
     df = df.sort_values("Priority Level", ascending=True,na_position="last")
+    df["Interest"] = False
     return df
 
 def validEmail(email):
@@ -161,18 +162,11 @@ with col1:
 # <div class="green-square yellow-square"></div>
 # <span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
 
-df = load_data()
-@st.cache_data
-def makeProjDict():
-    projdict = {}
-    for row in df.index:
-        projdict[df.loc[row,"Project ID"]] = False
-    return projdict
+def updateDF(rowid, val):
+    df[df["Project ID"] == rowid].iloc[0,-1] = val
 
-projDict = makeProjDict()
-@st.cache_data
-def updateDict(rowid, val):
-    projDict[rowid] = val
+df = load_data()
+
 
 with st.expander("Filter", True):
     filCol1, filCol2 = st.columns((1,3))
@@ -187,27 +181,27 @@ with st.expander("Sort"):
         sortAsc = st.checkbox("Sort by Ascending",value=True)
 
 df = df.sort_values(sortCol,ascending=sortAsc)
-df = df[df["Industry"].isin(indFil)]
+filtDf = df[df["Industry"].isin(indFil)]
 
 
 st.header("Our Projects:")
-for row in df.index:
-    with st.expander(f"**{df.loc[row,'Project Name']}**"):   
-        st.write(f"**Project Summary:** {df.loc[row,'Summary']}")
-        st.write(df.loc[row,'Project ID'])
-        st.button("Click if Interested", key=df.loc[row,"Project ID"], on_click=updateDict(df.loc[row,"Project ID"], True))
+for row in filtDf.index:
+    with st.expander(f"**{filtDf.loc[row,'Project Name']}**"):   
+        st.write(f"**Project Summary:** {filtDf.loc[row,'Summary']}")
+        st.write(filtDf.loc[row,'Project ID'])
+        st.button("Click if Interested", key=filtDf.loc[row,"Project ID"], on_click=updateDf(filtDf.loc[row,"Project ID"], True))
         # updateDict(df.loc[row,"Project ID"], st.checkbox("Check if Interested", key=df.loc[row,"Project ID"]))
 
 with st.expander("See Your interests here"):
     st.write("test")
-    for i in [k for (k,v) in projDict.items() if v]:
+    for i in df[df["Interest"] == True].index:
         intCol1, intCol2 = st.columns((1,1))
         with intCol1:
-            st.write(df[df["Project ID"] == i].iloc[0,0])
+            st.write(i.iloc[0,-1])
         with intCol2:
             st.write()
             # st.button("Click to Remove", key="x"+i, on_click=updateDict(i, False))
-st.write(projDict)
+st.dataframe(df[df["Interest"] == True])
 
 # gb = GridOptionsBuilder.from_dataframe(df)
 # # gb.configure_side_bar(filters_panel=True, columns_panel=False, defaultToolPanel="filters")
