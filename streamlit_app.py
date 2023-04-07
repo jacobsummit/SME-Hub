@@ -205,7 +205,7 @@ with st.expander("See Your interests here"):
         with intCol1:
             st.write(df[df["Project ID"] == i].iloc[0,0])
         with intCol2:
-            pass
+            st.write()
             # st.button("Click to Remove", key="x"+i, on_click=updateDict(i, False))
 st.write(projDict)
 
