@@ -140,7 +140,7 @@ with col1:
         with st.form("email_form"):
             fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
             userEmail = st.text_input(label = "Email", placeholder="Enter Email")
-            email_submit = st.form_submit_button("Send Email")
+            email_submit = st.form_submit_button("Submit Email")
 # with col2:
 #     st.markdown("""<style>
     
@@ -186,7 +186,7 @@ df = load_data()
 with st.expander("Filter", True):
     filCol1, filCol2 = st.columns((1,3))
     with filCol1:
-        indFil = st.multiselect("Select All Industries you are Interested in", df["Industry"].unique())
+        indFil = st.multiselect("Select All Industries you are Interested in", df["Industry"].unique(),)
 with st.expander("Sort"):
     sortCol1, sortCol2 = st.columns((1,3))
     with sortCol1:
@@ -204,7 +204,7 @@ for row in filtDf.index:
     with st.expander(f"**{filtDf.loc[row,'Project Name']}**"):   
         st.write(f"**Project Summary:** {filtDf.loc[row,'Summary']}")
         st.write(filtDf.loc[row,'Project ID'])
-        st.button("Click if Interested", key=filtDf.loc[row,"Project ID"], on_click=proj_changed, args=(filtDf.loc[row,"Project ID"], True,))
+        st.button("Click if Interested", key=filtDf.loc[row,"Project ID"], on_click=proj_changed, args=(filtDf.loc[row,"Project ID"], True,default = filtDf.loc[row,"Project ID"]))
         # updateDict(df.loc[row,"Project ID"], st.checkbox("Check if Interested", key=df.loc[row,"Project ID"]))
 
 # with st.expander("See Your interests here"):
