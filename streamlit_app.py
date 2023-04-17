@@ -212,7 +212,8 @@ with st.expander("See Your interests here"):
     for i in df.index:
         intCol1, intCol2 = st.columns((1,1))
         with intCol1:
-            st.write(i.iloc[0,-1])
+            # st.write(i.iloc[0,-1])
+            pass
         with intCol2:
             st.write()
             # st.button("Click to Remove", key="x"+i, on_click=updateDict(i, False))
