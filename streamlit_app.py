@@ -209,7 +209,7 @@ for row in filtDf.index:
 
 with st.expander("See Your interests here"):
     st.write("test")
-    for i in df[df["Interest"] == True].index:
+    for i in df.index:
         intCol1, intCol2 = st.columns((1,1))
         with intCol1:
             st.write(i.iloc[0,-1])
