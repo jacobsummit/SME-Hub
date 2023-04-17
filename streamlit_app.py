@@ -207,16 +207,16 @@ for row in filtDf.index:
         st.button("Click if Interested", key=filtDf.loc[row,"Project ID"], on_click=proj_changed, args=(filtDf.loc[row,"Project ID"], True,))
         # updateDict(df.loc[row,"Project ID"], st.checkbox("Check if Interested", key=df.loc[row,"Project ID"]))
 
-with st.expander("See Your interests here"):
-    st.write("test")
-    for i in df.index:
-        intCol1, intCol2 = st.columns((1,1))
-        with intCol1:
-            # st.write(i.iloc[0,-1])
-            pass
-        with intCol2:
-            st.write()
-            # st.button("Click to Remove", key="x"+i, on_click=updateDict(i, False))
+# with st.expander("See Your interests here"):
+#     st.write("test")
+#     for i in df.index:
+#         intCol1, intCol2 = st.columns((1,1))
+#         with intCol1:
+#             # st.write(i.iloc[0,-1])
+#             pass
+#         with intCol2:
+#             st.write()
+#             # st.button("Click to Remove", key="x"+i, on_click=updateDict(i, False))
 
 st.session_state.projs
 st.write()
