@@ -183,42 +183,42 @@ if "projs" not in st.session_state:
 df = load_data()
 
 
-# with st.expander("Filter", True):
-#     filCol1, filCol2 = st.columns((1,3))
-#     with filCol1:
-#         indFil = st.multiselect("Select All Industries you are Interested in", df["Industry"].unique())
-# with st.expander("Sort"):
-#     sortCol1, sortCol2 = st.columns((1,3))
-#     with sortCol1:
-#         sortCol = st.selectbox("Sort by", df.columns)
-#     with sortCol2:
-#         st.write()
-#         sortAsc = st.checkbox("Sort by Ascending",value=True)
+with st.expander("Filter", True):
+    filCol1, filCol2 = st.columns((1,3))
+    with filCol1:
+        indFil = st.multiselect("Select All Industries you are Interested in", df["Industry"].unique())
+with st.expander("Sort"):
+    sortCol1, sortCol2 = st.columns((1,3))
+    with sortCol1:
+        sortCol = st.selectbox("Sort by", df.columns)
+    with sortCol2:
+        st.write()
+        sortAsc = st.checkbox("Sort by Ascending",value=True)
 
-# df = df.sort_values(sortCol,ascending=sortAsc)
-# filtDf = df[df["Industry"].isin(indFil)]
+df = df.sort_values(sortCol,ascending=sortAsc)
+filtDf = df[df["Industry"].isin(indFil)]
 
 
-# st.header("Our Projects:")
-# for row in filtDf.index:
-#     with st.expander(f"**{filtDf.loc[row,'Project Name']}**"):   
-#         st.write(f"**Project Summary:** {filtDf.loc[row,'Summary']}")
-#         st.write(filtDf.loc[row,'Project ID'])
-#         st.button("Click if Interested", key=filtDf.loc[row,"Project ID"], on_click=proj_changed, args=(filtDf.loc[row,"Project ID"], True,))
-#         # updateDict(df.loc[row,"Project ID"], st.checkbox("Check if Interested", key=df.loc[row,"Project ID"]))
+st.header("Our Projects:")
+for row in filtDf.index:
+    with st.expander(f"**{filtDf.loc[row,'Project Name']}**"):   
+        st.write(f"**Project Summary:** {filtDf.loc[row,'Summary']}")
+        st.write(filtDf.loc[row,'Project ID'])
+        st.button("Click if Interested", key=filtDf.loc[row,"Project ID"], on_click=proj_changed, args=(filtDf.loc[row,"Project ID"], True,))
+        # updateDict(df.loc[row,"Project ID"], st.checkbox("Check if Interested", key=df.loc[row,"Project ID"]))
 
-# with st.expander("See Your interests here"):
-#     st.write("test")
-#     for i in df[df["Interest"] == True].index:
-#         intCol1, intCol2 = st.columns((1,1))
-#         with intCol1:
-#             st.write(i.iloc[0,-1])
-#         with intCol2:
-#             st.write()
-#             # st.button("Click to Remove", key="x"+i, on_click=updateDict(i, False))
+with st.expander("See Your interests here"):
+    st.write("test")
+    for i in df[df["Interest"] == True].index:
+        intCol1, intCol2 = st.columns((1,1))
+        with intCol1:
+            st.write(i.iloc[0,-1])
+        with intCol2:
+            st.write()
+            # st.button("Click to Remove", key="x"+i, on_click=updateDict(i, False))
 
-# st.session_state.projs
-# st.write()
+st.session_state.projs
+st.write()
 
 # gb = GridOptionsBuilder.from_dataframe(df)
 # # gb.configure_side_bar(filters_panel=True, columns_panel=False, defaultToolPanel="filters")
