@@ -127,7 +127,7 @@ with st.expander("Filter", True):
     with filCol1:
         indFil = st.multiselect("Select All Industries you are Interested in", df["Industry"].unique(),default=df["Industry"].unique())
 with st.expander("Sort"):
-    sortCol1, sortCol2 = st.columns((1,3))
+    sortCol1, sortCol2,sortCol3 = st.columns((1,1,2))
     with sortCol1:
         sortCol = st.selectbox("Sort by", df.columns)
     with sortCol2:
@@ -143,8 +143,9 @@ for row in filtDf.index:
     with st.expander(f"**{filtDf.loc[row,'Project Name']}**"):   
         st.write(f"**Project Summary:** {filtDf.loc[row,'Summary']}")
         st.write(f"**Our Questions:**\n\n {filtDf.loc[row,'Critical Questions']}".replace('?','?\n'))
+        st.write(filtDf.loc[row,'1']/6)
         # st.write(filtDf.loc[row,'Project ID'])
-        st.checkbox("Click if Interested", value=filtDf.loc[row,"Project ID"] in st.session_state.projs, key=filtDf.loc[row,"Project ID"], on_change=proj_changed, args=(filtDf.loc[row,"Project ID"], True))
+        st.checkbox("Check box if Interested", value=filtDf.loc[row,"Project ID"] in st.session_state.projs, key=filtDf.loc[row,"Project ID"], on_change=proj_changed, args=(filtDf.loc[row,"Project ID"], True))
         # updateDict(df.loc[row,"Project ID"], st.checkbox("Check if Interested", key=df.loc[row,"Project ID"]))
 
 # with st.expander("See Your interests here"):
