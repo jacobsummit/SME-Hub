@@ -114,6 +114,7 @@ def proj_changed(rowid):
             }
         )
     else:
+        st.write(x["id"])
         [not x["interest"] for x in st.session_state.projs if x["id"]==rowid]
 
 if "projs" not in st.session_state:
