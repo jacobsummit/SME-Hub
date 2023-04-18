@@ -131,10 +131,10 @@ with st.expander("Filter", True):
 with st.expander("Sort"):
     sortCol1, sortCol2,sortCol3 = st.columns((1,1,2))
     with sortCol1:
-        sortCol = st.selectbox("Sort by", df.columns)
+        sortCol = st.selectbox("Sort by", ["Project Name","Industry","Priority Level","Total Progress"], default="Priority Level")
     with sortCol2:
         st.write()
-        sortAsc = st.checkbox("Sort by Ascending",value=True)
+        sortAsc = st.checkbox("Sort by Ascending",value=False)
 
 df = df.sort_values(sortCol,ascending=sortAsc)
 filtDf = df[df["Industry"].isin(indFil)]
