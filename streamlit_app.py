@@ -126,7 +126,7 @@ df["Total Progress"] = round(df["1"]/6+df["2"]/6+df["3"]/6+df["4"]/6+df["5"]/6+d
 
 with st.expander("Filter", True):
     indFil = st.multiselect("Select All Industries you are Interested in", df["Industry"].unique(),default=df["Industry"].unique())
-with st.expander("Sort"):
+with st.expander("Sort", True):
     sortCol1, sortCol2,sortCol3 = st.columns((1,1,2))
     with sortCol1:
         sortCol = st.selectbox("Sort by", ["Priority Level","Project Name","Industry","Total Progress"])
@@ -160,8 +160,8 @@ for row in filtDf.index:
 #             st.write()
 #             # st.button("Click to Remove", key="x"+i, on_click=updateDict(i, False))
 
-st.session_state.projs
-st.write()
+# st.session_state.projs
+# st.write()
 col1, col2 = st.columns((1,1))
 with col1:
     # st.write('<- See sidebar for table usage (sorting, filtering, more information)')
