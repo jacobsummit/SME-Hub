@@ -131,7 +131,7 @@ with st.expander("Filter", True):
 with st.expander("Sort"):
     sortCol1, sortCol2,sortCol3 = st.columns((1,1,2))
     with sortCol1:
-        sortCol = st.selectbox("Sort by", ["Project Name","Industry","Priority Level","Total Progress"], default="Priority Level")
+        sortCol = st.selectbox("Sort by", ["Priority Level","Project Name","Industry","Total Progress"], default="Priority Level")
     with sortCol2:
         st.write()
         sortAsc = st.checkbox("Sort by Ascending",value=False)
