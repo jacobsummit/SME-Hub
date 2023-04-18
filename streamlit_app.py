@@ -186,6 +186,7 @@ for name in df["Project Name"]:
     jsTest += f"""Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.add('{cssVal}');"""
 
 st.write([df[df["Project ID"] == x]["Project Name"].values[0] for x in df["Project ID"] if x in st.session_state.projs])
+st.write(jsTest)
 components.html(f"""
 <script>
 {jsTest}
