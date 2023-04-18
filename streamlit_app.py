@@ -188,6 +188,8 @@ for name in df["Project Name"]:
 st.write([df[df["Project ID"] == x]["Project Name"].values[0] for x in df["Project ID"] if x in st.session_state.projs])
 for name in df["Project Name"]:
     st.write(name)
+    if name in st.session_state.projs:
+        st.write("found!!")
 st.write(jsTest)
 components.html(f"""
 <script>
