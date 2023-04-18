@@ -119,8 +119,8 @@ if "projs" not in st.session_state:
     st.session_state.projs = []
 
 df = load_data()
-df["Total Progress"] = df["1"]/6
-st.dataframe(df)
+df["Total Progress"] = df["1"]/6+df["2"]/6+df["3"]/6+df["4"]/6+df["15]/6+df["6"]/6
+# st.dataframe(df)
 st.sidebar.write(df.columns)
 
 
