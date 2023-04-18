@@ -118,7 +118,7 @@ def proj_changed(rowid, val):
             }
         )
     else:
-        [[not x["interest"] for x in st.session_state.projs if x["id"]==rowid][0] for y["interest"] in st.session_state.projs if y["id"]==rowid]
+        [[not x["interest"] for x in st.session_state.projs if x["id"]==rowid][0] for y in st.session_state.projs if y["id"]==rowid]
 
 if "projs" not in st.session_state:
     st.session_state.projs = []
