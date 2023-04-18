@@ -105,7 +105,7 @@ def updateDf(rowid, val):
 
     df.loc[df["Project ID"] == rowid, ["Interest"]] = val
 
-def proj_changed(rowid):
+def proj_changed(rowid, val):
     if rowid not in [x["id"] for x in st.session_state.projs]:
         st.session_state.projs.append(
             {
@@ -114,7 +114,7 @@ def proj_changed(rowid):
             }
         )
     else:
-        [not x["interest"] for x in st.session_state.projs if x["id"]==rowid]
+        [not x["interest"] for x in st.session_state.projs if x["id"]==rowid][0]
 
 if "projs" not in st.session_state:
     st.session_state.projs = []
@@ -143,7 +143,7 @@ for row in filtDf.index:
     with st.expander(f"**{filtDf.loc[row,'Project Name']}**"):   
         st.write(f"**Project Summary:** {filtDf.loc[row,'Summary']}")
         st.write(filtDf.loc[row,'Project ID'])
-        st.checkbox("Check if Interested", key=filtDf.loc[row,"Project ID"], on_change=proj_changed, args=(filtDf.loc[row,"Project ID"]))
+        st.checkbox("Click if Interested", key=filtDf.loc[row,"Project ID"], on_change=proj_changed, args=(filtDf.loc[row,"Project ID"], True))
         # updateDict(df.loc[row,"Project ID"], st.checkbox("Check if Interested", key=df.loc[row,"Project ID"]))
 
 # with st.expander("See Your interests here"):
