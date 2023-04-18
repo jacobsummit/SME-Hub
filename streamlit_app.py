@@ -96,63 +96,10 @@ def emailer(useremail, contents, subject):
         yag.send(to=useremail, contents=contents, subject=subject)
         yagmail.SMTP.close(yag)
 
-custom_css = {
-    ".ag-header-cell-text":{"color":"#fff","font-size":"15px !important"},
-    ".ag-header":{"background":"linear-gradient(90deg, rgba(218,120,34,1) 0%, rgba(163,31,36,1) 100%);"},
-    ".ag-header-row":{"height":"60px"},
-    ".ag-cell-wrap-text":{"word-break":"break-word"},
-    ".ag-root-wrapper":{"border-radius":"1em"},
-    ".stAgGrid":{"box-shadow":  "5px 5px 5px grey"},
-}
-
-cellstyle_jscode = JsCode("""
-function(params){
-    if (params.value == '100') {
-        return {
-            'color': 'green', 
-            'backgroundColor': 'green',
-            'display':'block',
-        }
-    }
-    else if (params.value > '0') {
-        return{
-            'color': 'gold',
-            'backgroundColor': 'gold',
-        }
-    }
-    if (params.value == '0') {
-        return{
-            'color': 'white',
-            'backgroundColor': 'green', 
-            'display':'none'
-        }
-    }
-}
-""")
 
 
 
 
-# with col2:
-#     st.markdown("""<style>
-    
-# .green-square {
-# position: relative;
-# display: inline-block;
-# width: 20px;
-# height: 20px;
-# background-color: green;
-
-# float: right;
-# }
-# .yellow-square {
-# background-color: gold;
-# }</style><br><br><br>
-# <div class="green-square"></div>
-# <span style="float:right; position: relative; right:10px;">Complete: </span>
-# <br/>
-# <div class="green-square yellow-square"></div>
-# <span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
 
 def updateDf(rowid, val):
 
@@ -215,12 +162,75 @@ st.write()
 col1, col2 = st.columns((1,1))
 with col1:
     # st.write('<- See sidebar for table usage (sorting, filtering, more information)')
-    st.write("Check boxes for projects you are interested in, then enter your information below. A team member will reach out to you in regards to these projects.")
+    # st.write("Check boxes for projects you are interested in, then enter your information below. A team member will reach out to you in regards to these projects.")
     with st.expander("Enter your Information",True):
         with st.form("email_form"):
             fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
             userEmail = st.text_input(label = "Email", placeholder="Enter Email")
             email_submit = st.form_submit_button("Submit")
+
+
+
+
+
+
+#  custom_css = {
+#     ".ag-header-cell-text":{"color":"#fff","font-size":"15px !important"},
+#     ".ag-header":{"background":"linear-gradient(90deg, rgba(218,120,34,1) 0%, rgba(163,31,36,1) 100%);"},
+#     ".ag-header-row":{"height":"60px"},
+#     ".ag-cell-wrap-text":{"word-break":"break-word"},
+#     ".ag-root-wrapper":{"border-radius":"1em"},
+#     ".stAgGrid":{"box-shadow":  "5px 5px 5px grey"},
+# }
+
+# cellstyle_jscode = JsCode("""
+# function(params){
+#     if (params.value == '100') {
+#         return {
+#             'color': 'green', 
+#             'backgroundColor': 'green',
+#             'display':'block',
+#         }
+#     }
+#     else if (params.value > '0') {
+#         return{
+#             'color': 'gold',
+#             'backgroundColor': 'gold',
+#         }
+#     }
+#     if (params.value == '0') {
+#         return{
+#             'color': 'white',
+#             'backgroundColor': 'green', 
+#             'display':'none'
+#         }
+#     }
+# }
+# """)
+
+
+
+
+# with col2:
+#     st.markdown("""<style>
+    
+# .green-square {
+# position: relative;
+# display: inline-block;
+# width: 20px;
+# height: 20px;
+# background-color: green;
+
+# float: right;
+# }
+# .yellow-square {
+# background-color: gold;
+# }</style><br><br><br>
+# <div class="green-square"></div>
+# <span style="float:right; position: relative; right:10px;">Complete: </span>
+# <br/>
+# <div class="green-square yellow-square"></div>
+# <span style="float:right; position: relative; right:10px">In Process: </span>""",unsafe_allow_html=True)
 
 # gb = GridOptionsBuilder.from_dataframe(df)
 # # gb.configure_side_bar(filters_panel=True, columns_panel=False, defaultToolPanel="filters")
