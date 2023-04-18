@@ -181,7 +181,7 @@ with col1:
 
 
 
-st.write([x["Project ID"] for x in df if x in st.session_state.projs])
+st.write([x for x in df["Project ID"] if x in st.session_state.projs])
 
 
 #  custom_css = {
