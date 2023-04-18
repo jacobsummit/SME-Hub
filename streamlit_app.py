@@ -142,6 +142,7 @@ st.header("Our Projects:")
 for row in filtDf.index:
     with st.expander(f"**{filtDf.loc[row,'Project Name']}**"):   
         st.write(f"**Project Summary:** {filtDf.loc[row,'Summary']}")
+        st.write(f"**Our Questions:** {filtDf.loc[row,'Critical Questions']}")
         st.write(filtDf.loc[row,'Project ID'])
         st.checkbox("Click if Interested", value=filtDf.loc[row,"Project ID"] in st.session_state.projs, key=filtDf.loc[row,"Project ID"], on_change=proj_changed, args=(filtDf.loc[row,"Project ID"], True))
         # updateDict(df.loc[row,"Project ID"], st.checkbox("Check if Interested", key=df.loc[row,"Project ID"]))
