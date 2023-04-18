@@ -110,16 +110,10 @@ def updateDf(rowid, val):
 #         st.session_state.projs[]
 
 def proj_changed(rowid, val):
-    if rowid not in [x["id"] for x in st.session_state.projs]:
+    if rowid not in st.session_state.projs:
         st.session_state.projs.append(rowid)
-        # st.session_state.projs.append(
-        #     {
-        #         "id":rowid,
-        #         "interest": True
-        #     }
-        # )
     else:
-        [not x["interest"] for x in st.session_state.projs if x["id"]==rowid][0]
+        st.session_state.projs.remove(rowid)
 
 if "projs" not in st.session_state:
     st.session_state.projs = []
