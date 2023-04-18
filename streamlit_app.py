@@ -120,21 +120,19 @@ if "projs" not in st.session_state:
 
 df = load_data()
 df["Total Progress"] = round(df["1"]/6+df["2"]/6+df["3"]/6+df["4"]/6+df["5"]/6+df["6"]/6).astype(int)
-st.dataframe(df)
-st.sidebar.write(df.columns)
+# st.dataframe(df)
+# st.sidebar.write(df.columns)
 
 
 with st.expander("Filter", True):
-    filCol1, filCol2 = st.columns((1,2))
-    with filCol1:
-        indFil = st.multiselect("Select All Industries you are Interested in", df["Industry"].unique(),default=df["Industry"].unique())
+    indFil = st.multiselect("Select All Industries you are Interested in", df["Industry"].unique(),default=df["Industry"].unique())
 with st.expander("Sort"):
     sortCol1, sortCol2,sortCol3 = st.columns((1,1,2))
     with sortCol1:
         sortCol = st.selectbox("Sort by", ["Priority Level","Project Name","Industry","Total Progress"])
     with sortCol2:
         st.write()
-        sortAsc = st.checkbox("Sort by Ascending",value=False)
+        sortAsc = st.checkbox("Sort by Ascending",value=True)
 
 df = df.sort_values(sortCol,ascending=sortAsc)
 filtDf = df[df["Industry"].isin(indFil)]
