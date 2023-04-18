@@ -163,7 +163,7 @@ for row in filtDf.index:
 # st.session_state.projs
 # st.write()
 
-st.markdown("<style>.redlabel{color:red;}</style>")
+st.markdown("<style>.redlabel{color:red;}</style>", unsafe_allow_html=True)
 
 
 
