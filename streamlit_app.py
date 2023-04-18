@@ -119,6 +119,7 @@ if "projs" not in st.session_state:
     st.session_state.projs = []
 
 df = load_data()
+st.sidebar.write(df.columns)
 
 
 with st.expander("Filter", True):
