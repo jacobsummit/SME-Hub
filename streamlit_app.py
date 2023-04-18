@@ -105,6 +105,10 @@ def updateDf(rowid, val):
 
     df.loc[df["Project ID"] == rowid, ["Interest"]] = val
 
+# def get_state(rowid):
+#     if rowid in [x["id"] for x in st.session_state.projs]:
+#         st.session_state.projs[]
+
 def proj_changed(rowid, val):
     if rowid not in [x["id"] for x in st.session_state.projs]:
         st.session_state.projs.append(
@@ -114,7 +118,7 @@ def proj_changed(rowid, val):
             }
         )
     else:
-        [not x["interest"] for x in st.session_state.projs if x["id"]==rowid][0]
+        [[not x["interest"] for x in st.session_state.projs if x["id"]==rowid][0] for y["interest"] in st.session_state.projs if y["id"]==rowid]
 
 if "projs" not in st.session_state:
     st.session_state.projs = []
