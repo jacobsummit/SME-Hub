@@ -132,15 +132,7 @@ function(params){
 
 
 
-col1, col2 = st.columns((1,1))
-with col1:
-    st.write('<- See sidebar for table usage (sorting, filtering, more information)')
-    st.write("Check boxes for projects you are interested in, then enter your information below. A team member will reach out to you in regards to these projects.")
-    with st.expander("Enter your Information",True):
-        with st.form("email_form"):
-            fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
-            userEmail = st.text_input(label = "Email", placeholder="Enter Email")
-            email_submit = st.form_submit_button("Submit")
+
 # with col2:
 #     st.markdown("""<style>
     
@@ -220,6 +212,15 @@ for row in filtDf.index:
 
 st.session_state.projs
 st.write()
+col1, col2 = st.columns((1,1))
+with col1:
+    st.write('<- See sidebar for table usage (sorting, filtering, more information)')
+    st.write("Check boxes for projects you are interested in, then enter your information below. A team member will reach out to you in regards to these projects.")
+    with st.expander("Enter your Information",True):
+        with st.form("email_form"):
+            fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
+            userEmail = st.text_input(label = "Email", placeholder="Enter Email")
+            email_submit = st.form_submit_button("Submit")
 
 # gb = GridOptionsBuilder.from_dataframe(df)
 # # gb.configure_side_bar(filters_panel=True, columns_panel=False, defaultToolPanel="filters")
