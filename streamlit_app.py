@@ -162,6 +162,11 @@ for row in filtDf.index:
 
 # st.session_state.projs
 # st.write()
+
+st.markdown("<style>.redlabel{color:red;}</style>")
+
+
+
 col1, col2 = st.columns((1,1))
 with col1:
     # st.write('<- See sidebar for table usage (sorting, filtering, more information)')
