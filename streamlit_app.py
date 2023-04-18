@@ -119,7 +119,7 @@ if "projs" not in st.session_state:
     st.session_state.projs = []
 
 df = load_data()
-df["Total Progress"] = int(round(df["1"]/6+df["2"]/6+df["3"]/6+df["4"]/6+df["5"]/6+df["6"]/6))
+df["Total Progress"] = round(df["1"]/6+df["2"]/6+df["3"]/6+df["4"]/6+df["5"]/6+df["6"]/6).astype(int)
 st.dataframe(df)
 st.sidebar.write(df.columns)
 
