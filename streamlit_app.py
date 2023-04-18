@@ -146,6 +146,7 @@ for row in filtDf.index:
         st.write(f"**Project Summary:** {filtDf.loc[row,'Summary']}")
         st.write(f"**Our Questions:**\n\n {filtDf.loc[row,'Critical Questions']}".replace('?','?\n'))
         st.write(f"**Priority Level:** {filtDf.loc[row,'Priority Level']}")
+        st.write(f"**Total Progress:** {filtDf.loc[row,'Total Progress']}%")
         # st.write(filtDf.loc[row,'Project ID'])
         st.checkbox("Check box if Interested", value=filtDf.loc[row,"Project ID"] in st.session_state.projs, key=filtDf.loc[row,"Project ID"], on_change=proj_changed, args=(filtDf.loc[row,"Project ID"], True))
         # updateDict(df.loc[row,"Project ID"], st.checkbox("Check if Interested", key=df.loc[row,"Project ID"]))
