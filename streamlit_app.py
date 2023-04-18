@@ -123,7 +123,7 @@ df = load_data()
 
 
 with st.expander("Filter", True):
-    filCol1, filCol2 = st.columns((1,3))
+    filCol1, filCol2 = st.columns((1,2))
     with filCol1:
         indFil = st.multiselect("Select All Industries you are Interested in", df["Industry"].unique(),default=df["Industry"].unique())
 with st.expander("Sort"):
