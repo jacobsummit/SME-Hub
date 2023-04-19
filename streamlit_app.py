@@ -101,7 +101,7 @@ def emailer(useremail, contents, subject):
         yagmail.SMTP.close(yag)
 
 st.markdown("""<style>
-.myclass .olabel {
+.olabel {
     color: orange;
 }
 </style>""", unsafe_allow_html=True)
