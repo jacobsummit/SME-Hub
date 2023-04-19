@@ -54,6 +54,8 @@ def load_data():
     # df["Interest"] = False
     return df
 
+
+
 def validEmail(email):
     eReg = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
     if re.fullmatch(eReg, email): return True
@@ -98,27 +100,28 @@ def emailer(useremail, contents, subject):
         yag.send(to=useremail, contents=contents, subject=subject)
         yagmail.SMTP.close(yag)
 
-
-
-
-
-
-def updateDf(rowid, val):
-
-    df.loc[df["Project ID"] == rowid, ["Interest"]] = val
-
-# def get_state(rowid):
-#     if rowid in [x["id"] for x in st.session_state.projs]:
-#         st.session_state.projs[]
+st.markdown("""<style>
+.myclass .olabel {
+    color: orange;
+}
+</style>""", unsafe_allow_html=True)
 
 def proj_changed(rowid, val):
     if rowid not in st.session_state.projs:
         st.session_state.projs.append(rowid)
     else:
         st.session_state.projs.remove(rowid)
+    
+    name = df[df["Project ID"] == rowid]["Project Name"].values[0]
+    components.html(f"""
+    <script>
+    Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.toggle('olabel');
+    </script>
+    """)
 
 if "projs" not in st.session_state:
     st.session_state.projs = []
+
 
 df = load_data()
 df["Total Progress"] = round(df["1"]/6+df["2"]/6+df["3"]/6+df["4"]/6+df["5"]/6+df["6"]/6).astype(int)
@@ -175,28 +178,23 @@ with col1:
             userEmail = st.text_input(label = "Email", placeholder="Enter Email")
             email_submit = st.form_submit_button("Submit")
 
-st.markdown("""<style>
-.myclass .olabel {
-    color: orange;
-}
-
-</style>""", unsafe_allow_html=True)
 
 
-jsTest = ""
 
-for name in filtDf["Project Name"]:
-    cssColor = 'myclass olabel'
-    jsTest += f"""Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.toggle('{cssColor}');"""
+# jsTest = ""
+
+# for name in filtDf["Project Name"]:
+#     cssColor = 'myclass olabel'
+#     jsTest += f"""Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.toggle('{cssColor}');"""
 # for name in [df[df["Project ID"] == x]["Project Name"].values[0] for x in df["Project ID"] if x in st.session_state.projs]:
 #     jsTest += f"""Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.add('redlabel');"""
 
-components.html(f"""
-<script>
-{jsTest}
-</script>
-""")
-st.write(jsTest)
+# components.html(f"""
+# <script>
+# {jsTest}
+# </script>
+# """)
+# st.write(jsTest)
 
 #  custom_css = {
 #     ".ag-header-cell-text":{"color":"#fff","font-size":"15px !important"},
