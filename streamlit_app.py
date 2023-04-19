@@ -169,9 +169,9 @@ st.markdown("""<style>
 .redlabel{
     color:orange;
     }
-# .blacklabel{
-#     color:black;
-# }
+.blacklabel{
+     color:black;
+}
 </style>""", unsafe_allow_html=True)
 
 
