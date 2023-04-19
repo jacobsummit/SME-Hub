@@ -199,9 +199,7 @@ components.html(f"""
 {jsTest}
 console.log("test");
 </script>
-""",
-height=0,
-width=0)
+""")
 
 
 #  custom_css = {
