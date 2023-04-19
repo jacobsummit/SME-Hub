@@ -101,7 +101,7 @@ def emailer(useremail, contents, subject):
 
 
 st.markdown("""<style>
-.myclass .olabel {
+.olabel {
     color: orange;
 }
 
