@@ -107,7 +107,6 @@ iframe{
 }
 .olabel {
     color: orange;
-    background-color: black;
 }
 </style>""", unsafe_allow_html=True)
 
