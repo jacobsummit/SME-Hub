@@ -112,7 +112,7 @@ st.markdown("""<style>
 
 def proj_changed(rowid, val):
     
-    components.html("<script>console.log('"+random.random()+"')</script>")
+    components.html("<script>console.log('"+str(random.random())+"')</script>")
     return
     if rowid not in st.session_state.projs:
         st.session_state.projs.append(rowid)
