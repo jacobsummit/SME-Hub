@@ -110,7 +110,7 @@ st.markdown("""<style>
 </style>""", unsafe_allow_html=True)
 
 def proj_changed(rowid, val):
-    components.html("<script>alert()</script>")
+    components.html("<script>console.log('a')</script>")
     return
     if rowid not in st.session_state.projs:
         st.session_state.projs.append(rowid)
