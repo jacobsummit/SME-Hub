@@ -110,10 +110,7 @@ st.markdown("""<style>
 }
 </style>""", unsafe_allow_html=True)
 
-def proj_changed(rowid, val):
-    
-    components.html("<script>console.log('"+str(random.random())+"')</script>")
-    return
+def proj_changed(rowid, val):    
     if rowid not in st.session_state.projs:
         st.session_state.projs.append(rowid)
     else:
@@ -123,7 +120,7 @@ def proj_changed(rowid, val):
     components.html(f"""
     <script>
     Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.toggle('olabel');
-    console.log("test");
+    console.log("{str(random.random())}");
     </script>
     """)
 
