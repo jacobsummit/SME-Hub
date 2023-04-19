@@ -199,7 +199,7 @@ components.html(f"""
 {jsTest}
 </script>
 """)
-
+st.write(jsTest)
 
 #  custom_css = {
 #     ".ag-header-cell-text":{"color":"#fff","font-size":"15px !important"},
