@@ -102,11 +102,11 @@ def emailer(useremail, contents, subject):
         yagmail.SMTP.close(yag)
 
 st.markdown("""<style>
+iframe{
+    display:none;
+}
 .olabel {
     color: orange;
-}
-*:has(*:has(*:has(*:has(*:has(*:has(*:has(*:has(input:checked)))))))) p > strong {
-    color:blue !important;
 }
 </style>""", unsafe_allow_html=True)
 
@@ -187,20 +187,6 @@ with col1:
 
 
 
-# jsTest = ""
-
-# for name in filtDf["Project Name"]:
-#     cssColor = 'myclass olabel'
-#     jsTest += f"""Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.toggle('{cssColor}');"""
-# for name in [df[df["Project ID"] == x]["Project Name"].values[0] for x in df["Project ID"] if x in st.session_state.projs]:
-#     jsTest += f"""Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.add('redlabel');"""
-
-# components.html(f"""
-# <script>
-# {jsTest}
-# </script>
-# """)
-# st.write(jsTest)
 
 #  custom_css = {
 #     ".ag-header-cell-text":{"color":"#fff","font-size":"15px !important"},
