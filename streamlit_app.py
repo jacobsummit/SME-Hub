@@ -107,6 +107,7 @@ st.markdown("""<style>
 </style>""", unsafe_allow_html=True)
 
 def proj_changed(rowid, val):
+    st.write("test" + rowid)
     if rowid not in st.session_state.projs:
         st.session_state.projs.append(rowid)
     else:
