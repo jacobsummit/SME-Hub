@@ -116,6 +116,7 @@ def proj_changed(rowid, val):
     components.html(f"""
     <script>
     Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.toggle('olabel');
+    console.log("test");
     </script>
     """)
 
