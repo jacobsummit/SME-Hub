@@ -166,17 +166,14 @@ for row in filtDf.index:
 # st.write()
 
 st.markdown("""<style>
-
-.myclass .blacklabel {
-    color: red;
-}
-.redlabel {
+.myclass .redlabel {
     color: orange;
 }
 
-
+.blacklabel {
+    color: black;
+}
 </style>""", unsafe_allow_html=True)
-
 
 
 
@@ -192,7 +189,7 @@ with col1:
 jsTest = ""
 
 for name in df["Project Name"]:
-    cssColor = '.blacklabel'
+    cssColor = 'redlabel'
     jsTest += f"""Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.add({cssColor});"""
 # for name in [df[df["Project ID"] == x]["Project Name"].values[0] for x in df["Project ID"] if x in st.session_state.projs]:
 #     jsTest += f"""Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.add('redlabel');"""
