@@ -166,8 +166,8 @@ for row in filtDf.index:
 # st.write()
 
 st.markdown("""<style>
-.myclass .redlabel {
-    color: orange;
+.redlabel {
+    color: orange !important;
 }
 
 .blacklabel {
