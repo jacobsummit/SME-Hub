@@ -170,6 +170,8 @@ st.markdown("""<style>
     color: orange;
 }
 
+</style>""", unsafe_allow_html=True)
+st.markdown("""<style>
 .blacklabel {
     color: red;
 }
