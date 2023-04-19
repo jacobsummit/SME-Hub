@@ -179,8 +179,11 @@ with col1:
             userEmail = st.text_input(label = "Email", placeholder="Enter Email")
             email_submit = st.form_submit_button("Submit")
 jsTest = ""
-for name in [df[df["Project ID"] == x]["Project Name"].values[0] for x in df["Project ID"] if x in st.session_state.projs]:
+
+for name in df["Project Name"]:
     jsTest += f"""Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.add('redlabel');"""
+# for name in [df[df["Project ID"] == x]["Project Name"].values[0] for x in df["Project ID"] if x in st.session_state.projs]:
+#     jsTest += f"""Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.add('redlabel');"""
 
 components.html(f"""
 <script>
