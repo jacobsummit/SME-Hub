@@ -166,16 +166,17 @@ for row in filtDf.index:
 # st.write()
 
 st.markdown("""<style>
+
+.blacklabel {
+    color: red;
+}
 .redlabel {
     color: orange;
 }
 
+
 </style>""", unsafe_allow_html=True)
-st.markdown("""<style>
-.blacklabel {
-    color: red;
-}
-</style>""", unsafe_allow_html=True)
+
 
 
 
