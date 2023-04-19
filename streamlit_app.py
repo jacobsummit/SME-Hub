@@ -104,10 +104,14 @@ st.markdown("""<style>
 .olabel {
     color: orange;
 }
+*:has(*:has(*:has(*:has(*:has(*:has(*:has(*:has(input:checked)))))))) p > strong {
+    color:blue !important;
+}
 </style>""", unsafe_allow_html=True)
 
 def proj_changed(rowid, val):
-    st.write("test" + rowid)
+    components.html("<script>alert()</script>")
+    return
     if rowid not in st.session_state.projs:
         st.session_state.projs.append(rowid)
     else:
