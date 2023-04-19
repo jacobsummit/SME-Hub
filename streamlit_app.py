@@ -197,7 +197,6 @@ for name in df["Project Name"]:
 components.html(f"""
 <script>
 {jsTest}
-console.log("test");
 </script>
 """)
 
