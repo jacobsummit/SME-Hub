@@ -165,6 +165,16 @@ for row in filtDf.index:
 # st.session_state.projs
 # st.write()
 
+col1, col2 = st.columns((1,1))
+with col1:
+    # st.write('<- See sidebar for table usage (sorting, filtering, more information)')
+    # st.write("Check boxes for projects you are interested in, then enter your information below. A team member will reach out to you in regards to these projects.")
+    with st.expander("Enter your Information",True):
+        with st.form("email_form"):
+            fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
+            userEmail = st.text_input(label = "Email", placeholder="Enter Email")
+            email_submit = st.form_submit_button("Submit")
+
 st.markdown("""<style>
 .olabel {
     color: orange;
@@ -176,19 +186,9 @@ st.markdown("""<style>
 </style>""", unsafe_allow_html=True)
 
 
-
-col1, col2 = st.columns((1,1))
-with col1:
-    # st.write('<- See sidebar for table usage (sorting, filtering, more information)')
-    # st.write("Check boxes for projects you are interested in, then enter your information below. A team member will reach out to you in regards to these projects.")
-    with st.expander("Enter your Information",True):
-        with st.form("email_form"):
-            fullName = st.text_input(label = "Full Name", placeholder="Enter Full Name")
-            userEmail = st.text_input(label = "Email", placeholder="Enter Email")
-            email_submit = st.form_submit_button("Submit")
 jsTest = ""
 
-for name in df["Project Name"]:
+for name in filtDf["Project Name"]:
     cssColor = 'olabel'
     jsTest += f"""Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.add({cssColor});"""
 # for name in [df[df["Project ID"] == x]["Project Name"].values[0] for x in df["Project ID"] if x in st.session_state.projs]:
