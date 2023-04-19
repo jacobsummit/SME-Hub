@@ -2,6 +2,7 @@ import smtplib
 import yagmail
 import streamlit as st
 import streamlit.components.v1 as components
+import random
 
 import pandas as pd
 import numpy as np
@@ -110,7 +111,8 @@ st.markdown("""<style>
 </style>""", unsafe_allow_html=True)
 
 def proj_changed(rowid, val):
-    components.html("<script>console.log('a')</script>")
+    
+    components.html("<script>console.log('"+random.random()+"')</script>")
     return
     if rowid not in st.session_state.projs:
         st.session_state.projs.append(rowid)
