@@ -185,11 +185,11 @@ st.markdown("""<style>
 
 jsTest = ""
 
-for name in filtDf["Project Name"]:
-    cssColor = 'myclass olabel'
-    jsTest += f"""Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.toggle('{cssColor}');"""
-# for name in [df[df["Project ID"] == x]["Project Name"].values[0] for x in df["Project ID"] if x in st.session_state.projs]:
-#     jsTest += f"""Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.add('redlabel');"""
+# for name in filtDf["Project Name"]:
+#     cssColor = 'myclass olabel'
+#     jsTest += f"""Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.toggle('{cssColor}');"""
+for name in [df[df["Project ID"] == x]["Project Name"].values[0] for x in df["Project ID"] if x in st.session_state.projs]:
+    jsTest += f"""Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.toggle('olabel');"""
 
 components.html(f"""
 <script>
