@@ -116,6 +116,13 @@ def proj_changed(rowid, val):
         st.session_state.projs.append(rowid)
     else:
         st.session_state.projs.remove(rowid)
+    name = df[df["Project ID"] == rowid]["Project Name"].values[0]
+    components.html(f"""
+    <script>
+    Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.toggle('olabel');
+    </script>
+    """)
+    
 
 if "projs" not in st.session_state:
     st.session_state.projs = []
