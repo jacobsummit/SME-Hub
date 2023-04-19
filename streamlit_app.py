@@ -115,7 +115,7 @@ def proj_changed(rowid, val):
     name = df[df["Project ID"] == rowid]["Project Name"].values[0]
     components.html(f"""
     <script>
-    Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.add('olabel');
+    Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.toggle('olabel');
     </script>
     """)
 
