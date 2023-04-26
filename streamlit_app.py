@@ -204,7 +204,7 @@ if email_submit:
             st.success("Email Successfully Sent!", icon="🎉")
     with col2:
         st.error("this funcionality is currently disabled")
-        if v.empty: st.error("Please check at least one box.", icon="❗")
+        if st.session_state.projs.empty: st.error("Please check at least one box.", icon="❗")
         if not fullName: st.error("Please Enter your Name", icon="❗")
         if not validEmail(userEmail): st.error(
 
