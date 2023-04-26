@@ -186,6 +186,27 @@ with col1:
 
 
 
+if email_submit:
+    if fullName and validEmail(userEmail) and not v.empty:
+        # emailer(userEmail, extEmail(v, fullName), subject)
+        # st.markdown(extEmail(v, fullName), unsafe_allow_html=True)
+        anaList = v["Project Owner Email"].unique().tolist()
+        amList = v["AM Email"].unique().tolist()
+        for ana in anaList:
+            pass
+            # emailer("jacobtminson@gmail.com", anaEmail(v[v["Project Owner Email"]==ana]), "You have a message from SME HUB!")
+            # st.markdown(anaEmail(v[v["Project Owner Email"]==ana], fullName, userEmail), unsafe_allow_html=True)
+        for am in amList:
+            pass
+            # emailer(userEmail, amEmail(v[v["AM Email"]==am], fullName, userEmail), "Message from SME Hub!")
+            # st.markdown(amEmail(v[v["AM Email"]==am], fullName, userEmail), unsafe_allow_html=True)
+        with col2:
+            st.success("Email Successfully Sent!", icon="🎉")
+    with col2:
+        st.error("this funcionality is currently disabled")
+        if v.empty: st.error("Please check at least one box.", icon="❗")
+        if not fullName: st.error("Please Enter your Name", icon="❗")
+        if not validEmail(userEmail): st.error(
 
 
 #  custom_css = {
@@ -272,26 +293,7 @@ with col1:
 # v = pd.DataFrame(ag['selected_rows'])
 
 
-# if email_submit:
-#     if fullName and validEmail(userEmail) and not v.empty:
-#         # emailer(userEmail, extEmail(v, fullName), subject)
-#         # st.markdown(extEmail(v, fullName), unsafe_allow_html=True)
-#         anaList = v["Project Owner Email"].unique().tolist()
-#         amList = v["AM Email"].unique().tolist()
-#         for ana in anaList:
-#             pass
-#             # emailer("jacobtminson@gmail.com", anaEmail(v[v["Project Owner Email"]==ana]), "You have a message from SME HUB!")
-#             # st.markdown(anaEmail(v[v["Project Owner Email"]==ana], fullName, userEmail), unsafe_allow_html=True)
-#         for am in amList:
-#             pass
-#             # emailer(userEmail, amEmail(v[v["AM Email"]==am], fullName, userEmail), "Message from SME Hub!")
-#             # st.markdown(amEmail(v[v["AM Email"]==am], fullName, userEmail), unsafe_allow_html=True)
-#         with col2:
-#             st.success("Email Successfully Sent!", icon="🎉")
-#     with col2:
-#         if v.empty: st.error("Please check at least one box.", icon="❗")
-#         if not fullName: st.error("Please Enter your Name", icon="❗")
-#         if not validEmail(userEmail): st.error("Please Enter a Valid Email Address", icon="❗")
+"Please Enter a Valid Email Address", icon="❗")
 
             
 
