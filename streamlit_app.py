@@ -111,20 +111,20 @@ iframe{
 </style>""", unsafe_allow_html=True)
 
 def proj_changed(rowid, val):  
-    pass  
-    if rowid not in st.session_state.projs:
-        st.session_state.projs.append(rowid)
-    else:
-        st.session_state.projs.remove(rowid)
+    pass
+    # if rowid not in st.session_state.projs:
+    #     st.session_state.projs.append(rowid)
+    # else:
+    #     st.session_state.projs.remove(rowid)
     
-    name = df[df["Project ID"] == rowid]["Project Name"].values[0]
-    #do not remove or change the console.log below. This function will not run if you do!!
-    components.html(f"""
-    <script>
-    Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.toggle('olabel');
-    console.log("{str(random.random())}");
-    </script>
-    """)
+    # name = df[df["Project ID"] == rowid]["Project Name"].values[0]
+    # #do not remove or change the console.log below. This function will not run if you do!!
+    # components.html(f"""
+    # <script>
+    # Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.toggle('olabel');
+    # console.log("{str(random.random())}");
+    # </script>
+    # """)
 
 if "projs" not in st.session_state:
     st.session_state.projs = []
