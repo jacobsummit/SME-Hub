@@ -109,7 +109,7 @@ iframe{
     color: orange;
 }
 .olabel:hover{
-    color: red;
+    color: ff4b4b;
 }
 </style>""", unsafe_allow_html=True)
 
