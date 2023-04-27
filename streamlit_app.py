@@ -108,23 +108,30 @@ iframe{
 .olabel {
     color: orange;
 }
+.rlabel{
+    color: red;
+}
 </style>""", unsafe_allow_html=True)
 
-def proj_changed(rowid, val):  
-    pass
-    # if rowid not in st.session_state.projs:
-    #     st.session_state.projs.append(rowid)
-    # else:
-    #     st.session_state.projs.remove(rowid)
-    
-    # name = df[df["Project ID"] == rowid]["Project Name"].values[0]
+def proj_changed(rowid, val):      
+    if rowid not in st.session_state.projs:
+        st.session_state.projs.append(rowid)
+    else:
+        st.session_state.projs.remove(rowid)
+    sesNames = [df[df["Project ID"] == x]["Project Name"].values[0] for x in df["Project ID"] if x in st.session_state.projs]
+    colJs = ""
+    for name in df[df["Project ID"] == rowid]["Project Name"].values[0]:
+        if name in sesNames:
+            colJs += """Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.toggle('olabel');"""
+        else:
+            colJs +="""Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.toggle('rlabel');"""
     # #do not remove or change the console.log below. This function will not run if you do!!
-    # components.html(f"""
-    # <script>
-    # Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.toggle('olabel');
-    # console.log("{str(random.random())}");
-    # </script>
-    # """)
+    components.html(f"""
+    <script>
+    {colJs}
+    console.log("{str(random.random())}");
+    </script>
+    """)
 
 if "projs" not in st.session_state:
     st.session_state.projs = []
@@ -207,7 +214,8 @@ if email_submit:
         st.error("This funcionality is currently disabled", icon="❗")
         if not st.session_state.projs: st.error("Please check at least one box.", icon="❗")
         if not fullName: st.error("Please Enter your Name", icon="❗")
-        if not validEmail(userEmail): st.error(
+        if not validEmail(userEmail): st.error("Please Enter a Valid Email Address", icon="❗")
+
 
 
 #  custom_css = {
@@ -294,7 +302,6 @@ if email_submit:
 # v = pd.DataFrame(ag['selected_rows'])
 
 
-"Please Enter a Valid Email Address", icon="❗")
 
             
 
