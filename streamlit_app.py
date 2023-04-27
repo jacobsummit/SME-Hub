@@ -108,9 +108,6 @@ iframe{
 .olabel {
     color: orange;
 }
-.rlabel{
-    color: blue;
-}
 </style>""", unsafe_allow_html=True)
 
 def proj_changed(rowid, val):      
@@ -129,7 +126,7 @@ def proj_changed(rowid, val):
     components.html(f"""
     <script>
     {colJs}
-    console.log("{str(random.random())}");
+    
     </script>
     """)
 
