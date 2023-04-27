@@ -108,6 +108,9 @@ iframe{
 .olabel {
     color: orange;
 }
+.olabel:hover{
+    color: red;
+}
 </style>""", unsafe_allow_html=True)
 
 def proj_changed(rowid, val):      
