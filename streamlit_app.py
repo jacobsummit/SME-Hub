@@ -122,9 +122,9 @@ def proj_changed(rowid, val):
     colJs = ""
     for name in df[df["Project ID"] == rowid]["Project Name"].values[0]:
         if name in sesNames:
-            colJs += """Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.toggle('olabel');"""
+            colJs += """Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.add('olabel');"""
         else:
-            colJs +="""Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.toggle('rlabel');"""
+            colJs +="""Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.add('rlabel');"""
     # #do not remove or change the console.log below. This function will not run if you do!!
     components.html(f"""
     <script>
