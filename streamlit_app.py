@@ -110,7 +110,8 @@ iframe{
 }
 </style>""", unsafe_allow_html=True)
 
-def proj_changed(rowid, val):    
+def proj_changed(rowid, val):  
+    pass  
     if rowid not in st.session_state.projs:
         st.session_state.projs.append(rowid)
     else:
@@ -203,7 +204,7 @@ if email_submit:
         with col2:
             st.success("Email Successfully Sent!", icon="🎉")
     with col2:
-        st.error("this funcionality is currently disabled")
+        st.error("This funcionality is currently disabled", icon="❗")
         if not st.session_state.projs: st.error("Please check at least one box.", icon="❗")
         if not fullName: st.error("Please Enter your Name", icon="❗")
         if not validEmail(userEmail): st.error(
