@@ -124,7 +124,7 @@ def proj_changed(rowid, val):
         if name in sesNames:
             colJs += f"""Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.add('olabel');"""
         else:
-            colJs += f"""Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.remove('rlabel');"""
+            colJs += f"""Array.from(window.parent.document.querySelectorAll('div[data-testid="stExpander"] div[role="button"] p')).find(el => el.innerText === '{name}').classList.remove('olabel');"""
     # #do not remove or change the console.log below. This function will not run if you do!!
     components.html(f"""
     <script>
