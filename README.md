@@ -1,1 +1,3 @@
 # SME-Hub
+
+This project was created in order to make it possible for external individuals (subject matter experts) to see the projects we are currently working on at SVS and express interest in getting involved.  The user could select projects based on their descriptions and progress through the discover pipeline, submit their name and email, and the analysts working on the given projects would receive an email that someone was wanting to get involved and that they should reach out.  The project was never deployed at scale, but it is essentially ready at any point if the team ever decides they want it.
